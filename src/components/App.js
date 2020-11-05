@@ -1,7 +1,12 @@
 import React from "react";
+import StyledPractice from "../StyledPractice";
 
-function App() {
-    return <div className="App">모도리 프로젝트 시작이돠임마~</div>;
-}
+const App = () => {
+    return (
+        <>
+            <StyledPractice />
+        </>
+    );
+};
 
 export default App;

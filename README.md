@@ -7,3 +7,5 @@
 -   styled-component
 -   react-markdown-editor-lite
 -   react-icons
+-   react-router-dom
+-   polished
