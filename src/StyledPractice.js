@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { darken, lighten } from "polished";
 
+// 프로젝트와 관계없는 연습 파일입니다.
+
 const StyledLogin = styled.div`
     width: 40%;
     height: 80vh;

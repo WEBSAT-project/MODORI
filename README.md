@@ -9,3 +9,5 @@
 -   react-icons
 -   react-router-dom
 -   polished
+-   sweetalert2
+-   Tippy.js
