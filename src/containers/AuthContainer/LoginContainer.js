@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Login from "../../components/Auth/Login/Login";
 import Swal from "sweetalert2";
 import axios from "axios";
-
 const LoginContainer = ({ history }) => {
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
@@ -17,11 +16,11 @@ const LoginContainer = ({ history }) => {
                 email: id,
                 pw: password,
             });
-            history.push("/");
-            window.location.replace("/");
-
             const token = login.data.token.token;
             localStorage.setItem("token", token);
+
+            history.push("/");
+            window.location.replace("/");
 
             //토큰을 로컬 스토리지에 저장
         } catch (err) {
@@ -55,7 +54,6 @@ const LoginContainer = ({ history }) => {
         //     });
         // }
     };
-
     return (
         <Login
             onSubmit={onSubmit}

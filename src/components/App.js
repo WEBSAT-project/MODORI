@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, HashRouter, Switch } from "react-router-dom";
 import GlobalStyle from "./GlobalStyle";
 import NotFound from "./Error/NotFound";
@@ -14,12 +14,12 @@ const App = () => {
         <HashRouter>
             <GlobalStyle />
             <Switch>
-                <Route exact path="/" component={Main} />
-                <Route exact path="/login" component={LoginContainer} />
-                <Route exact path="/join" component={JoinContainer} />
-                <Route exact path="/shareboard" component={ShareBoard} />
-                <Route exact path="/setprofile" component={SetProfile} />
-                <Route exact path="/memo" component={Memo} />
+                <Route exact={true} path="/" component={Main} />
+                <Route exact={true} path="/login" component={LoginContainer} />
+                <Route exact={true} path="/join" component={JoinContainer} />
+                <Route exact={true} path="/shareboard" component={ShareBoard} />
+                <Route exact={true} path="/setprofile" component={SetProfile} />
+                <Route exact={true} path="/memo" component={Memo} />
                 <Route path="*" component={NotFound} />
             </Switch>
         </HashRouter>

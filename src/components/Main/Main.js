@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import styled from "styled-components";
 import MainFooter from "./MainFooter";
 import LogoTitle from "../../assets/modori_logo_title.png";
 import Post from "./Post";
 import MainHeader from "./MainHeader";
+import jwt_decode from "jwt-decode";
 
 const MainDiv = styled.div`
     width: 100%;

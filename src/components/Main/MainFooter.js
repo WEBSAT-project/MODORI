@@ -24,7 +24,7 @@ const MainFooter = () => {
     return (
         <MainFooterDiv>
             <div>메모장이 없는 당신을 위해!</div>
-            <Logo2 draggable={false} />
+            <Logo2 draggable="false" />
         </MainFooterDiv>
     );
 };

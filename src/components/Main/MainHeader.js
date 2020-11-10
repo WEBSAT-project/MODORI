@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { NavLink, Link } from "react-router-dom";
 import FullLogo from "../../assets/modori_logo_full.png";
+import jwt_decode from "jwt-decode";
+import Swal from "sweetalert2";
 const HeaderDiv = styled.div`
     border: 2px solid #bdbfbe;
     box-sizing: border-box;
@@ -46,6 +48,23 @@ const Button = styled.button`
 `;
 
 const MainHeader = () => {
+    const token = localStorage.getItem("token");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [decoded, setDecoded] = useState({
+        name: "",
+        nick: "",
+    });
+
+    useEffect(() => {
+        if (token) {
+            setIsLoggedIn(true);
+            setDecoded(jwt_decode(token));
+        } else {
+            setIsLoggedIn(false);
+        }
+    }, [isLoggedIn, token]);
+    // token ? setIsLoggedIn(true) : setIsLoggedIn(false);
+
     return (
         <HeaderDiv>
             <Logo />
@@ -55,7 +74,7 @@ const MainHeader = () => {
                         borderBottom: "2px solid green",
                         paddingBottom: "1rem",
                     }}
-                    exact
+                    exact={true}
                     to="/"
                 >
                     내가 쓴 글
@@ -65,7 +84,7 @@ const MainHeader = () => {
                         borderBottom: "2px solid green",
                         paddingBottom: "1rem",
                     }}
-                    exact
+                    exact={true}
                     to="/shareboard"
                 >
                     다른 사람이 쓴 글
@@ -75,7 +94,7 @@ const MainHeader = () => {
                         borderBottom: "2px solid green",
                         paddingBottom: "1rem",
                     }}
-                    exact
+                    exact={true}
                     to="/setprofile"
                 >
                     프로필 설정
@@ -85,15 +104,15 @@ const MainHeader = () => {
                         borderBottom: "2px solid green",
                         paddingBottom: "1rem",
                     }}
-                    exact
+                    exact={true}
                     to="/memo"
                 >
                     글쓰기
                 </NavLink>
-                {localStorage.getItem("token") ? (
+                {isLoggedIn ? (
                     <div style={{ textAlign: "center" }}>
-                        홍준혁
-                        <h1>밀크</h1>
+                        {decoded.name}
+                        <h1>{decoded.nick}</h1>
                         <Button
                             onClick={() => {
                                 localStorage.removeItem("token");
@@ -104,7 +123,7 @@ const MainHeader = () => {
                         </Button>
                     </div>
                 ) : (
-                    <Link exact to="/login">
+                    <Link exact={true} to="/login">
                         <Button>로그인</Button>
                     </Link>
                 )}

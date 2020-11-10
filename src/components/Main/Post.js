@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Comment from "./Comment";
 import FullLogo from "../../assets/modori_logo(1).png";
 const PostDiv = styled.div`
     width: 800px;
@@ -47,7 +46,7 @@ const Post = ({ title, user, draw, text }) => {
             </PostHeader>
             <PostBody>
                 <>
-                    <img src={draw} alt="그림입니다." draggable={false} />
+                    <img src={draw} alt="그림입니다." draggable="false" />
                     <PostBodyContent>{text}</PostBodyContent>
                 </>
 
