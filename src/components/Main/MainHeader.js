@@ -8,7 +8,8 @@ const HeaderDiv = styled.div`
     border: 2px solid #bdbfbe;
     box-sizing: border-box;
     display: flex;
-    padding: 2rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
 `;
 
 const NavContainer = styled.div`
@@ -102,8 +103,7 @@ const MainHeader = () => {
                 </NavLink>
                 {isLoggedIn ? (
                     <div style={{ textAlign: "center" }}>
-                        {decoded.name}
-                        <h1>{decoded.nick}</h1>
+                        <h1 style={{color:"#5ebf9b"}}>{decoded.nick}</h1>
                         <Button
                             onClick={() => {
                                 localStorage.removeItem("token");

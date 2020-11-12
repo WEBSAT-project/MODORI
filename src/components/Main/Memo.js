@@ -20,15 +20,11 @@ const PostForm = styled.form`
   grid-template-areas:
     ". .    .    .  "
     ". .    .    .  "
-    ". .    .    .  "
-    ". na   .    .  "
-    ". .    .    .  "
-    ". .    .    .  "
     ". name name .  "
     ". tool draw .  "
     ". .    .    .  "
     ". .    .    .  "
-    ". ma   .    .  "
+
     ". .    .    .  "
     ". .    .    .  "
     ". text text .  "

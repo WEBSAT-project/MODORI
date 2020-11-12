@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
 ::-webkit-scrollbar {
-  width: 10px;  /* 세로축 스크롤바 길이 */
+  width: 7px;  /* 세로축 스크롤바 길이 */
   height: 20px;  /* 가로축 스크롤바 길이 */
 }
 ::-webkit-scrollbar-track {
