@@ -62,6 +62,8 @@ const Memo = ({
     const [sdb, setSdb] = useState();
     const [lineSize, setLineSize] = useState(10);
     const [lineColor, setLineColor] = useState("black");
+    const [drawMode, setDrawMode] = useState(true);
+
     const clearCanvas = () => {
         sdb.clear();
     };
@@ -76,6 +78,19 @@ const Memo = ({
             icon: "success",
         });
     };
+    const changeColor = (e) => {
+        setLineColor(e.target.value);
+        sdb.setLineColor(lineColor);
+    };
+    const changeSize = (e) => {
+        setLineSize(e.target.value);
+        sdb.setLineColor(lineSize);
+    };
+
+    const changeMode = () => {
+        sdb.toggleMode();
+        setDrawMode(!drawMode);
+    };
 
     useEffect(() => {
         const sdb = create(canvas.current);
@@ -83,6 +98,7 @@ const Memo = ({
         sdb.setLineSize(lineSize);
         sdb.setLineColor(lineColor);
     }, []);
+
     return (
         <MemoDiv>
             <MainHeader />
@@ -129,13 +145,23 @@ const Memo = ({
                 </Button>
                 <Button
                     color="#5EBF9B"
-                    onClick={() => {
-                        sdb.toggleMode();
+                    onClick={(e) => {
+                        changeMode(e);
                     }}
                     type="button"
                 >
-                    모드 변경
+                    {drawMode ? "펜" : "지우개"}
                 </Button>
+                <input
+                    type="color"
+                    onChange={(e) => changeColor(e)}
+                    value={lineColor}
+                />
+                <input
+                    type="range"
+                    value={lineSize}
+                    onChange={(e) => changeSize(e)}
+                />
                 <Button
                     color="#5EBF9B"
                     onClick={() => {
