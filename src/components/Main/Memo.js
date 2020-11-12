@@ -14,10 +14,20 @@ const MemoDiv = styled.div`
 `;
 
 const PostForm = styled.form`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr 8fr 1fr;
+    gap: 10px;
+    grid-template-areas:
+        ". na   .    .  "
+        ". .    .    .  "
+        ". name name .  "
+		". tool draw .  "
+        ". ma   .    .  "
+        ". .    .    .  "
+		". text text .  ";
+    margin-top: 4%;
+    margin-bottom: 4%;
+    
     input {
         outline: none;
     }
@@ -41,6 +51,22 @@ const Button = styled.button`
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+`;
+const Toolbox = styled.div`
+    grid-area: tool;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:0.5rem;
+    grid-template-areas:
+        "back  front "
+        "color color "
+        "bar   bar   "
+        "pen   pen   "
+        "fill  fill  "
+        "save  save  "
+        "clear clear "
+        "give  give  ";
+
 `;
 
 const Memo = ({
@@ -105,85 +131,129 @@ const Memo = ({
         <MemoDiv>
             <MainHeader />
             <PostForm onSubmit={onSubmit}>
-                <h1>글</h1>
+                <h1 style={{
+                        gridArea: "ma",
+                    }}>글</h1>
                 <StyledInput
                     type="text"
                     placeholder="제목"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                    style={{
+                        gridArea: "name",
+                        width: "100%",
+                    }}
                 />
                 <MdEditor
                     style={{
-                        width: "80%",
+                        width: "100%",
                         height: "80vh",
+                        gridArea: "text",
                     }}
                     renderHTML={(text) => mdParser.render(text)}
                     onChange={handleChange}
                 />
-                <h1>그림</h1>
+                <h1 style={{
+                        gridArea:"na",
+                    }}>그림</h1>
                 <canvas
-                    width={900}
-                    height={800}
+                    width={1920}
+                    height={1080}
                     ref={canvas}
                     style={{
                         background: "white",
+                        width: "100%",
+                        gridArea: "draw",
                     }}
                 ></canvas>
-                <Button
-                    onClick={() => clearCanvas()}
-                    color="#ed4337"
-                    type="button"
-                >
-                    모두 지우기
-                </Button>
-                <Button
-                    color="#5EBF9B"
-                    onClick={() => {
-                        fillCanvas();
-                    }}
-                    type="button"
-                >
-                    채우기
-                </Button>
-                <Button
-                    color="#5EBF9B"
-                    onClick={(e) => {
-                        changeMode(e);
-                    }}
-                    type="button"
-                >
-                    {drawMode ? "펜" : "지우개"}
-                </Button>
-                <input
-                    type="color"
-                    onChange={(e) => changeColor(e)}
-                    value={lineColor}
-                />
-                <input
-                    type="range"
-                    value={lineSize}
-                    onChange={(e) => changeSize(e)}
-                />
-                <Button onClick={() => undo()} type="button" color="#5EBF9B">
-                    뒤로가기
-                </Button>
-                <Button onClick={() => redo()} type="button" color="#5EBF9B">
-                    앞으로 가기
-                </Button>
-                <Button
-                    color="#5EBF9B"
-                    onClick={() => {
-                        save();
-                    }}
-                    type="button"
-                >
-                    저장
-                </Button>
-                <Button onClick={onSubmit} color="#38A67E">
-                    제출
-                </Button>
+                <Toolbox>
+                    <Button
+                        onClick={() => clearCanvas()}
+                        color="#ed4337"
+                        type="button"
+                        style={{
+                            gridArea: "clear",
+                        }}
+                    >
+                        모두 지우기
+                    </Button>
+                    <Button
+                        color="#5EBF9B"
+                        onClick={() => {
+                            fillCanvas();
+                        }}
+                        type="button"
+                        style={{
+                            gridArea: "fill",
+                        }}
+                    >
+                        채우기
+                    </Button>
+                    <Button
+                        color="#5EBF9B"
+                        onClick={(e) => {
+                            changeMode(e);
+                        }}
+                        type="button"
+                        style={{
+                            gridArea: "pen",
+                        }}
+                    >
+                        {drawMode ? "펜" : "지우개"}
+                    </Button>
+                    <input
+                        type="color"
+                        onChange={(e) => changeColor(e)}
+                        value={lineColor}
+                        style={{
+                            gridArea: "color",
+                            width:"100%",
+                            height:"100%",
+                            outline:"none",
+                            border:"none",
+                        }}
+                    />
+                    <input
+                        type="range"
+                        value={lineSize}
+                        onChange={(e) => changeSize(e)}
+                        style={{
+                            gridArea: "bar",
+                        }}
+                    />
+                    <Button onClick={() => undo()} type="button" color="#5EBF9B"
+                    style={{
+                        gridArea: "back",
+                        fontSize:"2rem",
+                    }}>
+                        ↩
+                    </Button>
+                    <Button onClick={() => redo()} type="button" color="#5EBF9B"style={{
+                            gridArea: "front",
+                            fontSize:"2rem",
+                        }}>
+                        ↪
+                    </Button>
+                    <Button
+                        color="#5EBF9B"
+                        onClick={() => {
+                            save();
+                        }}
+                        type="button"
+                        style={{
+                            gridArea: "save",
+                        }}
+                    >
+                        저장
+                    </Button>
+                    <Button onClick={onSubmit} color="#38A67E"
+                    style={{
+                        gridArea: "give",
+                    }}>
+                        제출
+                    </Button>
+                </Toolbox>
             </PostForm>
-            <MainFooter />
         </MemoDiv>
     );
 };

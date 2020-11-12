@@ -10,7 +10,6 @@ const MainBodyDiv = styled.div`
     background-color:white;
 `;
 
-
 const MainBody = ({ postList }) => {
     return (
         <MainBodyDiv style ={{ 
