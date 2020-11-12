@@ -74,14 +74,14 @@ const Main = () => {
         <MainDiv >
             <MainHeader />
             <MainBodyContainer data={searchData} />
-            <SearchInput>
+            {/* <SearchInput>
                 <input
                     placeholder="검색을 해보세요"
                     onChange={(e) => setSearchInput(e.target.value)}
                     value={searchInput}
                 />
                 <FcSearch onClick={handleSearch} />
-            </SearchInput>
+            </SearchInput> */}
            
         </MainDiv>
     );
