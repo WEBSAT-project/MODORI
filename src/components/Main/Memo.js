@@ -18,15 +18,20 @@ const PostForm = styled.form`
   grid-template-columns: 1fr 1fr 8fr 1fr;
   gap: 10px;
   grid-template-areas:
+    ". .    .    .  "
+    ". .    .    .  "
+    ". .    .    .  "
     ". na   .    .  "
     ". .    .    .  "
     ". name name .  "
     ". tool draw .  "
     ". ma   .    .  "
     ". .    .    .  "
-    ". text text .  ";
-  margin-top: 4%;
-  margin-bottom: 4%;
+    ". text text .  "
+    ". .    .    .  "
+    ". .    .    .  "
+    ". .    .    .  ";
+
 
   input {
     outline: none;
@@ -145,6 +150,7 @@ const Memo = ({
           style={{
             gridArea: "name",
             width: "100%",
+            fontSize:"2rem",
           }}
         />
         <MdEditor
@@ -171,6 +177,7 @@ const Memo = ({
             background: "white",
             width: "100%",
             gridArea: "draw",
+            borderRadius: "30px",
           }}
         ></canvas>
         <Toolbox>
