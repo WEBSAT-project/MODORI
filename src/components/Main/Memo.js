@@ -92,6 +92,12 @@ const Memo = ({
         setDrawMode(!drawMode);
     };
 
+    const undo = async () => {
+        await sdb.undo();
+    };
+    const redo = async () => {
+        await sdb.redo();
+    };
     useEffect(() => {
         const sdb = create(canvas.current);
         setSdb(sdb);
@@ -162,6 +168,12 @@ const Memo = ({
                     value={lineSize}
                     onChange={(e) => changeSize(e)}
                 />
+                <Button onClick={() => undo()} type="button" color="#5EBF9B">
+                    뒤로가기
+                </Button>
+                <Button onClick={() => redo()} type="button" color="#5EBF9B">
+                    앞으로 가기
+                </Button>
                 <Button
                     color="#5EBF9B"
                     onClick={() => {
