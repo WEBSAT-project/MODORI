@@ -33,6 +33,7 @@ const PostForm = styled.form`
     ". .    .    .  "
     ". text text .  "
     ". .    .    .  "
+    ". give give .  "
     ". .    .    .  "
     ". .    .    .  ";
 
@@ -53,6 +54,7 @@ const StyledInput = styled.input`
 
 const Button = styled.button`
   background: ${(props) => props.color};
+  font-size:1.3rem;
   color: white;
   padding: 0.7rem;
   border: none;
@@ -73,8 +75,7 @@ const Toolbox = styled.div`
     "pen   pen   "
     "fill  fill  "
     "save  save  "
-    "clear clear "
-    "give  give  ";
+    "clear clear ";
 `;
 
 const Memo = ({
@@ -276,7 +277,8 @@ const Memo = ({
           >
             저장
           </Button>
-          <Button
+        </Toolbox>
+        <Button
             onClick={onSubmit}
             color="#38A67E"
             style={{
@@ -285,7 +287,6 @@ const Memo = ({
           >
             제출
           </Button>
-        </Toolbox>
       </PostForm>
     </MemoDiv>
   );
