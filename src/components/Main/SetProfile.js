@@ -8,8 +8,7 @@ import MainFooter from "./MainFooter";
 import MainHeader from "./MainHeader";
 import MainBody from "./MainBody";
 const SetProfileDiv = styled.div`
-    width:100%;
-    background-color : #f2f2f2;
+    width: 100%;
 `;
 
 const StyledButton = styled.div`

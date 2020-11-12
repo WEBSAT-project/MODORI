@@ -73,10 +73,6 @@ const Memo = ({
     const save = () => {
         setBase64(sdb.toDataURL());
         console.log(base64);
-        Swal.fire({
-            title: "저장 성공",
-            icon: "success",
-        });
     };
     const changeColor = (e) => {
         setLineColor(e.target.value);

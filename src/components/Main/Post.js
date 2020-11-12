@@ -6,7 +6,6 @@ import gfm from "remark-gfm";
 
 const PostDiv = styled.div`
     width: 100%;
-   
 `;
 
 const PostHeader = styled.div`
@@ -15,13 +14,13 @@ const PostHeader = styled.div`
     justify-content: space-between;
 `;
 const PostBody = styled.div`
-    height:50vh;
+    height: 50vh;
     /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); */
     display: flex;
     /* border: 2px solid #bdbfbe; */
     flex-direction: column;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
-    
+
     img {
         max-width: 100%;
         /* max-height: 100%; */
@@ -29,7 +28,7 @@ const PostBody = styled.div`
     }
 `;
 const PostBodyContent = styled.div`
-overflow-y : auto;
+    overflow-y: auto;
     border-top: none;
     padding: 1rem;
 `;
@@ -56,6 +55,7 @@ const Post = (props) => {
                 style={{
                     border: "1px solid #aaa",
                     borderLeft: "5px solid #bdbfbe",
+
                     paddingLeft: 10,
                     margin: 5,
                 }}
@@ -67,7 +67,14 @@ const Post = (props) => {
 
     function CodeBlock(props) {
         return (
-            <pre style={{ background: "#000", color: "#fff", padding: 10 }}>
+            <pre
+                style={{
+                    background: "#000",
+                    color: "#fff",
+                    padding: 10,
+                    borderRadius: "5px",
+                }}
+            >
                 <code>{props.value}</code>
             </pre>
         );
