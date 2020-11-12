@@ -24,7 +24,6 @@ const PostForm = styled.form`
     ". tool draw .  "
     ". .    .    .  "
     ". .    .    .  "
-
     ". .    .    .  "
     ". .    .    .  "
     ". text text .  "
@@ -32,7 +31,6 @@ const PostForm = styled.form`
     ". give give .  "
     ". .    .    .  "
     ". .    .    .  ";
-
 
   input {
     outline: none;
@@ -50,7 +48,7 @@ const StyledInput = styled.input`
 
 const Button = styled.button`
   background: ${(props) => props.color};
-  font-size:1.3rem;
+  font-size: 1.3rem;
   color: white;
   padding: 0.7rem;
   border: none;
@@ -102,8 +100,13 @@ const Memo = ({
     sdb.fill(lineColor);
   };
   const save = () => {
-    setBase64(sdb.toDataURL());
-    console.log(base64);
+    //setBase64(sdb.toDataURL());
+    //console.log(base64);
+    const image = sdb.toDataURL();
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = "draw.png";
+    link.click();
   };
   const changeColor = (e) => {
     setLineColor(e.target.value);
@@ -151,7 +154,7 @@ const Memo = ({
           style={{
             gridArea: "name",
             width: "100%",
-            fontSize:"2rem",
+            fontSize: "2rem",
           }}
         />
         <MdEditor
@@ -275,14 +278,14 @@ const Memo = ({
           </Button>
         </Toolbox>
         <Button
-            onClick={onSubmit}
-            color="#38A67E"
-            style={{
-              gridArea: "give",
-            }}
-          >
-            제출
-          </Button>
+          onClick={onSubmit}
+          color="#38A67E"
+          style={{
+            gridArea: "give",
+          }}
+        >
+          제출
+        </Button>
       </PostForm>
     </MemoDiv>
   );
