@@ -19,15 +19,19 @@ const PostForm = styled.form`
     grid-template-columns: 1fr 1fr 8fr 1fr;
     gap: 10px;
     grid-template-areas:
-        ". na   .    .  "
+        ". .    .    .  "
         ". .    .    .  "
         ". name name .  "
         ". tool draw .  "
-        ". ma   .    .  "
         ". .    .    .  "
-        ". text text .  ";
-    margin-top: 4%;
-    margin-bottom: 4%;
+        ". .    .    .  "
+        ". .    .    .  "
+        ". .    .    .  "
+        ". text text .  "
+        ". .    .    .  "
+        ". give give .  "
+        ". .    .    .  "
+        ". .    .    .  ";
 
     input {
         outline: none;
@@ -45,6 +49,7 @@ const StyledInput = styled.input`
 
 const Button = styled.button`
     background: ${(props) => props.color};
+    font-size: 1.3rem;
     color: white;
     padding: 0.7rem;
     border: none;
@@ -65,8 +70,7 @@ const Toolbox = styled.div`
         "pen   pen   "
         "fill  fill  "
         "save  save  "
-        "clear clear "
-        "give  give  ";
+        "clear clear ";
 `;
 
 const Memo = ({
@@ -96,10 +100,11 @@ const Memo = ({
         sdb.fill(lineColor);
     };
     const save = () => {
-        const url = sdb.toDataURL();
-        // console.log(Base64.atob(url.split(",")[1]));
-        setImage(Base64.atob(url.split(",")[1]));
-        console.log(image);
+        const url = canvas.current.toDataURL("image/webp", 0.001);
+        console.log(url);
+        // setImage(url);
+        // , quality: "0.1"
+        setImage(url);
     };
 
     const changeColor = (e) => {
@@ -148,6 +153,7 @@ const Memo = ({
                     style={{
                         gridArea: "name",
                         width: "100%",
+                        fontSize: "2rem",
                     }}
                 />
                 <MdEditor
@@ -174,6 +180,7 @@ const Memo = ({
                         background: "white",
                         width: "100%",
                         gridArea: "draw",
+                        borderRadius: "30px",
                     }}
                 ></canvas>
                 <Toolbox>
@@ -226,7 +233,7 @@ const Memo = ({
                     <input
                         type="range"
                         value={lineSize}
-                        max={65.0}
+                        max={300}
                         min={1.0}
                         step={0.1}
                         onChange={(e) => changeSize(e)}
@@ -268,16 +275,16 @@ const Memo = ({
                     >
                         저장
                     </Button>
-                    <Button
-                        onClick={onSubmit}
-                        color="#38A67E"
-                        style={{
-                            gridArea: "give",
-                        }}
-                    >
-                        제출
-                    </Button>
                 </Toolbox>
+                <Button
+                    onClick={onSubmit}
+                    color="#38A67E"
+                    style={{
+                        gridArea: "give",
+                    }}
+                >
+                    제출
+                </Button>
             </PostForm>
         </MemoDiv>
     );
