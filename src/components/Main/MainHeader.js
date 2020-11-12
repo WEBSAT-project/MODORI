@@ -7,8 +7,8 @@ import Swal from "sweetalert2";
 const HeaderDiv = styled.div`
     border: 2px solid #bdbfbe;
     box-sizing: border-box;
-    padding: 2rem;
     display: flex;
+    padding: 2rem;
 `;
 
 const NavContainer = styled.div`

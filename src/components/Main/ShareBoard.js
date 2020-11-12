@@ -9,8 +9,7 @@ import Swal from "sweetalert2";
 import Post from "./Post";
 const MainDiv = styled.div`
     width: 100%;
-
-    background-color: ${(props) => props.color};
+    background-color: white;
 `;
 
 // const Logo2 = styled.img.attrs({
@@ -52,7 +51,6 @@ const SearchInput = styled.div`
     }
 `;
 
-const MainDivColor = "#f2f2f2";
 
 const SERVER = "http://10.80.163.169:8080";
 
@@ -73,7 +71,7 @@ const Main = () => {
     };
 
     return (
-        <MainDiv color={MainDivColor}>
+        <MainDiv >
             <MainHeader />
             <MainBodyContainer data={searchData} />
             <SearchInput>
@@ -84,7 +82,7 @@ const Main = () => {
                 />
                 <FcSearch onClick={handleSearch} />
             </SearchInput>
-            <MainFooter />
+           
         </MainDiv>
     );
 };

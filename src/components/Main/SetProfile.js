@@ -8,7 +8,8 @@ import MainFooter from "./MainFooter";
 import MainHeader from "./MainHeader";
 import MainBody from "./MainBody";
 const SetProfileDiv = styled.div`
-    background-color: #f2f2f2;
+    width:100%;
+    background-color : #f2f2f2;
 `;
 
 const StyledButton = styled.div`
@@ -76,8 +77,7 @@ const SetProfile = ({ history }) => {
                 <Post post={post} key={post.Post_Code} />
                 <div
                     style={{
-                        float: "right",
-                        display: "flex",
+                        float: "left",
                     }}
                 >
                     {/* <StyledButton onClick={onUpdate}>수정</StyledButton> */}
@@ -104,7 +104,6 @@ const SetProfile = ({ history }) => {
         <SetProfileDiv>
             <MainHeader />
             <MainBody postList={myPostList} />
-            <MainFooter />
         </SetProfileDiv>
     );
 };
