@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 
 const PostDiv = styled.div`
-    width: 800px;
+    width: 100%;
 `;
 
 const PostHeader = styled.div`
