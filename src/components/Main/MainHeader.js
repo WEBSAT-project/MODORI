@@ -31,8 +31,8 @@ const NavContainer = styled.div`
 const Logo = styled.img.attrs({
     src: FullLogo,
 })`
-    width: 5%;
-    max-width: 100%;
+    width: 7rem;
+    max-width: 7rem;
     margin: 1rem;
 `;
 
@@ -77,18 +77,9 @@ const MainHeader = () => {
                     exact={true}
                     to="/"
                 >
-                    내가 쓴 글
-                </NavLink>
-                <NavLink
-                    activeStyle={{
-                        borderBottom: "2px solid green",
-                        paddingBottom: "1rem",
-                    }}
-                    exact={true}
-                    to="/shareboard"
-                >
                     다른 사람이 쓴 글
                 </NavLink>
+
                 <NavLink
                     activeStyle={{
                         borderBottom: "2px solid green",
@@ -97,7 +88,7 @@ const MainHeader = () => {
                     exact={true}
                     to="/setprofile"
                 >
-                    프로필 설정
+                    프로필/내 글
                 </NavLink>
                 <NavLink
                     activeStyle={{

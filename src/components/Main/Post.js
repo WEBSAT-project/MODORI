@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import FullLogo from "../../assets/modori_logo(1).png";
+// import MarkdownIt from "markdown-it";
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
+
 const PostDiv = styled.div`
     width: 800px;
-    margin-bottom: 5rem;
 `;
 
 const PostHeader = styled.div`
@@ -28,11 +30,74 @@ const PostBodyContent = styled.div`
     padding: 1rem;
 `;
 
-const Post = ({ title, user, draw, text }) => {
+const Post = (props) => {
+    const {
+        Title,
+        Post_Time,
+        Post_Text,
+        Post_Code,
+        Post_Email,
+        Post_Update,
+        Post_nick_name,
+        image_pass,
+    } = props.post;
+    // const Md = new MarkdownIt().use((Md) => SupportReactComponent(Md, []));
+    function InlineCodeBlock(props) {
+        return <span style={{ background: "#ff0" }}>{props.value}</span>;
+    }
+
+    function BlockQuoteBlock(props) {
+        return (
+            <div
+                style={{
+                    border: "1px solid #aaa",
+                    borderLeft: "5px solid #bdbfbe",
+                    paddingLeft: 10,
+                    margin: 5,
+                }}
+            >
+                {props.children}
+            </div>
+        );
+    }
+
+    function CodeBlock(props) {
+        return (
+            <pre style={{ background: "#000", color: "#fff", padding: 10 }}>
+                <code>{props.value}</code>
+            </pre>
+        );
+    }
+
+    function TableCellBlock(props) {
+        let style = {
+            textAlign: props.align ? props.align : "center",
+            padding: 5,
+        };
+
+        if (props.isHeader) {
+            style.background = "#38a67e";
+            style.color = "#f2f2f2";
+            // style.border = "1px solid #ccc";
+            // style.borderLeft = 0;
+            // style.borderRight = 0;
+        } else {
+            // style.border = "1px solid #eee";
+            style.background = "#dee2e6";
+            style.borderBottom = "1px solid #eee";
+        }
+
+        return <td style={style}>{props.children}</td>;
+    }
     return (
         <PostDiv>
             <PostHeader>
-                <h1>{title}</h1>
+                <div>
+                    {/* <div style={{ fontSize: "1rem", color: "dimgray" }}>
+                        {Post_Code}#
+                    </div> */}
+                    <div>{Title}</div>
+                </div>
                 <div
                     style={{
                         color: "#4c7364",
@@ -41,26 +106,48 @@ const Post = ({ title, user, draw, text }) => {
                         alignItems: "flex-end",
                     }}
                 >
-                    {user}
+                    {Post_nick_name ? Post_nick_name : <>이름 없음</>}
+                    <div
+                        style={{
+                            fontFamily: "lighter",
+                            color: "dimgrey",
+                            fontSize: "1rem",
+                        }}
+                    >
+                        글 쓴 시간 : {Post_Time}
+                        {Post_Update}
+                    </div>
                 </div>
             </PostHeader>
             <PostBody>
                 <>
-                    <img src={draw} alt="그림입니다." draggable="false" />
-                    <PostBodyContent>{text}</PostBodyContent>
+                    {image_pass ? (
+                        <img
+                            src={image_pass}
+                            alt="그림입니다."
+                            draggable="false"
+                        />
+                    ) : (
+                        <></>
+                    )}
+                    <PostBodyContent>
+                        <ReactMarkdown
+                            source={Post_Text}
+                            renderers={{
+                                code: CodeBlock,
+                                tableCell: TableCellBlock,
+                                inlineCode: InlineCodeBlock,
+                                blockquote: BlockQuoteBlock,
+                            }}
+                            plugins={[gfm]}
+                        />
+                    </PostBodyContent>
                 </>
 
                 {/* 댓글 컴포넌트를 여기 넣어주세요! */}
             </PostBody>
         </PostDiv>
     );
-};
-
-Post.defaultProps = {
-    title: "기본 제목",
-    user: "홍준혁",
-    draw: FullLogo,
-    text: "안녕하세요",
 };
 
 export default Post;

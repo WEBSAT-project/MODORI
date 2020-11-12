@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Login from "../../components/Auth/Login/Login";
 import Swal from "sweetalert2";
 import axios from "axios";
+
 const LoginContainer = ({ history }) => {
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
@@ -24,6 +25,7 @@ const LoginContainer = ({ history }) => {
 
             //토큰을 로컬 스토리지에 저장
         } catch (err) {
+            console.log(err);
             switch (err.response.status) {
                 case 401:
                     Swal.fire({

@@ -24,16 +24,10 @@ const GlobalStyle = createGlobalStyle`
   background-color: #2f2f2f;
 }
 
-::-webkit-scrollbar-button:vertical:increment {
-}
-::-webkit-scrollbar-button:vertical:decrement {
-}
 ::-webkit-scrollbar-corner {
   background-color: violet; /* 우측 하단의 코너 부분 */
 }
-::-webkit-resizer {
-  background-color: green;
-}
+
     * {
         margin: 0;
         padding: 0;
