@@ -155,6 +155,15 @@ const Login = ({
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
+                    {nickname.length <= 8 ? (
+                        <div style={{ color: "green" }}>
+                            {nickname.length} / 8
+                        </div>
+                    ) : (
+                        <div style={{ color: "red" }}>
+                            길이제한😯 {nickname.length}
+                        </div>
+                    )}
                     <JoinInput
                         placeholder="닉네임"
                         value={nickname}

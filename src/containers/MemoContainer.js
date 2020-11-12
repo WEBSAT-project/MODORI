@@ -10,7 +10,7 @@ const MemoContainer = ({ history }) => {
     const SERVER = "http://10.80.163.169:8080";
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [base64, setBase64] = useState();
+    const [image, setImage] = useState();
     const token = localStorage.getItem("token");
 
     {
@@ -35,7 +35,7 @@ const MemoContainer = ({ history }) => {
                     token: token,
                     title: title,
                     post_text: content,
-                    // image_pass: base64,
+                    image_pass: image,
                 },
                 {
                     headers: {
@@ -65,8 +65,10 @@ const MemoContainer = ({ history }) => {
             setTitle={setTitle}
             content={content}
             setContent={setContent}
-            base64={base64}
-            setBase64={setBase64}
+            image={image}
+            setImage={setImage}
+            // base64={base64}
+            // setBase64={setBase64}
         />
     );
 };

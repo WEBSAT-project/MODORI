@@ -104,6 +104,14 @@ const JoinContainer = ({ history }) => {
         }
     };
     const onChkNickname = async () => {
+        if (nickname.length > 8) {
+            Swal.fire({
+                title: "닉네임은 8자 이하입니다.",
+                icon: "error",
+            });
+            return;
+        }
+
         try {
             const a = await Axios.post(`${SERVER}/register/nickname`, {
                 nick: nickname,
