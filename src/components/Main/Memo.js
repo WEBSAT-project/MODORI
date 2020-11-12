@@ -223,7 +223,7 @@ const Memo = ({
           <input
             type="range"
             value={lineSize}
-            max={65.0}
+            max={300}
             min={1.0}
             step={0.1}
             onChange={(e) => changeSize(e)}
