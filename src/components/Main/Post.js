@@ -8,6 +8,12 @@ const PostDiv = styled.div`
     width: 100%;
 `;
 
+const PostCanvasContainer = styled.div`
+    border: 1px solid black;
+    width: 100%;
+    height: 20vh;
+`;
+
 const PostHeader = styled.div`
     font-size: 1.5rem;
     display: flex;
@@ -133,11 +139,13 @@ const Post = (props) => {
             <PostBody>
                 <>
                     {image_pass ? (
-                        <img
-                            src={image_pass}
-                            alt="그림입니다."
-                            draggable="false"
-                        />
+                        <PostCanvasContainer>
+                            <img
+                                src={image_pass}
+                                alt="그림입니다."
+                                draggable="false"
+                            />
+                        </PostCanvasContainer>
                     ) : (
                         <></>
                     )}

@@ -100,13 +100,14 @@ const Memo = ({
         sdb.fill(lineColor);
     };
     const save = () => {
-        const url = canvas.current.toDataURL("image/webp", 0.001);
-        console.log(url);
-        // setImage(url);
-        // , quality: "0.1"
-        setImage(url);
+        //setBase64(sdb.toDataURL());
+        //console.log(base64);
+        const image = sdb.toDataURL();
+        const link = document.createElement("a");
+        link.href = image;
+        link.download = "draw.png";
+        link.click();
     };
-
     const changeColor = (e) => {
         setLineColor(e.target.value);
         sdb.setLineColor(lineColor);

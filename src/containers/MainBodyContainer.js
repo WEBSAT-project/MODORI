@@ -8,9 +8,10 @@ const SERVER = "http://10.80.163.169:8080";
 const MainBodyContainer = ({ data }) => {
     console.log(data);
     const [posts, setPosts] = useState([]);
-
+    const [isLoading, setIsLoading] = useState(false);
     const getPosts = async () => {
         try {
+            setIsLoading(true);
             const { data } = await axios.get(`${SERVER}/`);
             return data;
         } catch (err) {
@@ -20,8 +21,8 @@ const MainBodyContainer = ({ data }) => {
 
     useEffect(() => {
         getPosts().then((response) => {
+            setIsLoading(false);
             setPosts(response.result);
-
             // setPosts({
             //     ...posts,
             //     title: response.title,
@@ -32,14 +33,18 @@ const MainBodyContainer = ({ data }) => {
             // });
         });
     }, []);
-
     // const { title, email, postTime, updateTime, postText } = posts;
-    console.log(posts);
-    const postList = posts.map((post) => {
-        return <Post post={post} key={post.Post_Code} />;
+    const postList = posts.map((post, index) => {
+        return <Post post={post} key={index} />;
     });
 
-    return <MainBody postList={postList} />;
+    return (
+        <MainBody
+            postList={postList}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
+        />
+    );
 };
 
 export default MainBodyContainer;

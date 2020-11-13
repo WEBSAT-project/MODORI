@@ -30,6 +30,21 @@ const SetProfile = ({ history }) => {
     const [myPosts, setMyPosts] = useState([]);
     const SERVER = "http://10.80.163.169:8080";
     const token = localStorage.getItem("token");
+    useEffect(() => {
+        {
+            getMyPosts();
+
+            !token
+                ? Swal.fire(
+                      {
+                          title: "로그인을 먼저 해주세요!",
+                          icon: "error",
+                      },
+                      history.replace("/login")
+                  )
+                : false;
+        }
+    }, []);
     const getMyPosts = async () => {
         try {
             const myPost = await Axios.get(`${SERVER}/profile`, {
@@ -42,10 +57,7 @@ const SetProfile = ({ history }) => {
             console.log(err);
         }
     };
-    useEffect(() => {
-        getMyPosts();
-    }, []);
-    const myPostList = myPosts.map((post) => {
+    const myPostList = myPosts.map((post, index) => {
         const onDelete = async () => {
             // console.log(post.Post_Code);
             await Swal.fire({
@@ -68,12 +80,9 @@ const SetProfile = ({ history }) => {
                 }
             });
         };
-        const onUpdate = () => {
-            history.push("/updatepost");
-        };
         return (
-            <div>
-                <Post post={post} key={post.Post_Code} />
+            <div key={index}>
+                <Post post={post} />
                 <div
                     style={{
                         float: "left",
@@ -86,19 +95,6 @@ const SetProfile = ({ history }) => {
         );
     });
 
-    useEffect(() => {
-        {
-            !token
-                ? Swal.fire(
-                      {
-                          title: "로그인을 먼저 해주세요!",
-                          icon: "error",
-                      },
-                      history.replace("/login")
-                  )
-                : false;
-        }
-    }, []);
     return (
         <SetProfileDiv>
             <MainHeader />

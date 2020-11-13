@@ -35,6 +35,7 @@ const Logo = styled.img.attrs({
     width: 7rem;
     max-width: 7rem;
     margin: 1rem;
+    cursor: pointer;
 `;
 
 const Button = styled.button`
@@ -68,7 +69,7 @@ const MainHeader = () => {
 
     return (
         <HeaderDiv>
-            <Logo />
+            <Logo onClick={() => (window.location.href = "/")} />
             <NavContainer>
                 <NavLink
                     activeStyle={{
@@ -101,9 +102,10 @@ const MainHeader = () => {
                 >
                     글쓰기
                 </NavLink>
+
                 {isLoggedIn ? (
                     <div style={{ textAlign: "center" }}>
-                        <h1 style={{color:"#5ebf9b"}}>{decoded.nick}</h1>
+                        <h1 style={{ color: "#5ebf9b" }}>{decoded.nick}</h1>
                         <Button
                             onClick={() => {
                                 localStorage.removeItem("token");

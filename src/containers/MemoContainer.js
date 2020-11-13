@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Memo from "../components/Main/Memo";
 import axios from "axios";
 import Swal from "sweetalert2";
-
+import { Base64 } from "js-base64";
 // 제목 내용 쓴사
 
 const MemoContainer = ({ history }) => {
@@ -43,6 +43,7 @@ const MemoContainer = ({ history }) => {
                     },
                 }
             );
+            console.log(Base64.btoa(image));
             Swal.fire({
                 title: "글쓰기 완료!",
                 icon: "success",
