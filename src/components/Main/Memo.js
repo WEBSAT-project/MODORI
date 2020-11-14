@@ -17,17 +17,16 @@ const MemoDiv = styled.div`
 const PostForm = styled.form`
     display: grid;
     grid-template-columns: 1fr 1fr 8fr 1fr;
-    gap:10px;
-    grid-template-rows: 0.5fr 1fr 8fr 0.5fr 8fr 0.5fr 1fr 0.5fr;
+    gap:0.5rem;
+    grid-template-rows: 0.5fr 1fr 8fr 0.5fr 8fr 1fr 0.5fr;
     grid-template-areas:
-        ". .    .    .  "//2
-        ". name name .  "//3
-        ". tool draw .  "//4
-        ". .    .    .  "//6
-        ". text text .  "//7
-        ". .    .    .  "//8
-        ". give give .  "//9
-        ". .    .    .  ";//11
+        ". .    .    .  "//1
+        ". name name .  "//2
+        ". tool draw .  "//3
+        ". .    .    .  "//4
+        ". text text .  "//5
+        ". give give .  "//6
+        ". .    .    .  ";//7
 
     input {
         outline: none;
@@ -135,13 +134,7 @@ const Memo = ({
         <MemoDiv>
             <MainHeader />
             <PostForm onSubmit={onSubmit}>
-                <h1
-                    style={{
-                        gridArea: "ma",
-                    }}
-                >
-                    글
-                </h1>
+                
                 <StyledInput
                     type="text"
                     placeholder="제목"
@@ -156,19 +149,12 @@ const Memo = ({
                 <MdEditor
                     style={{
                         width: "100%",
-                        height: "80vh",
+                        height: "100%",
                         gridArea: "text",
                     }}
                     renderHTML={(text) => mdParser.render(text)}
                     onChange={handleChange}
                 />
-                <h1
-                    style={{
-                        gridArea: "na",
-                    }}
-                >
-                    그림
-                </h1>
                 <canvas
                     width={1920}
                     height={1080}
