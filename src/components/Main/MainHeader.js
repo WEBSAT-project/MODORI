@@ -7,17 +7,22 @@ import Swal from "sweetalert2";
 const HeaderDiv = styled.div`
     border: 2px solid #bdbfbe;
     box-sizing: border-box;
-    display: flex;
-    padding-left: 5rem;
-    padding-right: 5rem;
 `;
 
 const NavContainer = styled.div`
     width: 100%;
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: space-evenly;
-    margin-top: 3rem;
+    justify-content:space-between;
+    //justify-items:center;
+    gap:0.5rem;
+    grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 1fr;
+    grid-template-rows: 0.1fr 1fr 0.1fr;
+    grid-template-areas:
+        ". .    .     .  .    .   ."//1
+        ". logo share my memo log ."//2
+        ". .    .     .  .    .   .";//3
+    
 
     a {
         text-decoration: none;
@@ -69,12 +74,20 @@ const MainHeader = () => {
 
     return (
         <HeaderDiv>
-            <Logo onClick={() => (window.location.href = "/")} />
             <NavContainer>
+                <Logo onClick={() => (window.location.href = "/")}
+                style={{
+                    gridArea:"logo",
+                }} />
                 <NavLink
                     activeStyle={{
                         borderBottom: "2px solid green",
                         paddingBottom: "1rem",
+                    }}
+                    style={{
+                        gridArea:"share",
+                        textAlign:"center",
+                        width:"60%",
                     }}
                     exact={true}
                     to="/"
@@ -87,6 +100,11 @@ const MainHeader = () => {
                         borderBottom: "2px solid green",
                         paddingBottom: "1rem",
                     }}
+                    style={{
+                        gridArea:"my",
+                        textAlign:"center",
+                        width:"50%",
+                    }}
                     exact={true}
                     to="/setprofile"
                 >
@@ -97,6 +115,11 @@ const MainHeader = () => {
                         borderBottom: "2px solid green",
                         paddingBottom: "1rem",
                     }}
+                    style={{
+                        gridArea:"memo",
+                        textAlign:"center",
+                        width:"30%",
+                    }}
                     exact={true}
                     to="/memo"
                 >
@@ -104,7 +127,8 @@ const MainHeader = () => {
                 </NavLink>
 
                 {isLoggedIn ? (
-                    <div style={{ textAlign: "center" }}>
+                    <div style={{ textAlign: "center",
+                    gridArea: "log", }}>
                         <h1 style={{ color: "#5ebf9b" }}>{decoded.nick}</h1>
                         <Button
                             onClick={() => {
@@ -116,7 +140,9 @@ const MainHeader = () => {
                         </Button>
                     </div>
                 ) : (
-                    <Link exact={true} to="/login">
+                    <Link exact={true} to="/login"style={{
+                        gridArea:"log",
+                    }}>
                         <Button>로그인</Button>
                     </Link>
                 )}
