@@ -143,11 +143,16 @@ const Login = ({
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <JoinInput
-                        placeholder="비밀번호 재확인"
+                        placeholder="비밀번호 확인"
                         type="password"
                         value={chkPassword}
                         onChange={(e) => setChkPassword(e.target.value)}
                     />
+                    {chkPassword === ""
+                        ? null
+                        : password !== chkPassword
+                        ? `비밀번호가 틀립니다`
+                        : `비밀번호가 같습니다`}
                     <JoinInput
                         placeholder="이름"
                         value={name}
