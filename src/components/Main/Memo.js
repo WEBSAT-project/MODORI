@@ -160,7 +160,6 @@ const Memo = ({
           style={{
             background: "white",
             width: "100%",
-            
             gridArea: "draw",
             borderRadius: "30px",
           }}
@@ -270,6 +269,7 @@ const Memo = ({
           제출
         </Button>
       </PostForm>
+      <MainFooter />
     </MemoDiv>
   );
 };
