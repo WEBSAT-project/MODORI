@@ -6,7 +6,6 @@ import Post from "../components/Main/Post";
 const SERVER = "http://10.80.163.169:8080";
 
 const MainBodyContainer = ({ data }) => {
-    console.log(data);
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const getPosts = async () => {
@@ -35,7 +34,7 @@ const MainBodyContainer = ({ data }) => {
     }, []);
     // const { title, email, postTime, updateTime, postText } = posts;
     const postList = posts.map((post, index) => {
-        return <Post post={post} key={index} />;
+        return <Post post={post} key={post.Post_Code} />;
     });
 
     return (

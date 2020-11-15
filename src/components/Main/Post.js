@@ -3,6 +3,10 @@ import styled from "styled-components";
 // import MarkdownIt from "markdown-it";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
+import jwtDecode from "jwt-decode";
+import Loader from "react-loader-spinner";
+import Swal from "sweetalert2";
+import Axios from "axios";
 
 const PostDiv = styled.div`
     width: 100%;
@@ -38,7 +42,7 @@ const PostBodyContent = styled.div`
     border-top: none;
     padding: 1rem;
 `;
-
+const SERVER = "http://10.80.163.169:8080";
 const Post = (props) => {
     const {
         Title,
@@ -50,6 +54,10 @@ const Post = (props) => {
         Post_nick_name,
         image_pass,
     } = props.post;
+
+    const token = localStorage.getItem("token");
+    const userData = jwtDecode(token);
+    console.log(userData.nick);
     // const Md = new MarkdownIt().use((Md) => SupportReactComponent(Md, []));
     function InlineCodeBlock(props) {
         return <span style={{ background: "#ff0" }}>{props.value}</span>;
@@ -106,6 +114,28 @@ const Post = (props) => {
 
         return <td style={style}>{props.children}</td>;
     }
+    const onDelete = async () => {
+        console.log(props.post.Post_Code);
+        await Swal.fire({
+            title: "확실합니까?",
+            text: "다시 복구할 수 없습니다!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "네, 삭제할께요!",
+            cancelButtonText: "좀 더 생각해볼게요",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                try {
+                    Axios.delete(`${SERVER}/delete/${Post_Code}`);
+                } catch (err) {
+                    console.log(err);
+                }
+                window.location.reload();
+            }
+        });
+    };
     return (
         <PostDiv>
             <PostHeader>
@@ -165,6 +195,10 @@ const Post = (props) => {
 
                 {/* 댓글 컴포넌트를 여기 넣어주세요! */}
             </PostBody>
+            {console.log(props)}
+            {Post_nick_name === userData.nick ? (
+                <button onClick={onDelete}>삭제</button>
+            ) : null}
         </PostDiv>
     );
 };
