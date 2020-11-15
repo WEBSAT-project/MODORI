@@ -72,7 +72,6 @@ const Main = () => {
     };
 
     return (
-        <>
         <MainDiv >
             <MainHeader />
             <MainBodyContainer data={searchData} />
@@ -85,7 +84,6 @@ const Main = () => {
                 <FcSearch onClick={handleSearch} />
             </SearchInput> */}
         </MainDiv>
-        </>
     );
 };
 

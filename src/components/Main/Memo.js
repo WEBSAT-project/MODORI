@@ -61,7 +61,7 @@ const Toolbox = styled.div`
     "back  front "
     "color color "
     "bar   bar   "
-    "pen   pen   "
+    "pen   eraser   "
     "fill  fill  "
     "save  save  "
     "clear clear ";
@@ -197,7 +197,19 @@ const Memo = ({
               gridArea: "pen",
             }}
           >
-            {drawMode ? "펜" : "지우개"}
+            펜
+          </Button>
+          <Button
+            color="#5EBF9B"
+            onClick={(e) => {
+              changeMode(e);
+            }}
+            type="button"
+            style={{
+              gridArea: "eraser",
+            }}
+          >
+            지우개
           </Button>
           <input
             type="color"
