@@ -137,7 +137,7 @@ const Login = ({
                         )}
                     </JoinCheck>
                     <JoinInput
-                        placeholder="비밀번호"
+                        placeholder="비밀번호 (8 ~ 16자 사이)"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}

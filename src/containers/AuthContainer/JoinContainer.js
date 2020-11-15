@@ -31,6 +31,14 @@ const JoinContainer = ({ history }) => {
             });
             return;
         }
+
+        if (password.length < 8 || password > 16) {
+            Swal.fire({
+                title: "비밀번호는 8 ~ 16자 사이입니다",
+            });
+            return;
+        }
+
         if (password !== chkPassword) {
             Swal.fire({
                 title: "비밀번호가 같지 않습니다",
