@@ -99,6 +99,7 @@ const SetProfile = ({ history }) => {
         <SetProfileDiv>
             <MainHeader />
             <MainBody postList={myPostList} />
+            <MainFooter />
         </SetProfileDiv>
     );
 };
