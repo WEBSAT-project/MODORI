@@ -22,8 +22,7 @@ const Logo2 = styled.img.attrs({
 
 const MainFooter = () => {
     return (
-        <MainFooterDiv style ={{ 
-            gridArea: "footer",}}>
+        <MainFooterDiv>
             <div>메모장이 없는 당신을 위해!</div>
             <Logo2 draggable="false" />
         </MainFooterDiv>

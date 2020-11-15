@@ -3,11 +3,11 @@ import styled from "styled-components";
 import Post from "./Post";
 import Loadger from "react-loader-spinner";
 import Loader from "react-loader-spinner";
+import MainFooter from "./MainFooter";
 
 const PostListDiv = styled.div`
-    padding: 3rem;
     display: grid;
-    gap: 5% 3%;
+    gap: 3%;
     grid-template: repeat(2, 1fr) / repeat(2, 1fr);
     background-color: white;
 `;
@@ -15,6 +15,7 @@ const PostListDiv = styled.div`
 const MainBodyDiv = styled.div`
     width: 100%;
     height: 80vh;
+    padding:3rem;
 `;
 
 const LoadingDiv = styled.div`
@@ -37,13 +38,11 @@ const MainBody = ({ postList, isLoading, setIsLoading }) => {
                 </LoadingDiv>
             ) : (
                 <PostListDiv
-                    style={{
-                        gridArea: "main",
-                    }}
                 >
                     {postList}
                 </PostListDiv>
             )}
+        
         </MainBodyDiv>
         // {isLoading ? (
         //     <LoadingDiv>
