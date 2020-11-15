@@ -155,12 +155,12 @@ const Memo = ({
         />
         <canvas
           width={1920}
-          height={1920}
+          height={1080}
           ref={canvas}
           style={{
             background: "white",
             width: "100%",
-            height: "100%",
+            
             gridArea: "draw",
             borderRadius: "30px",
           }}
