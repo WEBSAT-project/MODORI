@@ -81,8 +81,6 @@ const JoinSubmit = styled.button`
 `;
 
 const LinkContainer = styled.div`
-    display: flex;
-    width: 20%;
     a {
         text-decoration: none;
         color: black;

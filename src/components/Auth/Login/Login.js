@@ -70,7 +70,8 @@ const LoginSubmit = styled.button`
 
 const LinkContainer = styled.div`
     display: flex;
-    width: 20%;
+    flex-direction: column;
+    text-align: center;
     a {
         font-family: "NotoSans" !important;
         text-decoration: none;
