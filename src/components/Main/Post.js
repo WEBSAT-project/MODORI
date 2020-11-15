@@ -55,9 +55,6 @@ const Post = (props) => {
         image_pass,
     } = props.post;
 
-    const token = localStorage.getItem("token");
-    const userData = jwtDecode(token);
-    console.log(userData.nick);
     // const Md = new MarkdownIt().use((Md) => SupportReactComponent(Md, []));
     function InlineCodeBlock(props) {
         return <span style={{ background: "#ff0" }}>{props.value}</span>;
@@ -196,9 +193,7 @@ const Post = (props) => {
                 {/* 댓글 컴포넌트를 여기 넣어주세요! */}
             </PostBody>
             {console.log(props)}
-            {Post_nick_name === userData.nick ? (
-                <button onClick={onDelete}>삭제</button>
-            ) : null}
+            {Post_nick_name ? <button onClick={onDelete}>삭제</button> : null}
         </PostDiv>
     );
 };

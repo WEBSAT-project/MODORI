@@ -15,12 +15,12 @@ const App = () => {
         <HashRouter>
             <GlobalStyle />
             <Switch>
-                <Route exact={true} path="/" component={ShareBoard} />
-                <Route exact={true} path="/login" component={LoginContainer} />
-                <Route exact={true} path="/join" component={JoinContainer} />
-                <Route exact={true} path="/setprofile" component={SetProfile} />
+                <Route exact path="/" component={ShareBoard} />
+                <Route exact path="/login" component={LoginContainer} />
+                <Route exact path="/join" component={JoinContainer} />
+                <Route exact path="/setprofile" component={SetProfile} />
                 <Route exact path="/updatepost" component={UpdatePost} />
-                <Route exact={true} path="/memo" component={MemoContainer} />
+                <Route exact path="/memo" component={MemoContainer} />
                 <Route path="*" component={NotFound} />
             </Switch>
         </HashRouter>

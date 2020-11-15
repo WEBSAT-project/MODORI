@@ -63,15 +63,15 @@ const StyledPractice = () => {
                 }}
             >
                 <StyledLogin
-                    backgroundColor={state.bc}
-                    fontColor={state.fc}
+                    backgroundColor={`${state.bc}`}
+                    fontColor={`${state.fc}`}
                     isCenter
                 >
                     {state.text}
                 </StyledLogin>
                 <StyledLogin
-                    backgroundColor={state.bc}
-                    fontColor={state.fc}
+                    backgroundColor={`${state.bc}`}
+                    fontColor={`${state.fc}`}
                     isCenter
                     small
                 >

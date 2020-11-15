@@ -13,16 +13,14 @@ const NavContainer = styled.div`
     width: 100%;
     display: grid;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
     //justify-items:center;
-    gap:0.5rem;
+    gap: 0.5rem;
     grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 1fr;
     grid-template-rows: 0.1fr 1fr 0.1fr;
-    grid-template-areas:
-        ". .    .     .  .    .   ."//1
-        ". logo share my memo log ."//2
-        ". .    .     .  .    .   .";//3
-    
+    grid-template-areas: ". .    .     .  .    .   ." //1
+        ". logo share my memo log ." //2
+        ". .    .     .  .    .   ."; //3
 
     a {
         text-decoration: none;
@@ -75,21 +73,23 @@ const MainHeader = () => {
     return (
         <HeaderDiv>
             <NavContainer>
-                <Logo onClick={() => (window.location.href = "/")}
-                style={{
-                    gridArea:"logo",
-                }} />
+                <Logo
+                    onClick={() => (window.location.href = "/")}
+                    style={{
+                        gridArea: "logo",
+                    }}
+                />
                 <NavLink
                     activeStyle={{
                         borderBottom: "2px solid green",
                         paddingBottom: "1rem",
                     }}
                     style={{
-                        gridArea:"share",
-                        textAlign:"center",
-                        width:"60%",
+                        gridArea: "share",
+                        textAlign: "center",
+                        width: "60%",
                     }}
-                    exact={true}
+                    exact
                     to="/"
                 >
                     다른 사람이 쓴 글
@@ -101,11 +101,11 @@ const MainHeader = () => {
                         paddingBottom: "1rem",
                     }}
                     style={{
-                        gridArea:"my",
-                        textAlign:"center",
-                        width:"50%",
+                        gridArea: "my",
+                        textAlign: "center",
+                        width: "50%",
                     }}
-                    exact={true}
+                    exact
                     to="/setprofile"
                 >
                     프로필/내 글
@@ -116,19 +116,18 @@ const MainHeader = () => {
                         paddingBottom: "1rem",
                     }}
                     style={{
-                        gridArea:"memo",
-                        textAlign:"center",
-                        width:"30%",
+                        gridArea: "memo",
+                        textAlign: "center",
+                        width: "30%",
                     }}
-                    exact={true}
+                    exact
                     to="/memo"
                 >
                     글쓰기
                 </NavLink>
 
                 {isLoggedIn ? (
-                    <div style={{ textAlign: "center",
-                    gridArea: "log", }}>
+                    <div style={{ textAlign: "center", gridArea: "log" }}>
                         <h1 style={{ color: "#5ebf9b" }}>{decoded.nick}</h1>
                         <Button
                             onClick={() => {
@@ -140,9 +139,13 @@ const MainHeader = () => {
                         </Button>
                     </div>
                 ) : (
-                    <Link exact={true} to="/login"style={{
-                        gridArea:"log",
-                    }}>
+                    <Link
+                        exact
+                        to="/login"
+                        style={{
+                            gridArea: "log",
+                        }}
+                    >
                         <Button>로그인</Button>
                     </Link>
                 )}
