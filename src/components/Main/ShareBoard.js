@@ -10,6 +10,7 @@ import Post from "./Post";
 const MainDiv = styled.div`
     width: 100%;
     background-color: white;
+
 `;
 
 // const Logo2 = styled.img.attrs({
@@ -71,6 +72,7 @@ const Main = () => {
     };
 
     return (
+        <>
         <MainDiv >
             <MainHeader />
             <MainBodyContainer data={searchData} />
@@ -82,8 +84,8 @@ const Main = () => {
                 />
                 <FcSearch onClick={handleSearch} />
             </SearchInput> */}
-           
         </MainDiv>
+        </>
     );
 };
 
