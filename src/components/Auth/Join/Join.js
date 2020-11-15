@@ -160,11 +160,11 @@ const Login = ({
                     />
                     {nickname.length <= 8 ? (
                         <div style={{ color: "green" }}>
-                            {nickname.length} / 8
+                            닉네임 제한 : {nickname.length} / 8
                         </div>
                     ) : (
                         <div style={{ color: "red" }}>
-                            길이제한😯 {nickname.length}
+                            닉네임 제한 초과! {nickname.length}
                         </div>
                     )}
                     <JoinInput
