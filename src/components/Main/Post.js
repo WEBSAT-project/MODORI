@@ -12,31 +12,33 @@ const PostDiv = styled.div`
     display:grid;
     gap: 1rem;
     grid-template-columns:1fr 1fr;
+    grid-template-rows:0.1fr 5fr 0.2fr;
     grid-template-areas:
-    "head  ."
+    "head  head"
     "body  draw"
     "del   del";
 `;
 
 const PostCanvasContainer = styled.div`
-    border: 1px solid black;
+    border: 100px solid black;
     width: 100%;
-    height: 20vh;
+    height: 100%;
 `;
 
 const PostHeader = styled.div`
     font-size: 1.5rem;
     display: flex;
     justify-content: space-between;
+    grid-area:head;
 `;
 const PostBody = styled.div`
-    height: 40vh;
+    height: 100%;
     /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); */
     display: flex;
     /* border: 2px solid #bdbfbe; */
     flex-direction: column;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
-
+    grid-area:body;
     img {
         max-width: 100%;
         /* max-height: 100%; */
@@ -161,7 +163,7 @@ const Post = (props) => {
     };
     return (
         <PostDiv>
-            <PostHeader style={{gridArea:"head"}}>
+            <PostHeader>
                 <div>
                     {/* <div style={{ fontSize: "1rem", color: "dimgray" }}>
                         {Post_Code}#
@@ -189,10 +191,10 @@ const Post = (props) => {
                     </div>
                 </div>
             </PostHeader>
-            <PostBody style={{gridArea:"body"}}>
+            <PostBody>
                 <>
                     {image_pass ? (
-                        <PostCanvasContainer>
+                        <PostCanvasContainer style={{gridArea:"draw"}}>
                             <img
                                 src={image_pass}
                                 alt="그림입니다."
