@@ -11,9 +11,9 @@ const MemoContainer = ({ history }) => {
     const SERVER = "http://10.80.163.169:8080";
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [image, setImage] = useState();
-    const [canvasState, setCanvasState] = useState();
-    let fileName = "";
+    const [image, setImage] = useState("");
+    // const [canvasState, setCanvasState] = useState("");
+    const [fileName, setFileName] = useState("");
     const token = localStorage.getItem("token");
 
     {
@@ -29,37 +29,38 @@ const MemoContainer = ({ history }) => {
             <></>
         );
     }
-    const onSubmit = async (e) => {
-        e.preventDefault();
+    const img_upload = async (dataURL) => {
         const formData = new FormData();
         try {
-            formData.append("file", canvasState);
-            console.log(formData);
-            const file = await axios.post(`${SERVER}/upload`, formData, {
+            formData.append("file", dataURL);
+            const { data } = await axios.post(`${SERVER}/upload`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            fileName = file.data.filename;
-            console.log(fileName);
+            console.log(data);
+            setFileName(data.filename);
         } catch (err) {
             console.log(err);
         }
+    };
+    const post_create = async (e) => {
+        e.preventDefault();
+        const request = {
+            token,
+            title,
+            post_text: content,
+            image_pass: fileName,
+        };
+
+        console.log(request);
+
         try {
-            await axios.post(
-                `${SERVER}/create`,
-                {
+            await axios.post(`${SERVER}/create`, request, {
+                headers: {
                     token: token,
-                    title: title,
-                    post_text: content,
-                    image_pass: fileName,
                 },
-                {
-                    headers: {
-                        token: token,
-                    },
-                }
-            );
+            });
 
             Swal.fire({
                 title: "글쓰기 완료!",
@@ -78,15 +79,16 @@ const MemoContainer = ({ history }) => {
     };
     return (
         <Memo
-            onSubmit={onSubmit}
+            onSubmit={post_create}
             title={title}
             setTitle={setTitle}
             content={content}
             setContent={setContent}
             image={image}
             setImage={setImage}
-            canvasState={canvasState}
-            setCanvasState={setCanvasState}
+            // canvasState={canvasState}
+            // setCanvasState={setCanvasState}
+            imgUpload={img_upload}
             // base64={base64}
             // setBase64={setBase64}
         />

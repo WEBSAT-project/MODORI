@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import MainBody from "../components/Main/MainBody";
 import Post from "../components/Main/Post";
+import Swal from "sweetalert2";
+import Axios from "axios";
 
 const SERVER = "http://10.80.163.169:8080";
 

@@ -22,7 +22,7 @@ const PostCanvasContainer = styled.div`
     border: 100px solid black;
     width: 100%;
     height: 100%;
-    grid-area:draw;
+    grid-area: draw;
 `;
 
 const PostHeader = styled.div`
@@ -47,8 +47,8 @@ const PostBody = styled.div`
 `;
 
 const Border = styled.div`
-    border-bottom:0.1rem solid #bdbfbe;
-    grid-area:border;
+    border-bottom: 0.1rem solid #bdbfbe;
+    grid-area: border;
 `;
 const Draw = styled.div`
     border: 10px solid black;
@@ -77,6 +77,7 @@ const StyledButton = styled.div`
 
 const SERVER = "http://10.80.163.169:8080";
 const Post = (props) => {
+    console.log(props);
     const {
         Title,
         Post_Time,
@@ -87,8 +88,7 @@ const Post = (props) => {
         Post_nick_name,
         image_pass,
     } = props.post;
-    const { isOwner } = props;
-    console.log(image_pass);
+    const { isOwner, onDelete } = props;
     // const Md = new MarkdownIt().use((Md) => SupportReactComponent(Md, []));
     function InlineCodeBlock(props) {
         return <span style={{ background: "#ff0" }}>{props.value}</span>;
@@ -146,27 +146,6 @@ const Post = (props) => {
         return <td style={style}>{props.children}</td>;
     }
 
-    const onDelete = () => {
-        Swal.fire({
-            title: "확실합니까?",
-            text: "다시 복구할 수 없습니다!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "네, 삭제할께요!",
-            cancelButtonText: "좀 더 생각해볼게요",
-        }).then(async (result) => {
-            if (result.isConfirmed) {
-                try {
-                    await Axios.delete(`${SERVER}/delete/${Post_Code}`);
-                } catch (err) {
-                    console.log(err);
-                }
-                window.location.reload();
-            }
-        });
-    };
     return (
         <PostDiv>
             <PostHeader>
@@ -229,7 +208,10 @@ const Post = (props) => {
             <Border />
             <Draw>그림이다 히히</Draw>
             {isOwner ? (
-                <StyledButton onClick={onDelete} style={{ gridArea: "del" }}>
+                <StyledButton
+                    onClick={() => onDelete(Post_Code)}
+                    style={{ gridArea: "del" }}
+                >
                     삭제
                 </StyledButton>
             ) : null}

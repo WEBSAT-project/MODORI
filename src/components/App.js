@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, HashRouter, Switch } from "react-router-dom";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 import GlobalStyle from "./GlobalStyle";
 import NotFound from "./Error/NotFound";
 import JoinContainer from "../containers/AuthContainer/JoinContainer";
@@ -13,7 +13,7 @@ import RankingContainer from "../containers/RankingContainer";
 
 const App = () => {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <GlobalStyle />
             <Switch>
                 <Route exact path="/" component={ShareBoard} />
@@ -25,7 +25,7 @@ const App = () => {
                 <Route exact path="/ranking" component={RankingContainer} />
                 <Route path="*" component={NotFound} />
             </Switch>
-        </HashRouter>
+        </BrowserRouter>
     );
 };
 

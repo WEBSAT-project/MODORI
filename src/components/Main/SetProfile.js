@@ -56,8 +56,41 @@ const SetProfile = ({ history }) => {
         setIsLoading(false);
     };
 
+    const onDelete = (postCode) => {
+        Swal.fire({
+            title: "확실합니까?",
+            text: "다시 복구할 수 없습니다!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "네, 삭제할께요!",
+            cancelButtonText: "좀 더 생각해볼게요",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const { data } = await Axios.delete(
+                        `${SERVER}/delete/${postCode}`
+                    );
+
+                    if (data.message === "삭제 되었습니다") {
+                        setMyPosts(
+                            myPosts.filter(
+                                (post) => post.Post_Code !== postCode
+                            )
+                        );
+                    }
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        });
+    };
+
     const myPostList = myPosts.map((post, index) => {
-        return <Post post={post} key={index} isOwner={true} />;
+        return (
+            <Post post={post} onDelete={onDelete} key={index} isOwner={true} />
+        );
     });
 
     return (

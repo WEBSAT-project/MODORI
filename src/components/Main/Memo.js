@@ -78,6 +78,7 @@ const Memo = ({
     setImage,
     canvasState,
     setCanvasState,
+    imgUpload,
 }) => {
     const handleChange = ({ text }) => {
         setContent(text);
@@ -96,15 +97,11 @@ const Memo = ({
     const fillCanvas = () => {
         sdb.fill(lineColor);
     };
-    const save = async () => {
-        await domtoimage.toBlob(canvas.current).then((dataUrl) => {
+    const save = () => {
+        domtoimage.toBlob(canvas.current).then((dataUrl) => {
             // console.log(dataUrl);
-            setImage(dataUrl);
-            setCanvasState(image);
-            console.log(canvasState);
-            // const img = new Image();
-            // img.src = dataUrl;
-            // console.log(img.src);
+            // setImage(dataUrl);
+            imgUpload(dataUrl);
         });
         // const fileReader = new FileReader();
         // const dataUrl = canvas.current.toDataURL();
