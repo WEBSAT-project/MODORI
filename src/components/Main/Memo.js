@@ -43,9 +43,9 @@ const StyledInput = styled.input`
 
 const Button = styled.button`
     background: ${(props) => props.color};
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: white;
-    padding: 0.7rem;
+    padding: 0.5rem;
     border: none;
     outline: none;
     border-radius: 5px;
@@ -159,7 +159,8 @@ const Memo = ({
                         background: "white",
                         width: "100%",
                         gridArea: "draw",
-                        borderRadius: "30px",
+                        borderRadius: "1rem",
+                        border: "0.1rem solid black",
                     }}
                 ></canvas>
                 <Toolbox>
