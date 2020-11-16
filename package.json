@@ -10,6 +10,7 @@
     "base64-img": "^1.0.4",
     "canvas-to-image": "^2.2.0",
     "compress-base64": "^1.0.2",
+    "dom-to-image": "^2.6.0",
     "js-base64": "^3.6.0",
     "jwt-decode": "^3.1.1",
     "markdown-it": "^12.0.2",

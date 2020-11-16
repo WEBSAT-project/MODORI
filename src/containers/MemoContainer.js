@@ -4,6 +4,7 @@ import Memo from "../components/Main/Memo";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Base64 } from "js-base64";
+import canvasToImage from "canvas-to-image";
 // 제목 내용 쓴사
 
 const MemoContainer = ({ history }) => {
@@ -11,6 +12,8 @@ const MemoContainer = ({ history }) => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [image, setImage] = useState();
+    const [canvasState, setCanvasState] = useState();
+    let fileName = "";
     const token = localStorage.getItem("token");
 
     {
@@ -28,6 +31,20 @@ const MemoContainer = ({ history }) => {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
+        const formData = new FormData();
+        try {
+            formData.append("file", canvasState);
+            console.log(formData);
+            const file = await axios.post(`${SERVER}/upload`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            fileName = file.data.filename;
+            console.log(fileName);
+        } catch (err) {
+            console.log(err);
+        }
         try {
             await axios.post(
                 `${SERVER}/create`,
@@ -35,7 +52,7 @@ const MemoContainer = ({ history }) => {
                     token: token,
                     title: title,
                     post_text: content,
-                    image_pass: image,
+                    image_pass: fileName,
                 },
                 {
                     headers: {
@@ -43,7 +60,7 @@ const MemoContainer = ({ history }) => {
                     },
                 }
             );
-            console.log(Base64.btoa(image));
+
             Swal.fire({
                 title: "글쓰기 완료!",
                 icon: "success",
@@ -68,6 +85,8 @@ const MemoContainer = ({ history }) => {
             setContent={setContent}
             image={image}
             setImage={setImage}
+            canvasState={canvasState}
+            setCanvasState={setCanvasState}
             // base64={base64}
             // setBase64={setBase64}
         />

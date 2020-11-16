@@ -12,6 +12,7 @@ const MainBodyContainer = ({ data }) => {
         try {
             setIsLoading(true);
             const { data } = await axios.get(`${SERVER}/`);
+            console.log(data);
             return data;
         } catch (err) {
             console.log(err);
@@ -22,6 +23,7 @@ const MainBodyContainer = ({ data }) => {
         getPosts().then((response) => {
             setIsLoading(false);
             setPosts(response.result);
+            console.log(response.result);
             // setPosts({
             //     ...posts,
             //     title: response.title,
@@ -32,8 +34,9 @@ const MainBodyContainer = ({ data }) => {
             // });
         });
     }, []);
+
     // const { title, email, postTime, updateTime, postText } = posts;
-    const postList = posts.map((post, index) => {
+    const postList = posts.map((post) => {
         return <Post post={post} key={post.Post_Code} />;
     });
 

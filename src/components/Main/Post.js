@@ -88,6 +88,7 @@ const Post = (props) => {
         image_pass,
     } = props.post;
     const { isOwner } = props;
+    console.log(image_pass);
     // const Md = new MarkdownIt().use((Md) => SupportReactComponent(Md, []));
     function InlineCodeBlock(props) {
         return <span style={{ background: "#ff0" }}>{props.value}</span>;
@@ -201,7 +202,7 @@ const Post = (props) => {
                     {image_pass ? (
                         <PostCanvasContainer style={{ gridArea: "draw" }}>
                             <img
-                                src={image_pass}
+                                src={`${SERVER}/static/${image_pass}`}
                                 alt="그림입니다."
                                 draggable="false"
                             />

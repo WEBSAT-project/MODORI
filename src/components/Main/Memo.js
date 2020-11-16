@@ -9,6 +9,7 @@ import { create } from "simple-drawing-board";
 import base64Img from "base64-img";
 import Swal from "sweetalert2";
 import { Base64 } from "js-base64";
+import domtoimage from "dom-to-image";
 
 const MemoDiv = styled.div`
     background-color: white;
@@ -75,6 +76,8 @@ const Memo = ({
     setContent,
     image,
     setImage,
+    canvasState,
+    setCanvasState,
 }) => {
     const handleChange = ({ text }) => {
         setContent(text);
@@ -82,9 +85,9 @@ const Memo = ({
 
     const mdParser = new MarkdownIt(/* Markdown-it options */);
     const canvas = useRef();
-    const [sdb, setSdb] = useState();
+    const [sdb, setSdb] = useState({});
     const [lineSize, setLineSize] = useState(10);
-    const [lineColor, setLineColor] = useState("black");
+    const [lineColor, setLineColor] = useState("#000000");
     const [drawMode, setDrawMode] = useState(true);
 
     const clearCanvas = () => {
@@ -93,12 +96,35 @@ const Memo = ({
     const fillCanvas = () => {
         sdb.fill(lineColor);
     };
-    const save = () => {
-        const image = sdb.toDataURL();
-        const link = document.createElement("a");
-        link.href = image;
-        link.download = "draw.png";
-        link.click();
+    const save = async () => {
+        await domtoimage.toBlob(canvas.current).then((dataUrl) => {
+            // console.log(dataUrl);
+            setImage(dataUrl);
+            setCanvasState(image);
+            console.log(canvasState);
+            // const img = new Image();
+            // img.src = dataUrl;
+            // console.log(img.src);
+        });
+        // const fileReader = new FileReader();
+        // const dataUrl = canvas.current.toDataURL();
+        // const a = fileReader.readAsDataURL(dataUrl);
+        // console.log(a)
+
+        // fileReader.readAsDataURL(canvas.current.toDataURL());
+        // console.log(canvas.current.toDataURL());
+        // const a = canvasToImage(canvas.current, {
+        //     name: "asdfadf",
+        //     type: "png",
+        //     quality: 1,
+        // });
+        // console.log(canvasToImage);
+        // console.log(sdb);
+        // const image = sdb.toDataURL();
+        // const link = document.createElement("a");
+        // link.href = image;
+        // link.download = "draw.png";
+        // link.click();
     };
     const changeColor = (e) => {
         setLineColor(e.target.value);
