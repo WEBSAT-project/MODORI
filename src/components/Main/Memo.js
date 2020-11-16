@@ -94,8 +94,6 @@ const Memo = ({
         sdb.fill(lineColor);
     };
     const save = () => {
-        //setBase64(sdb.toDataURL());
-        //console.log(base64);
         const image = sdb.toDataURL();
         const link = document.createElement("a");
         link.href = image;

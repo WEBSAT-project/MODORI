@@ -19,7 +19,7 @@ const NavContainer = styled.div`
     grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 1fr;
     grid-template-rows: 0.1fr 1fr 0.1fr;
     grid-template-areas: ". .    .     .  .    .   ." //1
-        ". logo share my memo log ." //2
+        ". logo share my memo log  ." //2
         ". .    .     .  .    .   ."; //3
 
     a {
@@ -125,7 +125,21 @@ const MainHeader = () => {
                 >
                     글쓰기
                 </NavLink>
-
+                <NavLink
+                    activeStyle={{
+                        borderBottom: "2px solid green",
+                        paddingBottom: "1rem",
+                    }}
+                    style={{
+                        gridArea: "memo",
+                        textAlign: "center",
+                        width: "30%",
+                    }}
+                    exact
+                    to="/ranking"
+                >
+                    랭킹
+                </NavLink>
                 {isLoggedIn ? (
                     <div style={{ textAlign: "center", gridArea: "log" }}>
                         <h1 style={{ color: "#5ebf9b" }}>{decoded.nick}</h1>

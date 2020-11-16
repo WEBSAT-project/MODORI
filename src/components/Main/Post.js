@@ -3,19 +3,17 @@ import styled from "styled-components";
 // import MarkdownIt from "markdown-it";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
-import jwtDecode from "jwt-decode";
-import Loader from "react-loader-spinner";
 import Swal from "sweetalert2";
 import Axios from "axios";
 
 const PostDiv = styled.div`
-    display:grid;
+    display: grid;
     gap: 1rem;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
-    "head  ."
-    "body  draw"
-    "del   del";
+        "head  ."
+        "body  draw"
+        "del   del";
 `;
 
 const PostCanvasContainer = styled.div`
@@ -45,7 +43,7 @@ const PostBody = styled.div`
 `;
 const Draw = styled.div`
     border: 10px solid black;
-    grid-area:draw;
+    grid-area: draw;
 `;
 const PostBodyContent = styled.div`
     overflow-y: auto;
@@ -161,7 +159,7 @@ const Post = (props) => {
     };
     return (
         <PostDiv>
-            <PostHeader style={{gridArea:"head"}}>
+            <PostHeader style={{ gridArea: "head" }}>
                 <div>
                     {/* <div style={{ fontSize: "1rem", color: "dimgray" }}>
                         {Post_Code}#
@@ -189,7 +187,7 @@ const Post = (props) => {
                     </div>
                 </div>
             </PostHeader>
-            <PostBody style={{gridArea:"body"}}>
+            <PostBody style={{ gridArea: "body" }}>
                 <>
                     {image_pass ? (
                         <PostCanvasContainer>
@@ -220,8 +218,9 @@ const Post = (props) => {
             </PostBody>
             <Draw>그림이다 히히</Draw>
             {isOwner ? (
-                <StyledButton onClick={onDelete}
-                style={{gridArea:"del",}}>삭제</StyledButton>
+                <StyledButton onClick={onDelete} style={{ gridArea: "del" }}>
+                    삭제
+                </StyledButton>
             ) : null}
         </PostDiv>
     );

@@ -10,7 +10,6 @@ import Post from "./Post";
 const MainDiv = styled.div`
     width: 100%;
     background-color: white;
-
 `;
 
 // const Logo2 = styled.img.attrs({
@@ -61,7 +60,6 @@ const SearchInput = styled.div`
                 <FcSearch onClick={handleSearch} />
             </SearchInput> */
 
-
 const SERVER = "http://10.80.163.169:8080";
 
 const Main = () => {
@@ -72,7 +70,7 @@ const Main = () => {
             const { data } = await Axios.get(
                 `${SERVER}/?keyword=${searchInput}`
             );
-            console.log(data.result);
+
             const searchPosts = data.result;
             setSearchData(searchPosts);
         } catch (err) {
@@ -81,9 +79,9 @@ const Main = () => {
     };
 
     return (
-        <MainDiv >
+        <MainDiv>
             <MainHeader />
-            <MainBodyContainer data={searchData}  />
+            <MainBodyContainer data={searchData} />
         </MainDiv>
     );
 };

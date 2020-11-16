@@ -57,7 +57,7 @@ const JoinContainer = ({ history }) => {
             Swal.fire({
                 title: "회원가입 성공",
             });
-            console.log(a);
+
             history.push("/login");
         } catch (err) {
             switch (err.response.status) {

@@ -27,7 +27,6 @@ const LoadingDiv = styled.div`
 `;
 
 const MainBody = ({ postList, isLoading, setIsLoading }) => {
-    console.log(postList.length);
     return (
         <MainBodyDiv>
             {isLoading ? (
