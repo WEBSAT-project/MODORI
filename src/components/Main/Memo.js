@@ -18,7 +18,7 @@ const PostForm = styled.form`
     display: grid;
     grid-template-columns: 1fr 1fr 8fr 1fr;
     gap: 0.5rem;
-    grid-template-rows: 0.5fr 1fr 90vh 0.5fr 80vh 1fr 0.5fr;
+    grid-template-rows: 0.5fr 1fr 80vh 0.5fr 80vh 1fr 0.5fr;
     grid-template-areas: ". .    .    .  " //1
         ". name name .  " //2
         ". tool draw .  " //3
