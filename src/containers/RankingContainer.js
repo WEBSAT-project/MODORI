@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Axios from "axios";
 import Ranking from "../components/Main/Ranking";
 
@@ -14,6 +14,9 @@ const getRank = async () => {
 };
 
 const RankingContainer = () => {
+    useEffect(() => {
+        getRank();
+    }, []);
     return <Ranking />;
 };
 
