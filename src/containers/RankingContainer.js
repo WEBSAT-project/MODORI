@@ -6,7 +6,7 @@ const SERVER = "http://10.80.163.169:8080";
 
 const getRank = async () => {
     try {
-        const rank = await Axios.get(`${SERVER}/ranking`);
+        const rank = await Axios.get(`${SERVER}/post/ranking`);
         console.log(rank);
     } catch (err) {
         console.log(err);
