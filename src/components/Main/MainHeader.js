@@ -5,7 +5,7 @@ import FullLogo from "../../assets/modori_logo_full.png";
 import jwt_decode from "jwt-decode";
 import Swal from "sweetalert2";
 const HeaderDiv = styled.div`
-    border: 2px solid #bdbfbe;
+    border-bottom: 2px solid #bdbfbe;
     box-sizing: border-box;
 `;
 

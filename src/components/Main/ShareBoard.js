@@ -52,6 +52,15 @@ const SearchInput = styled.div`
     }
 `;
 
+/* <SearchInput>
+                <input
+                    placeholder="검색을 해보세요"
+                    onChange={(e) => setSearchInput(e.target.value)}
+                    value={searchInput}
+                />
+                <FcSearch onClick={handleSearch} />
+            </SearchInput> */
+
 
 const SERVER = "http://10.80.163.169:8080";
 
@@ -74,15 +83,7 @@ const Main = () => {
     return (
         <MainDiv >
             <MainHeader />
-            <MainBodyContainer data={searchData} />
-            {/* <SearchInput>
-                <input
-                    placeholder="검색을 해보세요"
-                    onChange={(e) => setSearchInput(e.target.value)}
-                    value={searchInput}
-                />
-                <FcSearch onClick={handleSearch} />
-            </SearchInput> */}
+            <MainBodyContainer data={searchData}  />
         </MainDiv>
     );
 };

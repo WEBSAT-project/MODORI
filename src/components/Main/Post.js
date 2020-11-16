@@ -9,7 +9,12 @@ import Swal from "sweetalert2";
 import Axios from "axios";
 
 const PostDiv = styled.div`
-    width: 100%;
+    display:grid;
+    gap: 1rem;
+    grid-template-columns:1fr 1fr;
+    grid-template-areas:
+    "head  ."
+    "body  draw";
 `;
 
 const PostCanvasContainer = styled.div`
@@ -24,7 +29,7 @@ const PostHeader = styled.div`
     justify-content: space-between;
 `;
 const PostBody = styled.div`
-    height: 50vh;
+    height: 40vh;
     /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); */
     display: flex;
     /* border: 2px solid #bdbfbe; */
@@ -36,6 +41,10 @@ const PostBody = styled.div`
         /* max-height: 100%; */
         /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); */
     }
+`;
+const Draw = styled.div`
+    border: 10px solid black;
+    grid-area:draw;
 `;
 const PostBodyContent = styled.div`
     overflow-y: auto;
@@ -151,7 +160,7 @@ const Post = (props) => {
     };
     return (
         <PostDiv>
-            <PostHeader>
+            <PostHeader style={{gridArea:"head"}}>
                 <div>
                     {/* <div style={{ fontSize: "1rem", color: "dimgray" }}>
                         {Post_Code}#
@@ -179,7 +188,7 @@ const Post = (props) => {
                     </div>
                 </div>
             </PostHeader>
-            <PostBody>
+            <PostBody style={{gridArea:"body"}}>
                 <>
                     {image_pass ? (
                         <PostCanvasContainer>
@@ -208,6 +217,7 @@ const Post = (props) => {
 
                 {/* 댓글 컴포넌트를 여기 넣어주세요! */}
             </PostBody>
+            <Draw>그림이다 히히</Draw>
             {isOwner ? (
                 <StyledButton onClick={onDelete}>삭제</StyledButton>
             ) : null}
