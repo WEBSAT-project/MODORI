@@ -17,10 +17,10 @@ const NavContainer = styled.div`
     justify-content: space-between;
     //justify-items:center;
     gap: 0.5rem;
-    grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 3fr 1fr;
     grid-template-rows: 0.1fr 1fr 0.1fr;
     grid-template-areas: ". .    .     .  .    .   .  ." //1
-        ". logo share my memo ranking log  ." //2
+        ". logo share my memo ranking  log  ." //2
         ". .    .     .  .    .   .  ."; //3
 
     a {
@@ -33,6 +33,20 @@ const NavContainer = styled.div`
     }
 `;
 
+const Nickname = styled.div`
+    grid-area:nick;
+    color:#5ebf9b;
+    font-size:1.2rem;
+`;
+
+const Log = styled.div`
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    grid-template-areas:
+    "nick button";
+`;
 const Logo = styled.img.attrs({
     src: FullLogo,
 })`
@@ -142,17 +156,25 @@ const MainHeader = () => {
                     랭킹
                 </NavLink>
                 {isLoggedIn ? (
-                    <div style={{ textAlign: "center", gridArea: "log" }}>
-                        <h1 style={{ color: "#5ebf9b" }}>{decoded.nick}</h1>
+                    <Log style={{ textAlign: "center", gridArea: "log",
+                    display:"grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "10%",
+                    
+                    }}>
+                        <Nickname>{decoded.nick}</Nickname>
                         <Button
                             onClick={() => {
                                 localStorage.removeItem("token");
                                 window.location.replace("/");
                             }}
+                            style={{
+                                gridArea:"button",
+                            }}
                         >
                             로그아웃
                         </Button>
-                    </div>
+                    </Log>
                 ) : (
                     <Link
                         exact
