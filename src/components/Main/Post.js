@@ -58,6 +58,7 @@ const Border = styled.div`
 const PostBodyContent = styled.div`
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
     grid-area:text;
+    overflow-y: auto;
 `;
 
 
