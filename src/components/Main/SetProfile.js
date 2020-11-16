@@ -11,21 +11,6 @@ const SetProfileDiv = styled.div`
     width: 100%;
 `;
 
-const StyledButton = styled.div`
-    background-color: #f2f2f2;
-    border: none;
-    padding: 0.6rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0.5rem;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
-    transition: 0.2s ease-in-out;
-    &:hover {
-        background-color: #ed4337;
-        color: white;
-    }
-`;
-
 const SetProfile = ({ history }) => {
     const [myPosts, setMyPosts] = useState([]);
     const [postId, setPostId] = useState();
