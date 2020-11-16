@@ -10,7 +10,7 @@ const PostDiv = styled.div`
     display: grid;
     gap: 1rem;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.1fr 5fr 0.2fr;
+    grid-template-rows: 0.1fr 50vh 0.2fr;
     grid-template-areas:
         "head  head"
         "body  draw"
