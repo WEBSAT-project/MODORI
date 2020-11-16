@@ -13,14 +13,15 @@ const NavContainer = styled.div`
     width: 100%;
     display: grid;
     align-items: center;
+    justify-items:center;
     justify-content: space-between;
     //justify-items:center;
     gap: 0.5rem;
-    grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
     grid-template-rows: 0.1fr 1fr 0.1fr;
-    grid-template-areas: ". .    .     .  .    .   ." //1
-        ". logo share my memo log  ." //2
-        ". .    .     .  .    .   ."; //3
+    grid-template-areas: ". .    .     .  .    .   .  ." //1
+        ". logo share my memo ranking log  ." //2
+        ". .    .     .  .    .   .  ."; //3
 
     a {
         text-decoration: none;
@@ -131,7 +132,7 @@ const MainHeader = () => {
                         paddingBottom: "1rem",
                     }}
                     style={{
-                        gridArea: "memo",
+                        gridArea: "ranking",
                         textAlign: "center",
                         width: "30%",
                     }}
