@@ -15,7 +15,7 @@ const PostDiv = styled.div`
     grid-template-areas:
     "head  ."
     "body  draw"
-    ".     del";
+    "del   del";
 `;
 
 const PostCanvasContainer = styled.div`
