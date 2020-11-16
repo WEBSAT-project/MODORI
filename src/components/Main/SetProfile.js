@@ -54,14 +54,13 @@ const SetProfile = ({ history }) => {
                 },
             });
             setMyPosts(myPost.data.result);
-            console.log(myPosts.data);
         } catch (err) {
             console.log(err);
         }
     };
 
-    const myPostList = myPosts.map((post) => {
-        return <Post post={post} key={post.Post_Code} />;
+    const myPostList = myPosts.map((post, index) => {
+        return <Post post={post} key={index} isOwner={true} />;
     });
 
     return (
