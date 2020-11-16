@@ -42,6 +42,22 @@ const PostBodyContent = styled.div`
     border-top: none;
     padding: 1rem;
 `;
+
+const StyledButton = styled.div`
+    background-color: #f2f2f2;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0.5rem;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
+    transition: 0.2s ease-in-out;
+    &:hover {
+        background-color: #ed4337;
+        color: white;
+    }
+`;
+
 const SERVER = "http://10.80.163.169:8080";
 const Post = (props) => {
     const {
@@ -111,38 +127,27 @@ const Post = (props) => {
 
         return <td style={style}>{props.children}</td>;
     }
-    const [postCode, setPostCode] = useState();
-    console.log(props);
-    // setPostCode(props);
-    const token = localStorage.getItem("token");
-    // if (token) {
-    //     setMyNick(jwtDecode(token));
-    //     console.log(myNick);
-    // }
-    const onDelete = async () => {
-        try {
-            await Axios.delete(`${SERVER}/delete/${Post_Code}`);
-        } catch (err) {
-            console.log(err);
-        }
-        window.location.reload();
-        // await Swal.fire({
-        //     title: "확실합니까?",
-        //     text: "다시 복구할 수 없습니다!",
-        //     icon: "warning",
-        //     showCancelButton: true,
-        //     confirmButtonColor: "#3085d6",
-        //     cancelButtonColor: "#d33",
-        //     confirmButtonText: "네, 삭제할께요!",
-        //     cancelButtonText: "좀 더 생각해볼게요",
-        // }).then((result) => {
-        //     if (result.isConfirmed) {
-        //          finally {
-        //             Axios.delete(`${SERVER}/delete/${Post_Code}`);
-        //             window.location.reload();
-        //         }
-        //     }
-        // });
+
+    const onDelete = () => {
+        Swal.fire({
+            title: "확실합니까?",
+            text: "다시 복구할 수 없습니다!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "네, 삭제할께요!",
+            cancelButtonText: "좀 더 생각해볼게요",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await Axios.delete(`${SERVER}/delete/${Post_Code}`);
+                } catch (err) {
+                    console.log(err);
+                }
+                window.location.reload();
+            }
+        });
     };
     return (
         <PostDiv>
@@ -204,7 +209,9 @@ const Post = (props) => {
 
                 {/* 댓글 컴포넌트를 여기 넣어주세요! */}
             </PostBody>
-            {isOwner ? <button onClick={onDelete}>삭제</button> : null}
+            {isOwner ? (
+                <StyledButton onClick={onDelete}>삭제</StyledButton>
+            ) : null}
         </PostDiv>
     );
 };
