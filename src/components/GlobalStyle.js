@@ -15,9 +15,11 @@ const GlobalStyle = createGlobalStyle`
 }
 ::-webkit-scrollbar-track {
   background-color: lightblue;
+  
 }
 ::-webkit-scrollbar-track-piece {
     background-color: #5ebf9b;
+    
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 8px;

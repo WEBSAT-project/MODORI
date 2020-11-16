@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Post from "./Post";
-import Loadger from "react-loader-spinner";
 import Loader from "react-loader-spinner";
 import MainFooter from "./MainFooter";
 
@@ -15,7 +14,7 @@ const PostListDiv = styled.div`
 const MainBodyDiv = styled.div`
     width: 100%;
     height: 80vh;
-    padding:3rem;
+    padding: 3rem;
 `;
 
 const LoadingDiv = styled.div`
@@ -37,12 +36,8 @@ const MainBody = ({ postList, isLoading, setIsLoading }) => {
                     <h3>로딩중...</h3>
                 </LoadingDiv>
             ) : (
-                <PostListDiv
-                >
-                    {postList}
-                </PostListDiv>
+                <PostListDiv>{postList}</PostListDiv>
             )}
-        
         </MainBodyDiv>
         // {isLoading ? (
         //     <LoadingDiv>
