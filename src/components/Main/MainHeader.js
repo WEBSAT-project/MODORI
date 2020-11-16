@@ -107,7 +107,7 @@ const MainHeader = () => {
                     exact
                     to="/"
                 >
-                    다른 사람이 쓴 글
+                    공유 게시글
                 </NavLink>
 
                 <NavLink
@@ -123,7 +123,7 @@ const MainHeader = () => {
                     exact
                     to="/setprofile"
                 >
-                    프로필/내 글
+                    내 게시글
                 </NavLink>
                 <NavLink
                     activeStyle={{
