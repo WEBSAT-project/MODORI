@@ -8,21 +8,21 @@ import Axios from "axios";
 
 const PostDiv = styled.div`
     display: grid;
-    gap: 1rem;
+    grid-row-gap:1rem;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.1fr 50vh 0.2fr;
+    grid-template-rows: 0.1fr 50vh 0.3fr 0.2fr;
     grid-template-areas:
         "head  head"
-        "body  draw"
-        "border border"
+        "body  body"
+        ".     .   "
         "del   del";
 `;
 
 const PostCanvasContainer = styled.div`
-    border: 100px solid black;
     width: 100%;
     height: 100%;
     grid-area:draw;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
 `;
 
 const PostHeader = styled.div`
@@ -34,10 +34,15 @@ const PostHeader = styled.div`
 const PostBody = styled.div`
     height: 100%;
     /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); */
-    display: flex;
+    display: grid;
+    gap:1%;
+    grid-row-gap:1rem;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:53vh 1vh;
+    grid-template-areas:
+    "text draw"
+    "border border";
     /* border: 2px solid #bdbfbe; */
-    flex-direction: column;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
     grid-area: body;
     img {
         max-width: 100%;
@@ -50,14 +55,9 @@ const Border = styled.div`
     border-bottom:0.1rem solid #bdbfbe;
     grid-area:border;
 `;
-const Draw = styled.div`
-    border: 10px solid black;
-    grid-area: draw;
-`;
 const PostBodyContent = styled.div`
-    overflow-y: auto;
-    border-top: none;
-    padding: 1rem;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
+    grid-area:text;
 `;
 
 const StyledButton = styled.div`
@@ -223,11 +223,9 @@ const Post = (props) => {
                         />
                     </PostBodyContent>
                 </>
-
+                <Border />
                 {/* 댓글 컴포넌트를 여기 넣어주세요! */}
             </PostBody>
-            <Border />
-            <Draw>그림이다 히히</Draw>
             {isOwner ? (
                 <StyledButton onClick={onDelete} style={{ gridArea: "del" }}>
                     삭제
