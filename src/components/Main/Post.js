@@ -14,7 +14,8 @@ const PostDiv = styled.div`
     grid-template-columns:1fr 1fr;
     grid-template-areas:
     "head  ."
-    "body  draw";
+    "body  draw"
+    ".     del";
 `;
 
 const PostCanvasContainer = styled.div`
@@ -219,7 +220,8 @@ const Post = (props) => {
             </PostBody>
             <Draw>그림이다 히히</Draw>
             {isOwner ? (
-                <StyledButton onClick={onDelete}>삭제</StyledButton>
+                <StyledButton onClick={onDelete}
+                style={{gridArea:"del",}}>삭제</StyledButton>
             ) : null}
         </PostDiv>
     );
