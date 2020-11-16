@@ -6,7 +6,7 @@ import MainFooter from "./MainFooter";
 
 const PostListDiv = styled.div`
     display: grid;
-    gap: 1%;
+    gap: 0.5%;
     grid-template-rows: 1fr;
     background-color: white;
 `;

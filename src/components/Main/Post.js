@@ -14,6 +14,7 @@ const PostDiv = styled.div`
     grid-template-areas:
         "head  head"
         "body  draw"
+        "border border"
         "del   del";
 `;
 
@@ -21,6 +22,7 @@ const PostCanvasContainer = styled.div`
     border: 100px solid black;
     width: 100%;
     height: 100%;
+    grid-area:draw;
 `;
 
 const PostHeader = styled.div`
@@ -42,6 +44,11 @@ const PostBody = styled.div`
         /* max-height: 100%; */
         /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); */
     }
+`;
+
+const Border = styled.div`
+    border-bottom:0.1rem solid #bdbfbe;
+    grid-area:border;
 `;
 const Draw = styled.div`
     border: 10px solid black;
@@ -218,6 +225,7 @@ const Post = (props) => {
 
                 {/* 댓글 컴포넌트를 여기 넣어주세요! */}
             </PostBody>
+            <Border />
             <Draw>그림이다 히히</Draw>
             {isOwner ? (
                 <StyledButton onClick={onDelete} style={{ gridArea: "del" }}>
