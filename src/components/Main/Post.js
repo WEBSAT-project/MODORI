@@ -157,7 +157,6 @@ const Post = (props) => {
                         {Post_Code}#
                     </div> */}
                     <div>{Title}</div>
-                    {Post_Code}
                 </div>
                 <div
                     style={{
