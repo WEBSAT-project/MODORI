@@ -153,10 +153,18 @@ const Memo = ({
     };
 
     const undo = async () => {
-        await sdb.undo();
+        if (sdb.mode === "erase") {
+            sdb.toggleMode();
+            await sdb.undo();
+        }
+        sdb.toggleMode();
     };
     const redo = async () => {
-        await sdb.redo();
+        if (sdb.mode === "erase") {
+            sdb.toggleMode();
+            await sdb.undo();
+        }
+        sdb.toggleMode();
     };
     useEffect(() => {
         const sdb = create(canvas.current);

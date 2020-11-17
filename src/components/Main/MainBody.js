@@ -27,15 +27,15 @@ const LoadingDiv = styled.div`
 `;
 
 const TopButton = styled.div`
-    background-color: "#6df2c1";
+    background-color: #6df2c1;
     position: fixed;
     width: 7%;
-    bottom: 20px;
+    bottom: 7px;
     right: 0px;
-    border: 1px solid black;
     border-radius: 30px 0 0 30px;
     padding: 1rem;
     text-align: center;
+    cursor: pointer;
 `;
 
 const MainBody = ({ postList, isLoading, setIsLoading }) => {

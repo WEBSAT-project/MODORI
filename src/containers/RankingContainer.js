@@ -63,8 +63,6 @@ const RankingContainer = () => {
         });
     }, []);
 
-    console.log(rankColor);
-
     const rankList =
         ranks &&
         ranks.map((rank) => {

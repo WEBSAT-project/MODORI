@@ -68,7 +68,7 @@ const PostBodyContent = styled.div`
 `;
 
 const StyledButton = styled.div`
-    background-color: #f2f2f2;
+    background-color: #ffe0e2;
     border: none;
     padding: 0.6rem;
     border-radius: 5px;
@@ -81,6 +81,8 @@ const StyledButton = styled.div`
         color: white;
     }
 `;
+
+const CommentDiv = styled.div``;
 
 const SERVER = "http://10.80.163.169:8080";
 const Post = (props) => {
@@ -108,7 +110,6 @@ const Post = (props) => {
                 style={{
                     border: "1px solid #aaa",
                     borderLeft: "5px solid #bdbfbe",
-
                     paddingLeft: 10,
                     margin: 5,
                 }}
@@ -222,6 +223,7 @@ const Post = (props) => {
 
                 {/* 댓글 컴포넌트를 여기 넣어주세요! */}
             </PostBody>
+            <CommentDiv>댓</CommentDiv>
             {isOwner ? (
                 <StyledButton
                     onClick={() => onDelete(Post_Code)}
