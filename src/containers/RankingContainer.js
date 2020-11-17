@@ -79,11 +79,12 @@ const RankingContainer = () => {
                                 <div
                                     style={{
                                         color: "black",
-                                        fontSize: "1rem",
+                                        fontSize: "2rem",
+                                        fontWeight:"1000",
                                         width: "100%",
                                     }}
                                 >
-                                    이메일:{rank.Post_Email}
+                                    {rank.Post_nick_name}
                                 </div>
                                 <div
                                     style={{
@@ -92,30 +93,23 @@ const RankingContainer = () => {
                                         width: "100%",
                                     }}
                                 >
-                                    닉네임:{rank.Post_nick_name}
-                                </div>
-                                <div
-                                    style={{
-                                        color: "black",
-                                        fontSize: "1rem",
-                                        width: "100%",
-                                    }}
-                                >
-                                    점수 : {rank.cnt_Email}
+                                    게시글 : {rank.cnt_Email}
                                 </div>
                             </RanksDiv>
                         </RankDiv>
                     ) : (
                         <RanksDiv
                             style={{
-                                display:"flex",justifyContent:"space-around",borderBottom:"0.1rem solid black",flexDirection:"row",
+                                textAlign:"left",
+                                borderBottom:"0.1rem solid black",
+                                display:"grid", 
+                                gridTemplateColumns:"2fr 1fr 1fr",
                                 gridColumn:"auto / span 3",
                             }}
                         >
-                            {rankNum}
-                            <div style={{}}>이메일:{rank.Post_Email}</div>
-                            <div style={{}}>닉네임:{rank.Post_nick_name}</div>
-                            <div style={{}}>점수 : {rank.cnt_Email}</div>
+                            <div style={{fontWeight:"500",}}>{rankNum}등</div>
+                            <div style={{fontWeight:"1000",}}>{rank.Post_nick_name}</div>
+                            <div style={{}}>{rank.cnt_Email}</div>
                         </RanksDiv>
                     )}
                 </>
