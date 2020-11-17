@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import Axios from "axios";
 import Swal from "sweetalert2";
@@ -19,7 +20,7 @@ const CommentInputSubmit = styled.div`
 
 const SERVER = "http://10.80.163.169:8080";
 const token = localStorage.getItem("token");
-const Comment = ({ postCode }) => {
+const Comment = ({ postCode, history }) => {
     const [comment_Text, setComment_Text] = useState("");
     const [comments, setComments] = useState([]);
 
@@ -77,7 +78,6 @@ const Comment = ({ postCode }) => {
         getComments().then((res) => {
             // console.log(res.data.result.length);
             setComments(res.data.result);
-            console.log(comments);
         });
     }, []);
     return (
@@ -89,7 +89,12 @@ const Comment = ({ postCode }) => {
                     }}
                     value={comment_Text}
                 />
-                <CommentInputSubmit onClick={postComments}>
+                <CommentInputSubmit
+                    onClick={() => {
+                        postComments();
+                        history.go(0);
+                    }}
+                >
                     입력
                 </CommentInputSubmit>
                 {commentList}
@@ -98,4 +103,4 @@ const Comment = ({ postCode }) => {
     );
 };
 
-export default Comment;
+export default withRouter(Comment);
