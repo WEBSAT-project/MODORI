@@ -16,17 +16,20 @@ const MemoDiv = styled.div`
 `;
 
 const PostForm = styled.form`
+    padding-left:3rem;
+    padding-right:3rem;
+    padding-bottom:3rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 8fr 1fr;
+    grid-template-columns: 1fr 8fr;
     gap: 0.5rem;
-    grid-template-rows: 0.5fr 1fr 80vh 0.5fr 80vh 1fr 0.5fr;
-    grid-template-areas: ". .    .    .  " //1
-        ". name name .  " //2
-        ". tool draw .  " //3
-        ". .    .    .  " //4
-        ". text text .  " //5
-        ". give give .  " //6
-        ". .    .    .  "; //7
+    grid-template-rows: 0.5fr 1fr 90vh 0.5fr 80vh 1fr 0.5fr;
+    grid-template-areas: " .    .      " //1
+        " name name   " //2
+        " tool draw   " //3
+        " .    .      " //4
+        " text text   " //5
+        " give give   " //6
+        " .    .      "; //7
 
     input {
         outline: none;
@@ -204,6 +207,7 @@ const Memo = ({
                     style={{
                         background: "white",
                         width: "100%",
+                        height:"100%",
                         gridArea: "draw",
                         boxShadow: "0 0 8px rgba(0, 0, 0, 0.44)",
                     }}

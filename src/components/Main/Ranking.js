@@ -5,7 +5,7 @@ import MainHeader from "./MainHeader";
 const RankingDiv = styled.div``;
 
 const Stairs = styled.div`
-    padding: 1rem;
+    padding: 3rem;
     width: 100%;
     display: grid;
     gap: 1rem;
