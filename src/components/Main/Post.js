@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import Swal from "sweetalert2";
 import Axios from "axios";
+import Comment from "./Comment";
 
 const PostDiv = styled.div`
     display: grid;
@@ -54,8 +55,7 @@ const PostBody = styled.div`
     /* img {
         max-width: 100%;
         /* max-height: 100%; */
-        /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); */
-    
+    /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); */
 `;
 
 const Border = styled.div`
@@ -84,10 +84,11 @@ const StyledButton = styled.div`
 `;
 
 const CommentDiv = styled.div`
-    grid-area:co;
-    border:1px solid black;
-    width:100%;
-    height:100%;
+    grid-area: co;
+    border: 1px solid black;
+
+    width: 100%;
+    height: 100%;
 `;
 
 const SERVER = "http://10.80.163.169:8080";
@@ -225,12 +226,12 @@ const Post = (props) => {
                         />
                     </PostBodyContent>
                 </>
-                
 
                 {/* 댓글 컴포넌트를 여기 넣어주세요! */}
             </PostBody>
-            <CommentDiv>댓</CommentDiv>
-
+            <CommentDiv>
+                <Comment postCode={Post_Code} nickName={Post_nick_name} />
+            </CommentDiv>
             <Border />
             {isOwner ? (
                 <StyledButton
