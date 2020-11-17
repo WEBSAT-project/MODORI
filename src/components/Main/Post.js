@@ -8,13 +8,14 @@ import Axios from "axios";
 
 const PostDiv = styled.div`
     display: grid;
-    grid-row-gap: 1rem;
+    grid-row-gap: 0.5rem;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.1fr 52.917vh 0.3fr 0.2fr;
+    grid-template-rows: 0.1fr 52.917vh 20vh 0.3fr 0.2fr;
     grid-template-areas:
         "head  head"
         "body  body"
-        ".     .   "
+        "co    co  "
+        "border border"
         "del   del";
 `;
 
@@ -54,7 +55,7 @@ const PostBody = styled.div`
         max-width: 100%;
         /* max-height: 100%; */
         /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); */
-    }
+    
 `;
 
 const Border = styled.div`
@@ -82,7 +83,12 @@ const StyledButton = styled.div`
     }
 `;
 
-const CommentDiv = styled.div``;
+const CommentDiv = styled.div`
+    grid-area:co;
+    border:1px solid black;
+    width:100%;
+    height:100%;
+`;
 
 const SERVER = "http://10.80.163.169:8080";
 const Post = (props) => {
@@ -219,11 +225,13 @@ const Post = (props) => {
                         />
                     </PostBodyContent>
                 </>
-                <Border />
+                
 
                 {/* 댓글 컴포넌트를 여기 넣어주세요! */}
             </PostBody>
             <CommentDiv>댓</CommentDiv>
+
+            <Border />
             {isOwner ? (
                 <StyledButton
                     onClick={() => onDelete(Post_Code)}
