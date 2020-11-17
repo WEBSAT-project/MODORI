@@ -44,6 +44,10 @@ const RankingContainer = () => {
     const RanksDiv = styled.div`
         height:100%;
         text-align:center;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content: flex-end;
     `;
 
     const RankDiv = styled.div`

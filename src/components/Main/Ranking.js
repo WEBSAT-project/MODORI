@@ -29,9 +29,12 @@ const FBorder = styled.div`
     width:100%;
     height:100%;
     background-color:black;
-    align-items:center;
+    text-align:center;
     display:flex;
-    font-size:19rem;
+    flex-direction:column;
+    align-items:center;
+    justify-content: flex-end;
+    font-size:7rem;
     color:rgb(255, 215, 0);
 `;
 
@@ -41,7 +44,12 @@ const SBorder = styled.div`
     width:100%;
     height:100%;
     background-color:black;
-    font-size:3rem;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: flex-end;
+    font-size:7rem;
     color:#C0C0C0;
 `;
 
@@ -51,6 +59,12 @@ const TBorder = styled.div`
     width:100%;
     height:100%;
     background-color:black;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: flex-end;
+    font-size:7rem;
     color:#995B5B;
 `;
 
