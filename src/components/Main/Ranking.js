@@ -28,7 +28,7 @@ const FBorder = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     font-size: 7rem;
     color: white;
 `;
@@ -42,7 +42,7 @@ const SBorder = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     font-size: 7rem;
     color: white;
 `;
@@ -56,7 +56,7 @@ const TBorder = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     font-size: 7rem;
     color: white;
 `;

@@ -108,7 +108,8 @@ const RankingContainer = () => {
                     ) : (
                         <RanksDiv
                             style={{
-                                border: "0.05rem solid black",
+                                display:"flex",justifyContent:"space-around",borderBottom:"0.1rem solid black",flexDirection:"row",
+                                gridColumn:"auto / span 3",
                             }}
                         >
                             {rankNum}
