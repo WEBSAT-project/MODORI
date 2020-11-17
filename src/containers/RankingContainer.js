@@ -42,9 +42,8 @@ const RankingContainer = () => {
     };
 
     const RanksDiv = styled.div`
-        border: 1px solid black;
-        margin: 1rem;
-        
+        height:100%;
+        text-align:center;
     `;
 
     const RankDiv = styled.div`
@@ -74,20 +73,19 @@ const RankingContainer = () => {
                         gridArea={rankStairs[rankNum - 1].gridArea}
                     >
                         <RanksDiv>
-                            {rankNum}
-                            <div style={{color:"black",fontSize:"1rem",}}>이메일:{rank.Post_Email}</div>
-                            <div style={{color:"black",fontSize:"1rem",}}>닉네임:{rank.Post_nick_name}</div>
-                            <div style={{color:"black",fontSize:"1rem",}}>점수 : {rank.cnt_Email}</div>
+                            <div style={{color:"black",fontSize:"1rem",width:"100%",}}>이메일:{rank.Post_Email}</div>
+                            <div style={{color:"black",fontSize:"1rem",width:"100%",}}>닉네임:{rank.Post_nick_name}</div>
+                            <div style={{color:"black",fontSize:"1rem",width:"100%",}}>점수 : {rank.cnt_Email}</div>
                         </RanksDiv>
                     </RankDiv>
                 ) : (
-                    <RankDiv style={{ fontSize: "2rem", gridArea:"row", }}>{rankNum}</RankDiv>
+                    <RanksDiv style={{gridArea:rankNum, border:"0.05rem solid black",}}>
+                        {rankNum}
+                        <div style={{}}>이메일:{rank.Post_Email}</div>
+                        <div style={{}}>닉네임:{rank.Post_nick_name}</div>
+                        <div style={{}}>점수 : {rank.cnt_Email}</div>
+                    </RanksDiv>
                 )}
-                <RanksDiv style={{gridArea:"row",}}>
-                    <div style={{}}>이메일:{rank.Post_Email}</div>
-                    <div style={{}}>닉네임:{rank.Post_nick_name}</div>
-                    <div style={{}}>점수 : {rank.cnt_Email}</div>
-                </RanksDiv>
             </>
         );
     });

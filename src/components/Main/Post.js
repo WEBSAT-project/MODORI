@@ -54,7 +54,7 @@ const PostBody = styled.div`
         max-width: 100%;
         /* max-height: 100%; */
         /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); */
-    } */
+    }
 `;
 
 const Border = styled.div`

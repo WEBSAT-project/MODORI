@@ -5,21 +5,22 @@ import MainHeader from "./MainHeader";
 const RankingDiv = styled.div``;
 
 const Stairs = styled.div`
+    padding:1rem;
     width:100%;
     display:grid;
     gap:1rem;
-    grid-template-columns:33% 33% 33%;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:1fr 1fr 1fr 0.7fr;
+    grid-template-rows: 20vh 20vh 20vh 20vh;
     grid-template-areas:
     ". FF ."
     "SS F ."
     "S F TT"
     "S F T"
-    "row . .";
 `;
 
-const RList = styled.div`
-
+const Border = styled.div`
+    border: 0.1rem solid black;
+    grid-area:b;
 `;
 
 const FBorder = styled.div`
@@ -27,6 +28,11 @@ const FBorder = styled.div`
     grid-area:F;
     width:100%;
     height:100%;
+    background-color:black;
+    align-items:center;
+    display:flex;
+    font-size:19rem;
+    color:rgb(255, 215, 0);
 `;
 
 const SBorder = styled.div`
@@ -34,6 +40,9 @@ const SBorder = styled.div`
     grid-area:S;
     width:100%;
     height:100%;
+    background-color:black;
+    font-size:3rem;
+    color:#C0C0C0;
 `;
 
 const TBorder = styled.div`
@@ -41,6 +50,8 @@ const TBorder = styled.div`
     grid-area:T;
     width:100%;
     height:100%;
+    background-color:black;
+    color:#995B5B;
 `;
 
 const Ranking = ({ rankList }) => {
@@ -49,9 +60,10 @@ const Ranking = ({ rankList }) => {
         <RankingDiv>
             <MainHeader />
             <Stairs>
-                <FBorder />
-                <SBorder />
-                <TBorder />
+                <FBorder>1</FBorder>
+                <SBorder>2</SBorder>
+                <TBorder>3</TBorder>
+                <Border></Border>
                 {rankList}
             </Stairs>
         </RankingDiv>
