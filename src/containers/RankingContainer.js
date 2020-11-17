@@ -58,69 +58,71 @@ const RankingContainer = () => {
 
     useEffect(() => {
         getRank().then((response) => {
-            setRanks(response.result);
-            console.log(ranks);
+            console.log(response.data.result);
+            setRanks(response.data.result);
         });
     }, []);
 
     console.log(rankColor);
 
-    const rankList = ranks.map((rank) => {
-        rankNum += 1;
-        return (
-            <>
-                {rankNum <= 3 ? (
-                    <RankDiv
-                        style={{ fontSize: "2rem" }}
-                        color={rankColor[rankNum - 1].color}
-                        gridArea={rankStairs[rankNum - 1].gridArea}
-                    >
-                        <RanksDiv>
-                            <div
-                                style={{
-                                    color: "black",
-                                    fontSize: "1rem",
-                                    width: "100%",
-                                }}
-                            >
-                                이메일:{rank.Post_Email}
-                            </div>
-                            <div
-                                style={{
-                                    color: "black",
-                                    fontSize: "1rem",
-                                    width: "100%",
-                                }}
-                            >
-                                닉네임:{rank.Post_nick_name}
-                            </div>
-                            <div
-                                style={{
-                                    color: "black",
-                                    fontSize: "1rem",
-                                    width: "100%",
-                                }}
-                            >
-                                점수 : {rank.cnt_Email}
-                            </div>
+    const rankList =
+        ranks &&
+        ranks.map((rank) => {
+            rankNum += 1;
+            return (
+                <>
+                    {rankNum <= 3 ? (
+                        <RankDiv
+                            style={{ fontSize: "2rem" }}
+                            color={rankColor[rankNum - 1].color}
+                            gridArea={rankStairs[rankNum - 1].gridArea}
+                        >
+                            <RanksDiv>
+                                <div
+                                    style={{
+                                        color: "black",
+                                        fontSize: "1rem",
+                                        width: "100%",
+                                    }}
+                                >
+                                    이메일:{rank.Post_Email}
+                                </div>
+                                <div
+                                    style={{
+                                        color: "black",
+                                        fontSize: "1rem",
+                                        width: "100%",
+                                    }}
+                                >
+                                    닉네임:{rank.Post_nick_name}
+                                </div>
+                                <div
+                                    style={{
+                                        color: "black",
+                                        fontSize: "1rem",
+                                        width: "100%",
+                                    }}
+                                >
+                                    점수 : {rank.cnt_Email}
+                                </div>
+                            </RanksDiv>
+                        </RankDiv>
+                    ) : (
+                        <RanksDiv
+                            style={{
+                                gridArea: rankNum,
+                                border: "0.05rem solid black",
+                            }}
+                        >
+                            {rankNum}
+                            <div style={{}}>이메일:{rank.Post_Email}</div>
+                            <div style={{}}>닉네임:{rank.Post_nick_name}</div>
+                            <div style={{}}>점수 : {rank.cnt_Email}</div>
                         </RanksDiv>
-                    </RankDiv>
-                ) : (
-                    <RanksDiv
-                        style={{
-                            gridArea: rankNum,
-                            border: "0.05rem solid black",
-                        }}
-                    >
-                        {rankNum}
-                        <div style={{}}>이메일:{rank.Post_Email}</div>
-                        <div style={{}}>닉네임:{rank.Post_nick_name}</div>
-                        <div style={{}}>점수 : {rank.cnt_Email}</div>
-                    </RanksDiv>
-                )}
-            </>
-        );
-    });
+                    )}
+                </>
+            );
+        });
 
     return <Ranking rankList={rankList} />;
 };
