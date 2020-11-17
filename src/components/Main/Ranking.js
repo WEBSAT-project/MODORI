@@ -9,9 +9,9 @@ const Stairs = styled.div`
     width: 100%;
     display: grid;
     gap: 1rem;
-    grid-auto-flow:row;
+    grid-auto-flow:column;
     grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(5,20vh);
+    grid-template-rows: repeat(${props => props.rankNum+1},20vh);
     grid-template-areas:
         "SS FF TT "
         "SS F  TT "
@@ -61,11 +61,13 @@ const TBorder = styled.div`
     color: white;
 `;
 
-const Ranking = ({ rankList }) => {
+const Ranking = ({ rankList , rankNum }) => {
+    
+    console.log(rankNum);
     return (
         <RankingDiv>
             <MainHeader />
-            <Stairs>
+            <Stairs rankNum={rankNum}>
                 <FBorder>1</FBorder>
                 <SBorder>2</SBorder>
                 <TBorder>3</TBorder>

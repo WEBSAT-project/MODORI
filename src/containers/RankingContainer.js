@@ -123,7 +123,7 @@ const RankingContainer = () => {
             );
         });
 
-    return <Ranking rankList={rankList} />;
+    return <Ranking rankList={rankList} rankNum={rankNum}/>;
 };
 
 export default RankingContainer;
