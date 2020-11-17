@@ -72,7 +72,6 @@ const SetProfile = ({ history }) => {
                     const { data } = await Axios.delete(
                         `${SERVER}/delete/${postCode}`
                     );
-
                     if (data.message === "삭제 되었습니다") {
                         setMyPosts(
                             myPosts.filter(

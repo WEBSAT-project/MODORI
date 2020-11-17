@@ -49,7 +49,13 @@ const MainBody = ({ postList, isLoading, setIsLoading }) => {
             ) : (
                 <PostListDiv>
                     {postList}
-                    <TopButton>위로!</TopButton>
+                    <TopButton
+                        onClick={() => {
+                            window.scrollTo(0, 0);
+                        }}
+                    >
+                        위로!
+                    </TopButton>
                 </PostListDiv>
             )}
         </MainBodyDiv>
