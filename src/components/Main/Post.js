@@ -96,6 +96,7 @@ const Post = (props) => {
         image_pass,
     } = props.post;
     const { isOwner, onDelete } = props;
+
     // const Md = new MarkdownIt().use((Md) => SupportReactComponent(Md, []));
     function InlineCodeBlock(props) {
         return <span style={{ background: "#ff0" }}>{props.value}</span>;
@@ -178,7 +179,10 @@ const Post = (props) => {
                             fontSize: "1rem",
                         }}
                     >
-                        글 쓴 시간 : {Post_Time}
+                        글 쓴 시간 :{" "}
+                        {`${Post_Time.split("T")[0]} ${
+                            Post_Time.split("T")[1].split(".")[0]
+                        }`}
                         {Post_Update}
                     </div>
                 </div>
