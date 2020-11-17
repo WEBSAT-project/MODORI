@@ -5,18 +5,22 @@ import MainHeader from "./MainHeader";
 const RankingDiv = styled.div``;
 
 const Stairs = styled.div`
-    display:gird;
-    grid-template-columns:1vh 1vh 1vh;
-    grid-template-rows:1vh 1vh 1vh;
+    display: gird;
+    grid-template-columns: 1vh 1vh 1vh;
+    grid-template-rows: 1vh 1vh 1vh;
     grid-template-areas:
-    ". border ."
-    "border border ."
-    "border border border";
+        ". border ."
+        "border border ."
+        "border border border";
 `;
 
 const Border = styled.div`
     border: 0.1rem solid black;
-    grid-area:border;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    grid-area: border;
+    text-align: center;
+    font-size: 4rem;
 `;
 
 const Ranking = ({ rankList }) => {
@@ -25,8 +29,8 @@ const Ranking = ({ rankList }) => {
         <RankingDiv>
             <MainHeader />
             <Stairs>
-                <Border />
-                //{rankList}
+                <Border>랭킹</Border>
+                {rankList}
             </Stairs>
         </RankingDiv>
     );

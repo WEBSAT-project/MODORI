@@ -7,6 +7,18 @@ const SERVER = "http://10.80.163.169:8080";
 
 const RankingContainer = () => {
     const [ranks, setRanks] = useState([]);
+    let rankNum = 0;
+    const rankColor = [
+        {
+            color: "#FFD700",
+        },
+        {
+            color: "#C0C0C0",
+        },
+        {
+            color: "#995B5B",
+        },
+    ];
     const getRank = async () => {
         try {
             const rank = await Axios.get(`${SERVER}/post/ranking`);
@@ -16,10 +28,14 @@ const RankingContainer = () => {
         }
     };
 
-    const RankDiv = styled.div`
+    const RanksDiv = styled.div`
         border: 1px solid black;
+        margin: 1rem;
     `;
 
+    const RankDiv = styled.div`
+        color: ${(props) => props.color};
+    `;
     // const ranklist = ranks.map((rank) => {
     //     return <div>{rank}</div>;
     // });
@@ -30,15 +46,26 @@ const RankingContainer = () => {
         });
     }, []);
 
-    console.log(ranks);
+    console.log(rankColor);
 
     const rankList = ranks.map((rank) => {
+        rankNum += 1;
         return (
-            <RankDiv>
-                <div>이메일:{rank.Post_Email}</div>
-                <div>닉네임:{rank.Post_nick_name}</div>
-                <div>글 쓴 횟수{rank.cnt_Email}</div>
-            </RankDiv>
+            <RanksDiv>
+                {rankNum <= 3 ? (
+                    <RankDiv
+                        style={{ fontSize: "2rem" }}
+                        color={rankColor[rankNum - 1].color}
+                    >
+                        {rankNum}
+                    </RankDiv>
+                ) : (
+                    <RankDiv>{rankNum}</RankDiv>
+                )}
+                <div style={{}}>이메일:{rank.Post_Email}</div>
+                <div style={{}}>닉네임:{rank.Post_nick_name}</div>
+                <div style={{}}>점수 : {rank.cnt_Email}</div>
+            </RanksDiv>
         );
     });
 
