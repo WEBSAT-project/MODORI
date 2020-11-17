@@ -9,63 +9,56 @@ const Stairs = styled.div`
     width: 100%;
     display: grid;
     gap: 1rem;
-    grid-template-columns: 1fr 1fr 1fr 0.7fr;
-    grid-template-rows: 20vh 20vh 20vh 20vh;
+    grid-auto-flow:row;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(5,20vh);
     grid-template-areas:
-        ". FF ."
-        "SS F ."
-        "S F TT"
-        "S F T";
-`;
-
-const Border = styled.div`
-    border: 0.1rem solid black;
-    grid-area: b;
+        "SS FF TT "
+        "SS F  TT "
+        "S  F  TT"
+        "S  F  T ";
 `;
 
 const FBorder = styled.div`
-    border: 0.1rem solid black;
     grid-area: F;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: rgb(255, 215, 0);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
     font-size: 7rem;
-    color: rgb(255, 215, 0);
+    color: white;
 `;
 
 const SBorder = styled.div`
-    border: 0.1rem solid black;
     grid-area: S;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: #c0c0c0;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
     font-size: 7rem;
-    color: #c0c0c0;
+    color: white;
 `;
 
 const TBorder = styled.div`
-    border: 0.1rem solid black;
     grid-area: T;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: #995b5b;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
     font-size: 7rem;
-    color: #995b5b;
+    color: white;
 `;
 
 const Ranking = ({ rankList }) => {
@@ -76,7 +69,6 @@ const Ranking = ({ rankList }) => {
                 <FBorder>1</FBorder>
                 <SBorder>2</SBorder>
                 <TBorder>3</TBorder>
-                <Border></Border>
                 {rankList}
             </Stairs>
         </RankingDiv>

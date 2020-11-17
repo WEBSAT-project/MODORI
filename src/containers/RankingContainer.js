@@ -110,7 +110,6 @@ const RankingContainer = () => {
                     ) : (
                         <RanksDiv
                             style={{
-                                gridArea: rankNum,
                                 border: "0.05rem solid black",
                             }}
                         >
