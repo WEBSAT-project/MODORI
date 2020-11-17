@@ -21,7 +21,7 @@ const SERVER = "http://10.80.163.169:8080";
 const token = localStorage.getItem("token");
 const Comment = ({ postCode }) => {
     const [comment_Text, setComment_Text] = useState("");
-    const [comments, setComments] = useState();
+    const [comments, setComments] = useState([]);
 
     const getComments = async () => {
         try {
