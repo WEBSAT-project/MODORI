@@ -25,7 +25,6 @@ const MainBodyContainer = ({ data }) => {
         getPosts().then((response) => {
             setIsLoading(false);
             setPosts(response.result);
-            console.log(response.result);
             // setPosts({
             //     ...posts,
             //     title: response.title,

@@ -73,7 +73,7 @@ const MemoContainer = ({ history }) => {
             switch (err.response.status) {
                 case 403:
                     Swal.fire({
-                        title: "공백이 있습니다",
+                        title: err.response.data.message,
                         icon: "error",
                     });
             }

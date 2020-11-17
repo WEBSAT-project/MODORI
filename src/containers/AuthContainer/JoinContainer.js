@@ -60,6 +60,7 @@ const JoinContainer = ({ history }) => {
 
             history.push("/login");
         } catch (err) {
+            console.log(err.response);
             switch (err.response.status) {
                 case 403:
                     Swal.fire({
