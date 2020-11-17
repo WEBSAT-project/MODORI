@@ -5,42 +5,22 @@ import MainHeader from "./MainHeader";
 const RankingDiv = styled.div``;
 
 const Stairs = styled.div`
-    width:100%;
-    display:grid;
-    gap:1rem;
-    grid-template-columns:33% 33% 33%;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    display: gird;
+    grid-template-columns: 1vh 1vh 1vh;
+    grid-template-rows: 1vh 1vh 1vh;
     grid-template-areas:
-    ". FF ."
-    "SS F ."
-    "S F TT"
-    "S F T"
-    "row . .";
+        ". border ."
+        "border border ."
+        "border border border";
 `;
 
-const RList = styled.div`
-
-`;
-
-const FBorder = styled.div`
+const Border = styled.div`
     border: 0.1rem solid black;
-    grid-area:F;
-    width:100%;
-    height:100%;
-`;
-
-const SBorder = styled.div`
-    border: 0.1rem solid black;
-    grid-area:S;
-    width:100%;
-    height:100%;
-`;
-
-const TBorder = styled.div`
-    border: 0.1rem solid black;
-    grid-area:T;
-    width:100%;
-    height:100%;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    grid-area: border;
+    text-align: center;
+    font-size: 4rem;
 `;
 
 const Ranking = ({ rankList }) => {
@@ -49,9 +29,7 @@ const Ranking = ({ rankList }) => {
         <RankingDiv>
             <MainHeader />
             <Stairs>
-                <FBorder />
-                <SBorder />
-                <TBorder />
+                <Border>랭킹</Border>
                 {rankList}
             </Stairs>
         </RankingDiv>

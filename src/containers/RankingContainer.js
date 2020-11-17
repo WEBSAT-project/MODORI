@@ -5,7 +5,6 @@ import Ranking from "../components/Main/Ranking";
 
 const SERVER = "http://10.80.163.169:8080";
 
-
 const RankingContainer = () => {
     const [ranks, setRanks] = useState([]);
     let rankNum = 0;
@@ -18,18 +17,6 @@ const RankingContainer = () => {
         },
         {
             color: "#995B5B",
-
-        },
-    ];
-    const rankStairs = [
-        {
-            gridArea:"FF",
-        },
-        {
-            gridArea:"SS",
-        },
-        {
-            gridArea:"TT",
         },
     ];
     const getRank = async () => {
@@ -44,12 +31,10 @@ const RankingContainer = () => {
     const RanksDiv = styled.div`
         border: 1px solid black;
         margin: 1rem;
-        
     `;
 
     const RankDiv = styled.div`
         color: ${(props) => props.color};
-        grid-area : ${(props) => props.gridArea}
     `;
     // const ranklist = ranks.map((rank) => {
     //     return <div>{rank}</div>;
@@ -66,29 +51,21 @@ const RankingContainer = () => {
     const rankList = ranks.map((rank) => {
         rankNum += 1;
         return (
-            <>
+            <RanksDiv>
                 {rankNum <= 3 ? (
                     <RankDiv
                         style={{ fontSize: "2rem" }}
                         color={rankColor[rankNum - 1].color}
-                        gridArea={rankStairs[rankNum - 1].gridArea}
                     >
-                        <RanksDiv>
-                            {rankNum}
-                            <div style={{color:"black",fontSize:"1rem",}}>이메일:{rank.Post_Email}</div>
-                            <div style={{color:"black",fontSize:"1rem",}}>닉네임:{rank.Post_nick_name}</div>
-                            <div style={{color:"black",fontSize:"1rem",}}>점수 : {rank.cnt_Email}</div>
-                        </RanksDiv>
+                        {rankNum}
                     </RankDiv>
                 ) : (
-                    <RankDiv style={{ fontSize: "2rem", gridArea:"row", }}>{rankNum}</RankDiv>
+                    <RankDiv style={{ fontSize: "2rem" }}>{rankNum}</RankDiv>
                 )}
-                <RanksDiv style={{gridArea:"row",}}>
-                    <div style={{}}>이메일:{rank.Post_Email}</div>
-                    <div style={{}}>닉네임:{rank.Post_nick_name}</div>
-                    <div style={{}}>점수 : {rank.cnt_Email}</div>
-                </RanksDiv>
-            </>
+                <div style={{}}>이메일:{rank.Post_Email}</div>
+                <div style={{}}>닉네임:{rank.Post_nick_name}</div>
+                <div style={{}}>점수 : {rank.cnt_Email}</div>
+            </RanksDiv>
         );
     });
 
