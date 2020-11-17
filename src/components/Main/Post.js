@@ -38,7 +38,7 @@ const PostBody = styled.div`
     gap:1%;
     grid-row-gap:1rem;
     grid-template-columns:1fr 1fr;
-    grid-template-rows:53vh 1vh;
+    grid-template-rows:52.917vh 1vh;
     grid-template-areas:
     "text draw"
     "border border";

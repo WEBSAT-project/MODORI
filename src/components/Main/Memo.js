@@ -182,8 +182,7 @@ const Memo = ({
             background: "white",
             width: "100%",
             gridArea: "draw",
-            borderRadius: "1rem",
-            border: "0.1rem solid black",
+            boxShadow: "0 0 8px rgba(0, 0, 0, 0.44)",
           }}
         ></canvas>
         <Toolbox>
