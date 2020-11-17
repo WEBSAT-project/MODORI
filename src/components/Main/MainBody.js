@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import Post from "./Post";
 import Loader from "react-loader-spinner";
@@ -27,10 +27,8 @@ const LoadingDiv = styled.div`
 `;
 
 const MainBody = ({ postList, isLoading, setIsLoading }) => {
-    const main = useRef();
-    // console.log(main.current.scrollHeight); //스크롤의 끝
     return (
-        <MainBodyDiv ref={main}>
+        <MainBodyDiv>
             {isLoading ? (
                 <LoadingDiv>
                     <Loader type="Grid" color="#5ebf9b" />

@@ -4,7 +4,6 @@ import { NavLink, Link } from "react-router-dom";
 import FullLogo from "../../assets/modori_logo_full.png";
 import jwt_decode from "jwt-decode";
 import Swal from "sweetalert2";
-import { withRouter } from "react-router-dom";
 const HeaderDiv = styled.div`
     border-bottom: 2px solid #bdbfbe;
     box-sizing: border-box;
@@ -14,7 +13,7 @@ const NavContainer = styled.div`
     width: 100%;
     display: grid;
     align-items: center;
-    justify-items: center;
+    justify-items:center;
     justify-content: space-between;
     //justify-items:center;
     gap: 0.5rem;
@@ -35,17 +34,18 @@ const NavContainer = styled.div`
 `;
 
 const Nickname = styled.div`
-    grid-area: nick;
-    color: #5ebf9b;
-    font-size: 1.2rem;
+    grid-area:nick;
+    color:#5ebf9b;
+    font-size:1.2rem;
 `;
 
 const Log = styled.div`
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    grid-template-areas: "nick button";
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    grid-template-areas:
+    "nick button";
 `;
 const Logo = styled.img.attrs({
     src: FullLogo,
@@ -67,7 +67,7 @@ const Button = styled.button`
     cursor: pointer;
 `;
 
-const MainHeader = ({ history }) => {
+const MainHeader = () => {
     const token = localStorage.getItem("token");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [decoded, setDecoded] = useState({
@@ -89,7 +89,7 @@ const MainHeader = ({ history }) => {
         <HeaderDiv>
             <NavContainer>
                 <Logo
-                    onClick={() => history.push("/")}
+                    onClick={() => (window.location.href = "/")}
                     style={{
                         gridArea: "logo",
                     }}
@@ -156,23 +156,20 @@ const MainHeader = ({ history }) => {
                     랭킹
                 </NavLink>
                 {isLoggedIn ? (
-                    <Log
-                        style={{
-                            textAlign: "center",
-                            gridArea: "log",
-                            display: "grid",
-                            gridTemplateColumns: "1fr 1fr",
-                            gap: "10%",
-                        }}
-                    >
+                    <Log style={{ textAlign: "center", gridArea: "log",
+                    display:"grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "10%",
+                    
+                    }}>
                         <Nickname>{decoded.nick}</Nickname>
                         <Button
                             onClick={() => {
                                 localStorage.removeItem("token");
-                                history.push("/");
+                                window.location.replace("/");
                             }}
                             style={{
-                                gridArea: "button",
+                                gridArea:"button",
                             }}
                         >
                             로그아웃
@@ -193,4 +190,4 @@ const MainHeader = ({ history }) => {
         </HeaderDiv>
     );
 };
-export default withRouter(MainHeader);
+export default MainHeader;
