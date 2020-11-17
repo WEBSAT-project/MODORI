@@ -8,9 +8,9 @@ import Axios from "axios";
 
 const PostDiv = styled.div`
     display: grid;
-    grid-row-gap:1rem;
+    grid-row-gap: 1rem;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.1fr 50vh 0.3fr 0.2fr;
+    grid-template-rows: 0.1fr 52.917vh 0.3fr 0.2fr;
     grid-template-areas:
         "head  head"
         "body  body"
@@ -21,8 +21,14 @@ const PostDiv = styled.div`
 const PostCanvasContainer = styled.div`
     width: 100%;
     height: 100%;
-    grid-area:draw;
+    grid-area: draw;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
+    img {
+        max-width: 100%;
+        min-width: 100%;
+        min-height: 100%;
+        background-size: cover;
+    }
 `;
 
 const PostHeader = styled.div`
@@ -35,32 +41,31 @@ const PostBody = styled.div`
     height: 100%;
     /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); */
     display: grid;
-    gap:1%;
-    grid-row-gap:1rem;
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:52.917vh 1vh;
+    gap: 1%;
+    grid-row-gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 52.917vh 1vh;
     grid-template-areas:
-    "text draw"
-    "border border";
+        "text draw"
+        "border border";
     /* border: 2px solid #bdbfbe; */
     grid-area: body;
-    img {
+    /* img {
         max-width: 100%;
         /* max-height: 100%; */
         /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.44); */
-    }
+    } */
 `;
 
 const Border = styled.div`
-    border-bottom:0.1rem solid #bdbfbe;
-    grid-area:border;
+    border-bottom: 0.1rem solid #bdbfbe;
+    grid-area: border;
 `;
 const PostBodyContent = styled.div`
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
-    grid-area:text;
+    grid-area: text;
     overflow-y: auto;
 `;
-
 
 const StyledButton = styled.div`
     background-color: #f2f2f2;
@@ -189,7 +194,12 @@ const Post = (props) => {
                             />
                         </PostCanvasContainer>
                     ) : (
-                        <></>
+                        <PostCanvasContainer>
+                            <img
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqHjLUuzIB3EwLHArtpnICh1pzUj8x6dYhpA&usqp=CAU"
+                                alt=""
+                            />
+                        </PostCanvasContainer>
                     )}
                     <PostBodyContent>
                         <ReactMarkdown

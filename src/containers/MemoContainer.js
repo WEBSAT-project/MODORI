@@ -14,6 +14,7 @@ const MemoContainer = ({ history }) => {
     const [image, setImage] = useState("");
     // const [canvasState, setCanvasState] = useState("");
     const [fileName, setFileName] = useState("");
+    const [imgSaved, setImgSaved] = useState(false);
     const token = localStorage.getItem("token");
 
     {
@@ -23,7 +24,7 @@ const MemoContainer = ({ history }) => {
                     title: "로그인을 먼저 해주세요",
                     icon: "error",
                 },
-                history.replace("/login")
+                history.push("/login")
             )
         ) : (
             <></>
@@ -39,6 +40,7 @@ const MemoContainer = ({ history }) => {
                 },
             });
             console.log(data);
+            setImgSaved(true);
             setFileName(data.filename);
         } catch (err) {
             console.log(err);
@@ -89,6 +91,7 @@ const MemoContainer = ({ history }) => {
             // canvasState={canvasState}
             // setCanvasState={setCanvasState}
             imgUpload={img_upload}
+            imgSaved={imgSaved}
             // base64={base64}
             // setBase64={setBase64}
         />

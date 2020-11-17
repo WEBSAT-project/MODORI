@@ -26,6 +26,18 @@ const LoadingDiv = styled.div`
     flex-direction: column;
 `;
 
+const TopButton = styled.div`
+    background-color: "#6df2c1";
+    position: fixed;
+    width: 7%;
+    bottom: 20px;
+    right: 0px;
+    border: 1px solid black;
+    border-radius: 30px 0 0 30px;
+    padding: 1rem;
+    text-align: center;
+`;
+
 const MainBody = ({ postList, isLoading, setIsLoading }) => {
     return (
         <MainBodyDiv>
@@ -35,7 +47,10 @@ const MainBody = ({ postList, isLoading, setIsLoading }) => {
                     <h3>로딩중...</h3>
                 </LoadingDiv>
             ) : (
-                <PostListDiv>{postList}</PostListDiv>
+                <PostListDiv>
+                    {postList}
+                    <TopButton>위로!</TopButton>
+                </PostListDiv>
             )}
         </MainBodyDiv>
         // {isLoading ? (

@@ -10,6 +10,7 @@ import MemoContainer from "../containers/MemoContainer";
 import ProfileContainer from "../containers/ProfileContainer";
 import UpdatePost from "./Main/UpdatePost";
 import RankingContainer from "../containers/RankingContainer";
+import Memo from "./Main/Memo";
 
 const App = () => {
     return (
