@@ -12,6 +12,8 @@ const PostListDiv = styled.div`
 `;
 
 const MainBodyDiv = styled.div`
+    display: flex;
+    flex-direction:column;
     width: 100%;
     height: 80vh;
     padding: 3rem;
