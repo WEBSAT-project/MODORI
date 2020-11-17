@@ -19,7 +19,7 @@ const NavContainer = styled.div`
     //justify-items:center;
     gap: 0.5rem;
     grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 3fr 1fr;
-    grid-template-rows: 0.1fr 1fr 0.1fr;
+    grid-template-rows: 1vh 20vh 1vh;
     grid-template-areas: ". .    .     .  .    .   .  ." //1
         ". logo share my memo ranking  log  ." //2
         ". .    .     .  .    .   .  ."; //3
@@ -102,7 +102,7 @@ const MainHeader = ({ history }) => {
                     style={{
                         gridArea: "share",
                         textAlign: "center",
-                        width: "50%",
+                        width: "100%",
                     }}
                     exact
                     to="/"
@@ -118,7 +118,7 @@ const MainHeader = ({ history }) => {
                     style={{
                         gridArea: "my",
                         textAlign: "center",
-                        width: "40%",
+                        width: "100%",
                     }}
                     exact
                     to="/setprofile"
@@ -133,7 +133,7 @@ const MainHeader = ({ history }) => {
                     style={{
                         gridArea: "memo",
                         textAlign: "center",
-                        width: "30%",
+                        width: "100%",
                     }}
                     exact
                     to="/memo"
@@ -148,7 +148,7 @@ const MainHeader = ({ history }) => {
                     style={{
                         gridArea: "ranking",
                         textAlign: "center",
-                        width: "30%",
+                        width: "100%",
                     }}
                     exact
                     to="/ranking"
