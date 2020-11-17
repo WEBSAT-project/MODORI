@@ -79,6 +79,7 @@ const MemoContainer = ({ history }) => {
             }
         }
     };
+
     return (
         <Memo
             onSubmit={post_create}
