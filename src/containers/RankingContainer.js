@@ -60,7 +60,7 @@ const RankingContainer = () => {
                         {rankNum}
                     </RankDiv>
                 ) : (
-                    <RankDiv>{rankNum}</RankDiv>
+                    <RankDiv style={{ fontSize: "2rem" }}>{rankNum}</RankDiv>
                 )}
                 <div style={{}}>이메일:{rank.Post_Email}</div>
                 <div style={{}}>닉네임:{rank.Post_nick_name}</div>
