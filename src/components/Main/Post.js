@@ -86,7 +86,7 @@ const StyledButton = styled.div`
 const CommentDiv = styled.div`
     grid-area: co;
     border: 1px solid black;
-
+    overflow-y: auto;
     width: 100%;
     height: 100%;
 `;
