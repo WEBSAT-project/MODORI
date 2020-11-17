@@ -179,7 +179,10 @@ const Post = (props) => {
                             fontSize: "1rem",
                         }}
                     >
-                        글 쓴 시간 : {Post_Time.split("T")[0]}
+                        글 쓴 시간 :{" "}
+                        {`${Post_Time.split("T")[0]} ${
+                            Post_Time.split("T")[1].split(".")[0]
+                        }`}
                         {Post_Update}
                     </div>
                 </div>
