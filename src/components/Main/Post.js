@@ -11,7 +11,7 @@ const PostDiv = styled.div`
   display: grid;
   grid-row-gap: 0.5rem;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.1fr 52.917vh 50vh 0.3fr 0.2fr;
+  grid-template-rows: 0.1fr 52.917vh auto 0.3fr 0.2fr;
   grid-template-areas:
     "head  head"
     "body  body"
@@ -88,6 +88,7 @@ const CommentDiv = styled.div`
   overflow-y: auto;
   width: 100%;
   height: 100%;
+  max-height:50vh;
 `;
 
 const SERVER = "http://10.80.163.169:8080";
@@ -239,9 +240,9 @@ const Post = (props) => {
       {isOwner ? (
         <StyledButton
           onClick={() => onDelete(Post_Code)}
-          style={{ gridArea: "del" }}
+          style={{ gridArea: "del", textAlign:"center", }}
         >
-          삭제
+          게시글 삭제
         </StyledButton>
       ) : null}
     </PostDiv>
