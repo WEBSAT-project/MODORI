@@ -20,8 +20,9 @@ const SetProfile = ({ history }) => {
   const SERVER = "http://10.80.163.169:8080";
   const token = localStorage.getItem("token");
   const LoadingDiv = styled.div`
+    padding:300px 3rem 3rem;;
     width: 100%;
-    height: 80vh;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
