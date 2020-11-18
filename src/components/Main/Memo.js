@@ -77,8 +77,11 @@ const Memo = ({
   setTitle,
   content,
   setContent,
-  base64,
-  setBase64,
+  image,
+  setImage,
+  canvasState,
+  setCanvasState,
+  imgUpload,
 }) => {
   const handleChange = ({ text }) => {
     setContent(text);
