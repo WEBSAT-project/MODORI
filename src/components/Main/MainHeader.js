@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const HeaderDiv = styled.div`
   border-bottom: 2px solid black;
   box-sizing: border-box;
-  position:fixed;
+  position:${(props) => props.pos ?props.pos :  "fixed"};
   background-color:white;
   width:100%;
 `;
@@ -72,7 +72,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const MainHeader = ({ history }) => {
+const MainHeader = ({ history , pos }) => {
   const token = localStorage.getItem("token");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [decoded, setDecoded] = useState({
@@ -91,7 +91,7 @@ const MainHeader = ({ history }) => {
   // token ? setIsLoggedIn(true) : setIsLoggedIn(false);
 
   return (
-    <HeaderDiv>
+    <HeaderDiv pos={pos}>
       <NavContainer>
         <Logo
           onClick={() => history.push("/")}
@@ -197,5 +197,6 @@ const MainHeader = ({ history }) => {
       </NavContainer>
     </HeaderDiv>
   );
+    
 };
 export default withRouter(MainHeader);
