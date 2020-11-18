@@ -129,6 +129,7 @@ const Comment = ({ postCode, history, ableDel }) => {
         <CommentInputSubmit
           onClick={() => {
             postComments();
+            setComment_Text("");
           }}
         >
           입력
