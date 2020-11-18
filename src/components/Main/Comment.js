@@ -36,6 +36,7 @@ const CommentInputSubmit = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
+  background-color: #6df2c1;
   cursor: pointer;
 `;
 const CommentDel = styled.button`
@@ -80,7 +81,7 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
         },
       );
       console.log(a.status);
-      if (a.status == 200) {
+      if (a.status === 200) {
         getComments().then((res) => {
           // console.log(res.data.result.length);
           setComments(res.data.result);
@@ -120,7 +121,14 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
     return (
       <CommentBox>
         <div style={{ gridArea: "main" }}>{comment.Comment_Text}</div>
-        <div style={{ gridArea: "time" }}>{comment.Comment_Time}</div>
+        <div style={{ gridArea: "time" }}>
+          {`${comment.Comment_Time.split("T")[0]} ${
+            comment.Comment_Time.split("T")[1].split(".")[0]
+          }`}
+        </div>
+        {/* {`${Post_Time.split("T")[0]} ${
+              Post_Time.split("T")[1].split(".")[0]
+            }`} */}
         <div style={{ gridArea: "name" }}>{comment.nick_name}</div>
         {ableDel || nickName === comment.nick_name ? (
           <CommentDel
@@ -150,6 +158,7 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
             setComment_Text(e.target.value);
           }}
           value={comment_Text}
+          placeholder="다른 사람들과 소통해보세요~"
         />
         <CommentInputSubmit
           onClick={() => {

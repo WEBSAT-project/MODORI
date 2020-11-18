@@ -88,7 +88,7 @@ const CommentDiv = styled.div`
   overflow-y: auto;
   width: 100%;
   height: 100%;
-  max-height:50vh;
+  max-height: 50vh;
 `;
 
 const SERVER = "http://10.80.163.169:8080";
@@ -240,7 +240,7 @@ const Post = (props) => {
       {isOwner ? (
         <StyledButton
           onClick={() => onDelete(Post_Code)}
-          style={{ gridArea: "del", textAlign:"center", }}
+          style={{ gridArea: "del", textAlign: "center" }}
         >
           게시글 삭제
         </StyledButton>
