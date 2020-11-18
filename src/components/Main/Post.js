@@ -103,7 +103,7 @@ const Post = (props) => {
     Post_nick_name,
     image_pass,
   } = props.post;
-  const { isOwner, onDelete } = props;
+  const { isOwner, onDelete, ableDel } = props;
 
   // const Md = new MarkdownIt().use((Md) => SupportReactComponent(Md, []));
   function InlineCodeBlock(props) {
@@ -230,11 +230,7 @@ const Post = (props) => {
       </PostBody>
       <CommentDiv>
         {isOwner ? (
-          <Comment
-            postCode={Post_Code}
-            nickName={Post_nick_name}
-            ableDel={true}
-          />
+          <Comment postCode={Post_Code} nickName={Post_nick_name} ableDel />
         ) : (
           <Comment postCode={Post_Code} nickName={Post_nick_name} />
         )}

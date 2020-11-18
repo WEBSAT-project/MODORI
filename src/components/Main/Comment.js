@@ -56,11 +56,11 @@ const token = localStorage.getItem("token");
 const Comment = ({ postCode, history, ableDel }) => {
   const [comment_Text, setComment_Text] = useState("");
   const [comments, setComments] = useState([]);
-  const [currentCode, setCurrentCode] = useState();
+
+  const token = localStorage.getItem("token");
   const getComments = async () => {
     try {
       const comments = await Axios.get(`${SERVER}/getComments/${postCode}`);
-      console.log(comments);
       return comments;
     } catch (err) {
       console.log(err);
@@ -121,13 +121,12 @@ const Comment = ({ postCode, history, ableDel }) => {
     }
   };
   const commentList = comments.map((comment) => {
-    console.log(comment.Comment_Code);
     return (
       <CommentBox>
         <div style={{ gridArea: "main" }}>{comment.Comment_Text}</div>
         <div style={{ gridArea: "time" }}>{comment.Comment_Time}</div>
         <div style={{ gridArea: "name" }}>{comment.nick_name}</div>
-        {!ableDel ? (
+        {ableDel ? (
           <CommentDel
             style={{ gridArea: "del" }}
             onClick={() => commentDel(comment.Comment_Code)}

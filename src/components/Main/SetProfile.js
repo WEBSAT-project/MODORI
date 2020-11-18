@@ -81,7 +81,15 @@ const SetProfile = ({ history }) => {
   };
 
   const myPostList = myPosts.map((post, index) => {
-    return <Post post={post} onDelete={onDelete} key={index} isOwner={true} />;
+    return (
+      <Post
+        post={post}
+        onDelete={onDelete}
+        key={index}
+        isOwner={true}
+        ableDel={true}
+      />
+    );
   });
 
   return (

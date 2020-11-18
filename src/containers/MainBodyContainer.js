@@ -38,7 +38,7 @@ const MainBodyContainer = ({ data }) => {
 
   // const { title, email, postTime, updateTime, postText } = posts;
   const postList = posts.map((post) => {
-    return <Post post={post} key={post.Post_Code} />;
+    return <Post post={post} key={post.Post_Code} isOwner={false} />;
   });
 
   return (
