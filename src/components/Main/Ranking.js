@@ -13,7 +13,7 @@ const Stairs = styled.div`
   gap: 1rem;
   grid-auto-flow: column;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(${(props) => props.rankNum + 2}, 20vh);
+  grid-template-rows: 20vh 20vh 20vh 20vh 10vh repeat(${(props) => props.rankNum - 3}, 20vh);
   grid-template-areas:
     "SS FF TT "
     "SS F  TT "
@@ -22,12 +22,14 @@ const Stairs = styled.div`
     "B  B  B ";
 `;
 const Border = styled.div`
-  background-color: #bdbfbe;
-  height: 50%;
+  background-color: #26151B;
+  color:white;
+  height: 100%;
   font-weight: 1000;
   font-size: 2rem;
   grid-area: B;
 `;
+
 const FBorder = styled.div`
   border: 1rem solid #6df2c1;
   grid-area: F;
@@ -82,11 +84,12 @@ const Ranking = ({ rankList, rankNum }) => {
         <TBorder>3</TBorder>
         <Border
           style={{
-            textAlign: "left",
+            textAlign: "center",
             display: "grid",
-            gridTemplateColumns: "2fr 1fr 1fr",
+            gridTemplateColumns: "1fr 1fr 1fr",
             gridColumn: "auto / span 3",
             alignItems: "center",
+            justifyContent: "space-evenly"
           }}
         >
           <div>순위</div>

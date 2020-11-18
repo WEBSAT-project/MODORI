@@ -12,7 +12,7 @@ const PostDiv = styled.div`
   display: grid;
   grid-row-gap: 0.5rem;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.1fr 52.917vh auto 0.3fr 0.2fr;
+  grid-template-rows: 0.1fr 52.917vh auto 5vh 0.2fr;
   grid-template-areas:
     "head  head"
     "body  body"
@@ -38,6 +38,10 @@ const PostHeader = styled.div`
   display: flex;
   justify-content: space-between;
   grid-area: head;
+  background-color:#5EBF9B;
+  color:white;
+  padding-left:2rem;
+  padding-right:2rem;
 `;
 const PostBody = styled.div`
   height: 100%;
@@ -171,7 +175,7 @@ const Post = (props) => {
                     </div> */}
           <div
             style={{
-              fontWeight: "1000",
+              fontWeight: "1000", fontSize:"2.3rem",
             }}
           >
             {Title}
@@ -179,7 +183,7 @@ const Post = (props) => {
         </div>
         <div>
           <div
-            style={{ color: "#4c7364", fontWeight: "700", textAlign: "right" }}
+            style={{ color: "#26151B", fontWeight: "700", textAlign: "right" }}
           >
             {Post_nick_name ? Post_nick_name : <>이름 없음</>}
           </div>
@@ -242,7 +246,7 @@ const Post = (props) => {
       {isOwner ? (
         <StyledButton
           onClick={() => onDelete(Post_Code)}
-          style={{ gridArea: "del", textAlign: "center" }}
+          style={{ gridArea: "del", textAlign: "center", marginBottom:"25vh", }}
         >
           게시글 삭제
         </StyledButton>

@@ -14,7 +14,7 @@ const CommentBox = styled.div`
   grid-template-columns: 9.5fr 0.5fr 1fr;
   grid-template-rows: auto auto;
   grid-template-areas:
-    "name time time"
+    "name time del"
     "main main del";
   border-bottom: 1px solid #bdbfbe;
   grid-column: auto / span 2;
@@ -56,7 +56,8 @@ const CommentDel = styled.button`
     color: white;
   }
   transition: 0.2s ease-in-out;
-  background-color: #ffe0e2;
+  background-color: white;
+  color:gray;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -178,7 +179,7 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
             setComment_Text("");
           }}
         >
-          입력.
+          입력
         </CommentInputSubmit>
         {commentList}
       </CommentInputDiv>

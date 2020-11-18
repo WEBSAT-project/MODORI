@@ -100,11 +100,13 @@ const RankingContainer = () => {
                     ) : (
                         <RanksDiv
                             style={{
-                                textAlign:"left",
+                                textAlign:"center",
                                 borderBottom:"0.1rem solid black",
-                                display:"grid", 
-                                gridTemplateColumns:"2fr 1fr 1fr",
+                                display:"grid",
+                                gridTemplateColumns:"1fr 1fr 1fr",
                                 gridColumn:"auto / span 3",
+                                justifyContent: "space-evenly",
+                                fontSize:"1.5rem",
                             }}
                         >
                             <div style={{fontWeight:"500",}}>{rankNum}등</div>

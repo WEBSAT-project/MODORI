@@ -6,8 +6,11 @@ import jwt_decode from "jwt-decode";
 import Swal from "sweetalert2";
 
 const HeaderDiv = styled.div`
-  border-bottom: 2px solid #bdbfbe;
+  border-bottom: 2px solid black;
   box-sizing: border-box;
+  position:fixed;
+  background-color:white;
+  width:100%;
 `;
 
 const NavContainer = styled.div`
@@ -21,7 +24,7 @@ const NavContainer = styled.div`
   //justify-items:center;
   gap: 0.5rem;
   grid-template-columns: 2fr 2fr 2fr 2fr 2fr 3fr;
-  grid-template-rows: 1vh 20vh 1vh;
+  grid-template-rows: 1vh 10vh 1vh;
   grid-template-areas: " .    .     .  .    .   .  " //1
     " logo share my memo ranking  log  " //2
     " .    .     .  .    .   .  "; //3
@@ -52,8 +55,8 @@ const Log = styled.div`
 const Logo = styled.img.attrs({
   src: FullLogo,
 })`
-  width: 7rem;
-  max-width: 7rem;
+  width: 4rem;
+  max-width: 4rem;
   margin: 1rem;
   cursor: pointer;
 `;
