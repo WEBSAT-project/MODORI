@@ -5,41 +5,41 @@ import Axios from "axios";
 import Swal from "sweetalert2";
 
 const CommentBox = styled.div`
-    display:grid;
-    height:auto;
-    direction:wrap;
-    word-wrap: break-word;
-    grid-template-columns:9.5fr 0.5fr 1fr;
-    grid-template-rows:auto auto;
-    grid-template-areas:
+  display: grid;
+  height: auto;
+  direction: wrap;
+  word-wrap: break-word;
+  grid-template-columns: 9.5fr 0.5fr 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
     "name time time"
     "main main del";
-    border-bottom: 1px solid black;
-    grid-column:auto / span 2;
+  border-bottom: 1px solid black;
+  grid-column: auto / span 2;
 `;
 const CommentInputDiv = styled.div`
-    padding:0.5rem;
-    display:grid;
-    gap:0.5rem;
-    grid-template-columns:10fr 1fr;
-    grid-template-rows:5vh ;
+  padding: 0.5rem;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 10fr 1fr;
+  grid-template-rows: 5vh;
 `;
 
 const CommentInput = styled.input`
-    font-size:1rem;
+  font-size: 1rem;
 `;
 
 const CommentInputSubmit = styled.div`
-    border: 1px solid black;
-    width: 100%;
-    display:grid;
-    align-items:center;
-    justify-content:center;
-    cursor: pointer;
+  border: 1px solid black;
+  width: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 const CommentDel = styled.button`
-    border: 1px solid black;
-    cursor: pointer;
+  border: 1px solid black;
+  cursor: pointer;
 `;
 
 const SERVER = "http://10.80.163.169:8080";
@@ -131,6 +131,7 @@ const Comment = ({ postCode, history, ableDel }) => {
         <CommentInputSubmit
           onClick={() => {
             postComments();
+            setComment_Text("");
           }}
         >
           입력
