@@ -102,8 +102,23 @@ const SetProfile = ({ history }) => {
             <h3>로딩중...</h3>
           </LoadingDiv>
         ) : (
-          <MainBody postList={myPostList} />
+          <>
+            {myPostList.length === 0 ? (
+              <LoadingDiv>나만의 글을 작성해보세요!</LoadingDiv>
+            ) : (
+              <MainBody postList={myPostList}></MainBody>
+            )}
+          </>
         )}
+        {/* {isLoading ? (
+          <LoadingDiv>
+            <Loader type="Grid" color="#5ebf9b" />
+            <h3>로딩중...</h3>
+          </LoadingDiv>
+        ) : (
+            {}
+          <MainBody postList={myPostList} />
+        )} */}
       </SetProfileDiv>
     </>
   );

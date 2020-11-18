@@ -15,7 +15,7 @@ const MainBodyDiv = styled.div`
   width: 100%;
   height: 80vh;
   padding: 3rem;
-  padding-top:20vh;
+  padding-top: 20vh;
 `;
 
 const LoadingDiv = styled.div`
@@ -48,16 +48,23 @@ const MainBody = ({ postList, isLoading, setIsLoading }) => {
           <h3>로딩중...</h3>
         </LoadingDiv>
       ) : (
-        <PostListDiv>
-          {postList}
-          <TopButton
-            onClick={() => {
-              window.scrollTo(0, 0);
-            }}
-          >
-            위로!
-          </TopButton>
-        </PostListDiv>
+        <>
+          {postList.length === 0 ? (
+            <LoadingDiv>나만의 글을 작성해보세요!</LoadingDiv>
+          ) : (
+            postList
+          )}
+        </>
+        // <PostListDiv>
+        //   {postList}
+        //   <TopButton
+        //     onClick={() => {
+        //       window.scrollTo(0, 0);
+        //     }}
+        //   >
+        //     위로!
+        //   </TopButton>
+        // </PostListDiv>
       )}
     </MainBodyDiv>
     // {isLoading ? (
