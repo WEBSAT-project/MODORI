@@ -15,6 +15,7 @@ const MainBodyDiv = styled.div`
   width: 100%;
   height: 80vh;
   padding: 3rem;
+  padding-top:20vh;
 `;
 
 const LoadingDiv = styled.div`
