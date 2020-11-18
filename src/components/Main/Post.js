@@ -11,7 +11,7 @@ const PostDiv = styled.div`
     display: grid;
     grid-row-gap: 0.5rem;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.1fr 52.917vh 20vh 0.3fr 0.2fr;
+    grid-template-rows: 0.1fr 52.917vh 50vh 0.3fr 0.2fr;
     grid-template-areas:
         "head  head"
         "body  body"
@@ -26,9 +26,8 @@ const PostCanvasContainer = styled.div`
     grid-area: draw;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
     img {
-        max-width: 100%;
-        min-width: 100%;
-        min-height: 100%;
+        width: 100%;
+        height: 100%;
         background-size: cover;
     }
 `;

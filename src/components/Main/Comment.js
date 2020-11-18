@@ -5,17 +5,36 @@ import Axios from "axios";
 import Swal from "sweetalert2";
 
 const CommentBox = styled.div`
+    display:grid;
+    direction:wrap;
+    word-wrap: break-word;
+    grid-template-columns:9.5fr 0.5fr 1fr;
+    grid-template-rows:auto auto;
+    grid-template-areas:
+    "name time time"
+    "main main del";
     border: 1px solid black;
+    grid-column:auto / span 2;
+    order:1;
 `;
 const CommentInputDiv = styled.div`
-    background: aqua;
+    display:grid;
+    grid-template-columns:10fr 1fr;
+    grid-template-rows:auto 10vh;
 `;
 
-const CommentInput = styled.input``;
+const CommentInput = styled.input`
+    order:2;
+`;
 
 const CommentInputSubmit = styled.div`
     border: 1px solid black;
-    width: 10%;
+    width: 100%;
+    order:3;
+    display:grid;
+    align-items:center;
+    justify-content:center;
+    cursor: pointer;
 `;
 const CommentDel = styled.button`
     border: 1px solid black;
@@ -82,11 +101,11 @@ const Comment = ({ postCode, history, ableDel }) => {
     const commentList = comments.map((comment) => {
         return (
             <CommentBox>
-                <div>{comment.Comment_Text}</div>
-                <div>{comment.Comment_Time}</div>
-                <div>{comment.nick_name}</div>
+                <div style={{gridArea:"main",}}>{comment.Comment_Text}</div>
+                <div style={{gridArea:"time",}}>{comment.Comment_Time}</div>
+                <div style={{gridArea:"name",}}>{comment.nick_name}</div>
                 {!ableDel ? (
-                    <CommentDel onClick={commentDel}>삭제</CommentDel>
+                    <CommentDel style={{gridArea:"del",}} onClick={commentDel}>삭제</CommentDel>
                 ) : null}
             </CommentBox>
         );
