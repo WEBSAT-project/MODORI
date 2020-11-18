@@ -8,8 +8,8 @@ import Axios from "axios";
 import Swal from "sweetalert2";
 import Post from "./Post";
 const MainDiv = styled.div`
-    width: 100%;
-    background-color: white;
+  width: 100%;
+  background-color: white;
 `;
 
 // const Logo2 = styled.img.attrs({
@@ -31,24 +31,24 @@ const MainDiv = styled.div`
 // `;
 
 const SearchInput = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    margin: 1rem;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
-    background: white;
-    input {
-        padding: 0.5rem;
-        border: none;
-        outline: none;
-    }
-    svg {
-        cursor: pointer;
-        margin: 0.3rem;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 1rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
+  background: white;
+  input {
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+  }
+  svg {
+    cursor: pointer;
+    margin: 0.3rem;
+  }
 `;
 
 /* <SearchInput>
@@ -63,27 +63,25 @@ const SearchInput = styled.div`
 const SERVER = "http://10.80.163.169:8080";
 
 const Main = () => {
-    const [searchInput, setSearchInput] = useState("");
-    const [searchData, setSearchData] = useState();
-    const handleSearch = async () => {
-        try {
-            const { data } = await Axios.get(
-                `${SERVER}/?keyword=${searchInput}`
-            );
+  const [searchInput, setSearchInput] = useState("");
+  const [searchData, setSearchData] = useState();
+  const handleSearch = async () => {
+    try {
+      const { data } = await Axios.get(`${SERVER}/?keyword=${searchInput}`);
 
-            const searchPosts = data.result;
-            setSearchData(searchPosts);
-        } catch (err) {
-            console.log(err);
-        }
-    };
+      const searchPosts = data.result;
+      setSearchData(searchPosts);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-    return (
-        <MainDiv>
-            <MainHeader />
-            <MainBodyContainer data={searchData} />
-        </MainDiv>
-    );
+  return (
+    <MainDiv>
+      <MainHeader />
+      <MainBodyContainer data={searchData} />
+    </MainDiv>
+  );
 };
 
 export default Main;
