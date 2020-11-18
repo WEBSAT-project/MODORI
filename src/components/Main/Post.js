@@ -241,7 +241,10 @@ const Post = (props) => {
       </CommentDiv>
       <Border />
       {isOwner ? (
-        <StyledButton onClick={() => onDelete()} style={{ gridArea: "del" }}>
+        <StyledButton
+          onClick={() => onDelete(Post_Code)}
+          style={{ gridArea: "del" }}
+        >
           삭제
         </StyledButton>
       ) : null}

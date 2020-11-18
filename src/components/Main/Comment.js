@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const CommentBox = styled.div`
   display: grid;
+  height: auto;
   direction: wrap;
   word-wrap: break-word;
   grid-template-columns: 9.5fr 0.5fr 1fr;
@@ -13,24 +14,24 @@ const CommentBox = styled.div`
   grid-template-areas:
     "name time time"
     "main main del";
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   grid-column: auto / span 2;
-  order: 1;
 `;
 const CommentInputDiv = styled.div`
+  padding: 0.5rem;
   display: grid;
+  gap: 0.5rem;
   grid-template-columns: 10fr 1fr;
-  grid-template-rows: auto 10vh;
+  grid-template-rows: 5vh;
 `;
 
 const CommentInput = styled.input`
-  order: 2;
+  font-size: 1rem;
 `;
 
 const CommentInputSubmit = styled.div`
   border: 1px solid black;
   width: 100%;
-  order: 3;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -38,6 +39,15 @@ const CommentInputSubmit = styled.div`
 `;
 const CommentDel = styled.button`
   border: 1px solid black;
+  &:hover {
+    background-color: #ed4337;
+    color: white;
+  }
+  transition: 0.2s ease-in-out;
+  background-color: #ffe0e2;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 `;
 
 const SERVER = "http://10.80.163.169:8080";
@@ -45,10 +55,11 @@ const token = localStorage.getItem("token");
 const Comment = ({ postCode, history, ableDel }) => {
   const [comment_Text, setComment_Text] = useState("");
   const [comments, setComments] = useState([]);
-  const [commentCode, setCommentCode] = useState();
+
   const getComments = async () => {
     try {
       const comments = await Axios.get(`${SERVER}/getComments/${postCode}`);
+      console.log(comments);
       return comments;
     } catch (err) {
       console.log(err);
@@ -85,10 +96,8 @@ const Comment = ({ postCode, history, ableDel }) => {
   const commentDel = async () => {
     try {
       const { data } = await Axios.delete(`${SERVER}/C_delete/${postCode}`);
-      comments.map((comment) => console.log(comment.Comment_Code));
-
       if (data.message === "comment delete") {
-        comments.filter((comment) => comment.Comment_Code);
+        comments.filter((comment) => comment.Post_Code !== postCode);
         console.log(comments);
       }
     } catch (err) {
@@ -130,6 +139,7 @@ const Comment = ({ postCode, history, ableDel }) => {
         <CommentInputSubmit
           onClick={() => {
             postComments();
+            setComment_Text("");
           }}
         >
           입력
