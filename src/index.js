@@ -4,12 +4,12 @@ import App from "./components/App";
 import { HashRouter } from "react-router-dom";
 
 ReactDOM.render(
-    <React.StrictMode>
-        <HashRouter>
-            <App />
-        </HashRouter>
-    </React.StrictMode>,
-    document.getElementById("root")
+  <React.StrictMode>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </React.StrictMode>,
+  document.getElementById("root"),
 );
 
 // 분류방법 : CSS, JS 그리고 테스트 파일을 기능이나 라우트로 분류된 폴더에 같이 두는 방법입니다

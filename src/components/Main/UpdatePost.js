@@ -4,16 +4,16 @@ import MainFooter from "./MainFooter";
 import MainHeader from "./MainHeader";
 
 const UpdatePostDiv = styled.div`
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 `;
 
 const UpdatePost = ({ history }) => {
-    return (
-        <UpdatePostDiv>
-            <MainHeader />
-            <MainFooter />
-        </UpdatePostDiv>
-    );
+  return (
+    <UpdatePostDiv>
+      <MainHeader />
+      <MainFooter />
+    </UpdatePostDiv>
+  );
 };
 
 export default UpdatePost;
