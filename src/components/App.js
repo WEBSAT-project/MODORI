@@ -20,7 +20,7 @@ const App = () => {
         <Route exact path="/" component={ShareBoard} />
         <Route exact path="/login" component={LoginContainer} />
         <Route exact path="/join" component={JoinContainer} />
-        <Route exact path="/setprofile" component={SetProfile} />
+        <Route exact path="/setprofile" component={ProfileContainer} />
         <Route exact path="/updatepost" component={UpdatePost} />
         <Route exact path="/memo" component={MemoContainer} />
         <Route exact path="/ranking" component={RankingContainer} />
