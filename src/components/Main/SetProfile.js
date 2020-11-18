@@ -38,7 +38,7 @@ const SetProfile = ({ history }) => {
             },
             history.replace("/login"),
           )
-        : false;
+        : null;
     }
   }, []);
   const getMyPosts = async () => {
@@ -81,11 +81,12 @@ const SetProfile = ({ history }) => {
   };
 
   const myPostList = myPosts.map((post, index) => {
+    console.log(post);
     return (
       <Post
         post={post}
         onDelete={onDelete}
-        key={index}
+        key={post.Post_Code}
         isOwner={true}
         ableDel={true}
       />
