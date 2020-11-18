@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
+import styled,{keyframes} from "styled-components";
 import MainHeader from "./MainHeader";
 
 const RankingDiv = styled.div`
@@ -23,6 +23,7 @@ const Stairs = styled.div`
     "S  F  T "
     "B  B  B ";
 `;
+
 const Border = styled.div`
   background-color: #26151B;
   color:white;
@@ -31,6 +32,16 @@ const Border = styled.div`
   font-size: 2rem;
   grid-area: B;
 `;
+
+const fill = keyframes`
+  0%{
+    height:100%;
+  }
+  100%{
+    height:0%;
+  }
+`;
+
 
 const FBorder = styled.div`
   border: 1rem solid #6df2c1;
@@ -47,6 +58,16 @@ const FBorder = styled.div`
   color: white;
 `;
 
+const FFBorder = styled.div`
+  grid-area: F;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  animation: ${fill} 1s ;
+  animation-fill-mode: forwards;
+  animation-timing-function:ease;
+`;
+
 const SBorder = styled.div`
   grid-area: S;
   width: 100%;
@@ -59,6 +80,16 @@ const SBorder = styled.div`
   justify-content: flex-start;
   font-size: 7rem;
   color: white;
+`;
+
+const SSBorder = styled.div`
+  grid-area: S;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  animation: ${fill} 1s ;
+  animation-fill-mode: forwards;
+  animation-timing-function:ease;
 `;
 
 const TBorder = styled.div`
@@ -75,6 +106,16 @@ const TBorder = styled.div`
   color: white;
 `;
 
+const TTBorder = styled.div`
+  grid-area: T;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  animation: ${fill} 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function:ease;
+`;
+
 const Ranking = ({ rankList, rankNum }) => {
   console.log(rankNum);
   return (
@@ -82,8 +123,11 @@ const Ranking = ({ rankList, rankNum }) => {
       <MainHeader />
       <Stairs rankNum={rankNum}>
         <FBorder>1</FBorder>
+        <FFBorder/>
         <SBorder>2</SBorder>
+        <SSBorder/>
         <TBorder>3</TBorder>
+        <TTBorder/>
         <Border
           style={{
             textAlign: "center",
