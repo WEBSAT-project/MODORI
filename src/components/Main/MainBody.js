@@ -20,7 +20,7 @@ const MainBodyDiv = styled.div`
 
 const LoadingDiv = styled.div`
   width: 100%;
-  height: 300px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;

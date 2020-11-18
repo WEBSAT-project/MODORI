@@ -142,7 +142,7 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
         {/* {`${Post_Time.split("T")[0]} ${
               Post_Time.split("T")[1].split(".")[0]
             }`} */}
-        <div style={{ gridArea: "name" }}>{comment.nick_name}</div>
+        <div style={{ gridArea: "name", fontSize:"1.2rem", fontWeight:"700", }}>{comment.nick_name}</div>
         {comment.nick_name === (user && user.nick) ? (
           <CommentDel
             style={{ gridArea: "del" }}
