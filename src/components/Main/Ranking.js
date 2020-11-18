@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import MainHeader from "./MainHeader";
 
-const RankingDiv = styled.div``;
+const RankingDiv = styled.div`
+`;
 
 const Stairs = styled.div`
+  padding-top:20vh;
   padding-left: 3rem;
   padding-right: 3rem;
   padding-bottom: 3rem;
