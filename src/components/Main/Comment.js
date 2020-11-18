@@ -99,7 +99,7 @@ const Comment = ({ postCode, history, ableDel }) => {
             //     (post) => post.Post_Code !== postCode
             // )
         });
-    }, []);
+    }, [comments]);
     return (
         <>
             <CommentInputDiv>
