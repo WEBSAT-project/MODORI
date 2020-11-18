@@ -169,27 +169,32 @@ const Post = (props) => {
           {/* <div style={{ fontSize: "1rem", color: "dimgray" }}>
                         {Post_Code}#
                     </div> */}
-          <div>{Title}</div>
+          <div
+            style={{
+              fontWeight: "1000",
+            }}
+          >
+            {Title}
+          </div>
         </div>
-        <div
-          style={{
-            color: "#4c7364",
-            fontWeight: "bold",
-            display: "flex",
-            alignItems: "flex-end",
-          }}
-        >
-          {Post_nick_name ? Post_nick_name : <>이름 없음</>}
+        <div>
+          <div
+            style={{ color: "#4c7364", fontWeight: "700", textAlign: "right" }}
+          >
+            {Post_nick_name ? Post_nick_name : <>이름 없음</>}
+          </div>
           <div
             style={{
               fontFamily: "lighter",
               color: "dimgrey",
               fontSize: "1rem",
+              textAlign: "left",
             }}
           >
-            글 쓴 시간 : {timeCounting(Post_Time, { lang: "ko" })}
-            {Post_Update}
+            글 쓴 시간 : {timeCounting(Post_Time, { lang: "ko" })}{" "}
           </div>
+
+          {Post_Update}
         </div>
       </PostHeader>
       <PostBody>
