@@ -50,14 +50,13 @@ const CommentInputSubmit = styled.button`
   }
 `;
 const CommentDel = styled.button`
-  border: 1px solid black;
   &:hover {
     background-color: #ed4337;
     color: white;
   }
   transition: 0.2s ease-in-out;
   background-color: white;
-  color:gray;
+  color: gray;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -104,15 +103,18 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
         });
         console.log("success");
       }
+      setComment_Text("");
       return a;
     } catch (err) {
-      switch (err.status) {
+      console.log(err.response.status);
+      switch (err.response.status) {
         case 403:
           Swal.fire({
             title: err.response.data.message,
             icon: "error",
           });
           break;
+
         default:
       }
     }
@@ -142,7 +144,11 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
         {/* {`${Post_Time.split("T")[0]} ${
               Post_Time.split("T")[1].split(".")[0]
             }`} */}
-        <div style={{ gridArea: "name", fontSize:"1.2rem", fontWeight:"700", }}>{comment.nick_name}</div>
+        <div
+          style={{ gridArea: "name", fontSize: "1.2rem", fontWeight: "700" }}
+        >
+          {comment.nick_name}
+        </div>
         {comment.nick_name === (user && user.nick) ? (
           <CommentDel
             style={{ gridArea: "del" }}
@@ -172,11 +178,15 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
           }}
           value={comment_Text}
           placeholder="다른 사람들과 소통해보세요~"
+          onKeyPress={(e) => {
+            token ? postComments() : history.push("/login");
+          }}
         />
         <CommentInputSubmit
+          // postComments()
+
           onClick={() => {
-            postComments();
-            setComment_Text("");
+            token ? postComments() : history.push("/login");
           }}
         >
           입력

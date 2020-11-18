@@ -60,11 +60,11 @@ const JoinContainer = ({ history }) => {
 
       history.push("/login");
     } catch (err) {
-      console.log(err.response);
+      console.log(err.response.data.message);
       switch (err.response.status) {
         case 403:
           Swal.fire({
-            title: "이메일 형식이 아닙니다",
+            title: err.response.data.message,
             icon: "error",
           });
           break;
@@ -99,7 +99,7 @@ const JoinContainer = ({ history }) => {
           break;
         case 403:
           Swal.fire({
-            title: "형식이 잘못되었습니다",
+            title: err.response.data.message,
             icon: "error",
           });
           break;
@@ -138,6 +138,12 @@ const JoinContainer = ({ history }) => {
         case 401:
           Swal.fire({
             title: "중복되는 닉네임이 있습니다",
+            icon: "error",
+          });
+          break;
+        case 403:
+          Swal.fire({
+            title: err.response.data.message,
             icon: "error",
           });
           break;
