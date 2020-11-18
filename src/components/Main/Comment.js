@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const CommentBox = styled.div`
     display:grid;
+    height:auto;
     direction:wrap;
     word-wrap: break-word;
     grid-template-columns:9.5fr 0.5fr 1fr;
@@ -13,24 +14,24 @@ const CommentBox = styled.div`
     grid-template-areas:
     "name time time"
     "main main del";
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     grid-column:auto / span 2;
-    order:1;
 `;
 const CommentInputDiv = styled.div`
+    padding:0.5rem;
     display:grid;
+    gap:0.5rem;
     grid-template-columns:10fr 1fr;
-    grid-template-rows:auto 10vh;
+    grid-template-rows:5vh ;
 `;
 
 const CommentInput = styled.input`
-    order:2;
+    font-size:1rem;
 `;
 
 const CommentInputSubmit = styled.div`
     border: 1px solid black;
     width: 100%;
-    order:3;
     display:grid;
     align-items:center;
     justify-content:center;
@@ -38,6 +39,7 @@ const CommentInputSubmit = styled.div`
 `;
 const CommentDel = styled.button`
     border: 1px solid black;
+    cursor: pointer;
 `;
 
 const SERVER = "http://10.80.163.169:8080";
