@@ -6,9 +6,7 @@ import MdEditor from "react-markdown-editor-lite";
 import MarkdownIt from "markdown-it";
 import "react-markdown-editor-lite/lib/index.css";
 import { create } from "simple-drawing-board";
-import base64Img from "base64-img";
 import Swal from "sweetalert2";
-import { Base64 } from "js-base64";
 import domtoimage from "dom-to-image";
 
 const MemoDiv = styled.div`
