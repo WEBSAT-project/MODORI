@@ -39,6 +39,14 @@ const CommentInputSubmit = styled.div`
 `;
 const CommentDel = styled.button`
   border: 1px solid black;
+  &:hover {
+    background-color: #ed4337;
+    color: white;
+  }
+  transition: 0.2s ease-in-out;
+  background-color: #ffe0e2;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 `;
 
