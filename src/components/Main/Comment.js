@@ -179,7 +179,9 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
           value={comment_Text}
           placeholder="다른 사람들과 소통해보세요~"
           onKeyPress={(e) => {
-            token ? postComments() : history.push("/login");
+            if (e.key === "Enter") {
+              token ? postComments() : history.push("/login");
+            }
           }}
         />
         <CommentInputSubmit
