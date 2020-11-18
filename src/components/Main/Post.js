@@ -230,7 +230,15 @@ const Post = (props) => {
                 {/* 댓글 컴포넌트를 여기 넣어주세요! */}
             </PostBody>
             <CommentDiv>
-                <Comment postCode={Post_Code} nickName={Post_nick_name} />
+                {isOwner ? (
+                    <Comment
+                        postCode={Post_Code}
+                        nickName={Post_nick_name}
+                        ableDel={true}
+                    />
+                ) : (
+                    <Comment postCode={Post_Code} nickName={Post_nick_name} />
+                )}
             </CommentDiv>
             <Border />
             {isOwner ? (

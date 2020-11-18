@@ -17,10 +17,13 @@ const CommentInputSubmit = styled.div`
     border: 1px solid black;
     width: 10%;
 `;
+const CommentDel = styled.button`
+    border: 1px solid black;
+`;
 
 const SERVER = "http://10.80.163.169:8080";
 const token = localStorage.getItem("token");
-const Comment = ({ postCode, history }) => {
+const Comment = ({ postCode, history, ableDel }) => {
     const [comment_Text, setComment_Text] = useState("");
     const [comments, setComments] = useState([]);
 
@@ -37,7 +40,6 @@ const Comment = ({ postCode, history }) => {
     };
 
     const postComments = async () => {
-        console.log(comment_Text);
         try {
             const a = await Axios.post(
                 `${SERVER}/create_comment/${postCode}`,
@@ -50,7 +52,7 @@ const Comment = ({ postCode, history }) => {
                     },
                 }
             );
-
+            console.log(a);
             return a;
         } catch (err) {
             switch (err.response.status) {
@@ -64,13 +66,28 @@ const Comment = ({ postCode, history }) => {
             }
         }
     };
-
+    const commentDel = async () => {
+        try {
+            const { data } = await Axios.delete(
+                `${SERVER}/C_delete/${postCode}`
+            );
+            if (data.message === "comment delete") {
+                comments.filter((comment) => comment.Post_Code !== postCode);
+                console.log(comments);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
     const commentList = comments.map((comment) => {
         return (
             <CommentBox>
                 <div>{comment.Comment_Text}</div>
                 <div>{comment.Comment_Time}</div>
                 <div>{comment.nick_name}</div>
+                {!ableDel ? (
+                    <CommentDel onClick={commentDel}>삭제</CommentDel>
+                ) : null}
             </CommentBox>
         );
     });
@@ -78,6 +95,9 @@ const Comment = ({ postCode, history }) => {
         getComments().then((res) => {
             // console.log(res.data.result.length);
             setComments(res.data.result);
+            // myPosts.filter(
+            //     (post) => post.Post_Code !== postCode
+            // )
         });
     }, []);
     return (
@@ -92,7 +112,6 @@ const Comment = ({ postCode, history }) => {
                 <CommentInputSubmit
                     onClick={() => {
                         postComments();
-                        history.go(0);
                     }}
                 >
                     입력
