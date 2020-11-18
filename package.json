@@ -29,6 +29,7 @@
     "simple-drawing-board": "^3.1.2",
     "styled-components": "^5.2.1",
     "sweetalert2": "^10.9.0",
+    "time-counting": "^1.0.7",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

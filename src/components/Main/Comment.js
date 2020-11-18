@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Axios from "axios";
 import Swal from "sweetalert2";
 import jwtDecode from "jwt-decode";
+import timeCounting from "time-counting";
 
 const CommentBox = styled.div`
   display: grid;
@@ -62,10 +63,10 @@ const CommentDel = styled.button`
 `;
 
 const SERVER = "http://10.80.163.169:8080";
-const token = localStorage.getItem("token");
-const user = jwtDecode(token);
 
 const Comment = ({ postCode, history, ableDel, nickName }) => {
+  const token = localStorage.getItem("token");
+  const user = token && jwtDecode(token);
   const [comment_Text, setComment_Text] = useState("");
   const [comments, setComments] = useState([]);
 
@@ -128,20 +129,20 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
     }
   };
   const commentList = comments.map((comment) => {
-    console.log(user.nick, nickName);
     return (
       <CommentBox>
         <div style={{ gridArea: "main" }}>{comment.Comment_Text}</div>
         <div style={{ gridArea: "time" }}>
-          {`${comment.Comment_Time.split("T")[0]} ${
+          {/* {`${comment.Comment_Time.split("T")[0]} ${
             comment.Comment_Time.split("T")[1].split(".")[0]
-          }`}
+          }`} */}
+          {timeCounting(comment.Comment_Time, { lang: "ko" })}
         </div>
         {/* {`${Post_Time.split("T")[0]} ${
               Post_Time.split("T")[1].split(".")[0]
             }`} */}
         <div style={{ gridArea: "name" }}>{comment.nick_name}</div>
-        {comment.nick_name === user.nick ? (
+        {comment.nick_name === (user && user.nick) ? (
           <CommentDel
             style={{ gridArea: "del" }}
             onClick={() => commentDel(comment.Comment_Code)}

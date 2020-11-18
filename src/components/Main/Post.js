@@ -6,6 +6,7 @@ import gfm from "remark-gfm";
 import Swal from "sweetalert2";
 import Axios from "axios";
 import Comment from "./Comment";
+import timeCounting from "time-counting";
 
 const PostDiv = styled.div`
   display: grid;
@@ -186,10 +187,7 @@ const Post = (props) => {
               fontSize: "1rem",
             }}
           >
-            글 쓴 시간 :{" "}
-            {`${Post_Time.split("T")[0]} ${
-              Post_Time.split("T")[1].split(".")[0]
-            }`}
+            글 쓴 시간 : {timeCounting(Post_Time, { lang: "ko" })}
             {Post_Update}
           </div>
         </div>
