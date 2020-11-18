@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import Axios from "axios";
 import Swal from "sweetalert2";
+import jwtDecode from "jwt-decode";
 
 const CommentBox = styled.div`
   display: grid;
@@ -28,26 +29,24 @@ const CommentInputDiv = styled.div`
 
 const CommentInput = styled.input`
   font-size: 1rem;
-  border:0; 
-  outline:0;
-  border-bottom:0.1rem solid #bdbfbe;
-  
+  border: 0;
+  outline: 0;
+  border-bottom: 0.1rem solid #bdbfbe;
 `;
 
 const CommentInputSubmit = styled.button`
-  border:0; 
+  border: 0;
   border-radius: 5px;
   width: 100%;
   display: grid;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background-color:#6DF2C1;
+  background-color: #6df2c1;
   &:active {
-    background-color: #4C7364;
+    background-color: #4c7364;
     color: white;
   }
-
 `;
 const CommentDel = styled.button`
   border: 1px solid black;
@@ -64,6 +63,8 @@ const CommentDel = styled.button`
 
 const SERVER = "http://10.80.163.169:8080";
 const token = localStorage.getItem("token");
+const user = jwtDecode(token);
+
 const Comment = ({ postCode, history, ableDel, nickName }) => {
   const [comment_Text, setComment_Text] = useState("");
   const [comments, setComments] = useState([]);
@@ -127,7 +128,7 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
     }
   };
   const commentList = comments.map((comment) => {
-    console.log(comment.nick_name, nickName);
+    console.log(user.nick, nickName);
     return (
       <CommentBox>
         <div style={{ gridArea: "main" }}>{comment.Comment_Text}</div>
@@ -140,7 +141,7 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
               Post_Time.split("T")[1].split(".")[0]
             }`} */}
         <div style={{ gridArea: "name" }}>{comment.nick_name}</div>
-        {ableDel || nickName === comment.nick_name ? (
+        {comment.nick_name === user.nick ? (
           <CommentDel
             style={{ gridArea: "del" }}
             onClick={() => commentDel(comment.Comment_Code)}

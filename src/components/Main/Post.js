@@ -93,7 +93,6 @@ const CommentDiv = styled.div`
 
 const SERVER = "http://10.80.163.169:8080";
 const Post = (props) => {
-  console.log(props);
   const {
     Title,
     Post_Time,
