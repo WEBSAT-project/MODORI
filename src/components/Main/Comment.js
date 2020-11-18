@@ -178,7 +178,7 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
             setComment_Text("");
           }}
         >
-          입력
+          입력.
         </CommentInputSubmit>
         {commentList}
       </CommentInputDiv>
