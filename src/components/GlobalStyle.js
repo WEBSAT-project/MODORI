@@ -10,8 +10,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
 ::-webkit-scrollbar {
-  width: 7px;  /* 세로축 스크롤바 길이 */
-  height: 20px;  /* 가로축 스크롤바 길이 */
+  width: 5px;  /* 세로축 스크롤바 길이 */
+  height: 7px;  /* 가로축 스크롤바 길이 */
 }
 ::-webkit-scrollbar-track {
   background-color: lightblue;
