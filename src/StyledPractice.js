@@ -25,7 +25,6 @@ const StyledLogin = styled.div`
 
   //hover event 
     ${({ backgroundColor }) => {
-    console.log(backgroundColor);
     return css`
       &:hover {
         background-color: ${lighten(0.1, backgroundColor)};
@@ -38,7 +37,6 @@ const StyledLogin = styled.div`
 
     //size function
     ${({ small }) => {
-    console.log(small, "small");
     if (small) {
       return css`
         width: 20%;

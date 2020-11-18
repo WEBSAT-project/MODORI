@@ -53,11 +53,10 @@ const CommentDel = styled.button`
 
 const SERVER = "http://10.80.163.169:8080";
 const token = localStorage.getItem("token");
-const Comment = ({ postCode, history, ableDel }) => {
+const Comment = ({ postCode, history, ableDel, nickName }) => {
   const [comment_Text, setComment_Text] = useState("");
   const [comments, setComments] = useState([]);
 
-  const token = localStorage.getItem("token");
   const getComments = async () => {
     try {
       const comments = await Axios.get(`${SERVER}/getComments/${postCode}`);
@@ -109,11 +108,7 @@ const Comment = ({ postCode, history, ableDel }) => {
       const { data } = await Axios.delete(`${SERVER}/C_delete/${commentCode}`);
 
       getComments().then((res) => {
-        // console.log(res.data.result.length);
         setComments(res.data.result);
-        // myPosts.filter(
-        //     (post) => post.Post_Code !== postCode
-        // )
       });
       console.log(data, commentCode);
     } catch (err) {
@@ -121,12 +116,13 @@ const Comment = ({ postCode, history, ableDel }) => {
     }
   };
   const commentList = comments.map((comment) => {
+    console.log(comment.nick_name, nickName);
     return (
       <CommentBox>
         <div style={{ gridArea: "main" }}>{comment.Comment_Text}</div>
         <div style={{ gridArea: "time" }}>{comment.Comment_Time}</div>
         <div style={{ gridArea: "name" }}>{comment.nick_name}</div>
-        {ableDel ? (
+        {ableDel || nickName === comment.nick_name ? (
           <CommentDel
             style={{ gridArea: "del" }}
             onClick={() => commentDel(comment.Comment_Code)}
