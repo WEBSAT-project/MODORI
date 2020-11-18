@@ -14,7 +14,7 @@ const CommentBox = styled.div`
   grid-template-areas:
     "name time time"
     "main main del";
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #bdbfbe;
   grid-column: auto / span 2;
 `;
 
@@ -28,16 +28,26 @@ const CommentInputDiv = styled.div`
 
 const CommentInput = styled.input`
   font-size: 1rem;
+  border:0; 
+  outline:0;
+  border-bottom:0.1rem solid #bdbfbe;
+  
 `;
 
-const CommentInputSubmit = styled.div`
-  border: 1px solid black;
+const CommentInputSubmit = styled.button`
+  border:0; 
+  border-radius: 5px;
   width: 100%;
   display: grid;
   align-items: center;
   justify-content: center;
-  background-color: #6df2c1;
   cursor: pointer;
+  background-color:#6DF2C1;
+  &:active {
+    background-color: #4C7364;
+    color: white;
+  }
+
 `;
 const CommentDel = styled.button`
   border: 1px solid black;
