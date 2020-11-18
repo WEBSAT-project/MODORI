@@ -52,7 +52,16 @@ const MainBody = ({ postList, isLoading, setIsLoading }) => {
           {postList.length === 0 ? (
             <LoadingDiv>나만의 글을 작성해보세요!</LoadingDiv>
           ) : (
-            postList
+            <PostListDiv>
+              {postList}
+              <TopButton
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                }}
+              >
+                위로!
+              </TopButton>
+            </PostListDiv>
           )}
         </>
         // <PostListDiv>
