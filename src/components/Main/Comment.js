@@ -17,6 +17,7 @@ const CommentBox = styled.div`
   border-bottom: 1px solid black;
   grid-column: auto / span 2;
 `;
+
 const CommentInputDiv = styled.div`
   padding: 0.5rem;
   display: grid;
@@ -55,7 +56,7 @@ const token = localStorage.getItem("token");
 const Comment = ({ postCode, history, ableDel }) => {
   const [comment_Text, setComment_Text] = useState("");
   const [comments, setComments] = useState([]);
-
+  const [currentCode, setCurrentCode] = useState();
   const getComments = async () => {
     try {
       const comments = await Axios.get(`${SERVER}/getComments/${postCode}`);
@@ -79,10 +80,20 @@ const Comment = ({ postCode, history, ableDel }) => {
           },
         },
       );
-      console.log(a);
+      console.log(a.status);
+      if (a.status == 200) {
+        getComments().then((res) => {
+          // console.log(res.data.result.length);
+          setComments(res.data.result);
+          // myPosts.filter(
+          //     (post) => post.Post_Code !== postCode
+          // )
+        });
+        console.log("success");
+      }
       return a;
     } catch (err) {
-      switch (err.response.status) {
+      switch (err.status) {
         case 403:
           Swal.fire({
             title: err.response.data.message,
@@ -93,25 +104,34 @@ const Comment = ({ postCode, history, ableDel }) => {
       }
     }
   };
-  const commentDel = async () => {
+  const commentDel = async (commentCode) => {
     try {
-      const { data } = await Axios.delete(`${SERVER}/C_delete/${postCode}`);
-      if (data.message === "comment delete") {
-        comments.filter((comment) => comment.Post_Code !== postCode);
-        console.log(comments);
-      }
+      const { data } = await Axios.delete(`${SERVER}/C_delete/${commentCode}`);
+
+      getComments().then((res) => {
+        // console.log(res.data.result.length);
+        setComments(res.data.result);
+        // myPosts.filter(
+        //     (post) => post.Post_Code !== postCode
+        // )
+      });
+      console.log(data, commentCode);
     } catch (err) {
       console.log(err);
     }
   };
   const commentList = comments.map((comment) => {
+    console.log(comment.Comment_Code);
     return (
       <CommentBox>
         <div style={{ gridArea: "main" }}>{comment.Comment_Text}</div>
         <div style={{ gridArea: "time" }}>{comment.Comment_Time}</div>
         <div style={{ gridArea: "name" }}>{comment.nick_name}</div>
         {!ableDel ? (
-          <CommentDel style={{ gridArea: "del" }} onClick={commentDel}>
+          <CommentDel
+            style={{ gridArea: "del" }}
+            onClick={() => commentDel(comment.Comment_Code)}
+          >
             삭제
           </CommentDel>
         ) : null}
