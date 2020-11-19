@@ -117,7 +117,7 @@ const Login = ({
         <JoinDiv>
           <Logo onClick={goHome} />
           <JoinInput
-            placeholder="이메일"
+            placeholder="이메일(8 ~ 40자)"
             spellCheck="false"
             value={id}
             onChange={(e) => (

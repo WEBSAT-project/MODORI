@@ -95,7 +95,7 @@ const CommentDiv = styled.div`
   max-height: 50vh;
 `;
 
-const SERVER = "http://10.80.163.169:8080";
+const SERVER = "http://192.168.0.28:8080";
 const Post = (props) => {
   const {
     Title,

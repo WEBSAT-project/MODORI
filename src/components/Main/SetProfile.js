@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import Post from "../Main/Post";
 import Axios from "axios";
 import styled from "styled-components";
@@ -17,10 +18,10 @@ const SetProfile = ({ history }) => {
   const [myPosts, setMyPosts] = useState([]);
   const [postId, setPostId] = useState();
   const [isLoading, setIsLoading] = useState();
-  const SERVER = "http://10.80.163.169:8080";
+  const SERVER = "http://192.168.0.28:8080";
   const token = localStorage.getItem("token");
   const LoadingDiv = styled.div`
-    padding:20vh 3rem 3rem;;
+    padding: 20vh 3rem 3rem;
     width: 100%;
     height: auto;
     display: flex;
@@ -37,7 +38,7 @@ const SetProfile = ({ history }) => {
               title: "로그인을 먼저 해주세요!",
               icon: "error",
             },
-            history.replace("/login"),
+            history.push("/login"),
           )
         : null;
     }
@@ -126,4 +127,4 @@ const SetProfile = ({ history }) => {
   );
 };
 
-export default SetProfile;
+export default withRouter(SetProfile);
