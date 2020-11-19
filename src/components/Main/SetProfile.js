@@ -18,7 +18,7 @@ const SetProfile = ({ history }) => {
   const [myPosts, setMyPosts] = useState([]);
   const [postId, setPostId] = useState();
   const [isLoading, setIsLoading] = useState();
-  const SERVER = "http://192.168.0.28:8080";
+  const SERVER = "http://192.168.43.89:8080";
   const token = localStorage.getItem("token");
   const LoadingDiv = styled.div`
     padding: 20vh 3rem 3rem;
