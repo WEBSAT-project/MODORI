@@ -6,7 +6,7 @@ import axios from "axios";
 const LoginContainer = ({ history }) => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const SERVER = "http://192.168.43.89:8080";
+  const SERVER = "http://172.20.10.3:8080";
   const goHome = () => {
     history.push("/");
   };

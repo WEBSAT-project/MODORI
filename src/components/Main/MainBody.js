@@ -30,6 +30,7 @@ const LoadingDiv = styled.div`
 const TopButton = styled.div`
   background-color: #6df2c1;
   position: fixed;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.44);
   width: 7%;
   bottom: 7px;
   right: 0px;

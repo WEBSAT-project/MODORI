@@ -18,7 +18,7 @@ const SetProfile = ({ history }) => {
   const [myPosts, setMyPosts] = useState([]);
   const [postId, setPostId] = useState();
   const [isLoading, setIsLoading] = useState();
-  const SERVER = "http://192.168.43.89:8080";
+  const SERVER = "http://172.20.10.3:8080";
   const token = localStorage.getItem("token");
   const LoadingDiv = styled.div`
     padding: 20vh 3rem 3rem;
@@ -66,7 +66,7 @@ const SetProfile = ({ history }) => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "네, 삭제할께요!",
+      confirmButtonText: "네, 삭제할게요!",
       cancelButtonText: "좀 더 생각해볼게요",
     }).then(async (result) => {
       if (result.isConfirmed) {

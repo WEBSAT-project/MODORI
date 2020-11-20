@@ -62,7 +62,7 @@ const CommentDel = styled.button`
   cursor: pointer;
 `;
 
-const SERVER = "http://192.168.43.89:8080";
+const SERVER = "http://172.20.10.3:8080";
 
 const Comment = ({ postCode, history, ableDel, nickName }) => {
   const token = localStorage.getItem("token");

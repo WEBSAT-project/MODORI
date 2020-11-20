@@ -5,7 +5,7 @@ import Post from "../components/Main/Post";
 import Swal from "sweetalert2";
 import Axios from "axios";
 
-const SERVER = "http://192.168.43.89:8080";
+const SERVER = "http://172.20.10.3:8080";
 
 const MainBodyContainer = ({ data }) => {
   const [posts, setPosts] = useState([]);
