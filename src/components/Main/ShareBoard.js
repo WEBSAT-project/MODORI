@@ -60,7 +60,7 @@ const SearchInput = styled.div`
                 <FcSearch onClick={handleSearch} />
             </SearchInput> */
 
-const SERVER = "http://172.20.10.3:8080";
+const SERVER = "http://10.80.163.169:8080";
 
 const Main = () => {
   const [searchInput, setSearchInput] = useState("");

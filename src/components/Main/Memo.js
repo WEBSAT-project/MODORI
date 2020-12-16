@@ -188,7 +188,7 @@ const Memo = ({
 
   return (
     <MemoDiv>
-      <MainHeader pos="static"/>
+      <MainHeader pos="static" />
       <PostForm onSubmit={onSubmit}>
         <StyledInput
           type="text"
