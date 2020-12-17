@@ -133,7 +133,7 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
   };
   const commentList = comments.map((comment) => {
     return (
-      <CommentBox>
+      <CommentBox key={comment.Comment_Code}>
         <div style={{ gridArea: "main" }}>{comment.Comment_Text}</div>
         <div style={{ gridArea: "time" }}>
           {/* {`${comment.Comment_Time.split("T")[0]} ${
