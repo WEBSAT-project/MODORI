@@ -8,7 +8,7 @@ import canvasToImage from "canvas-to-image";
 // 제목 내용 쓴사
 
 const MemoContainer = ({ history }) => {
-  const SERVER = "http://10.80.163.169:8080";
+  const SERVER = process.env.REACT_APP_SERVER;
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState("");

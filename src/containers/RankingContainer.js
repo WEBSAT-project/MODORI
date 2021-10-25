@@ -3,7 +3,7 @@ import Axios from "axios";
 import styled from "styled-components";
 import Ranking from "../components/Main/Ranking";
 
-const SERVER = "http://10.80.163.169:8080";
+const SERVER = process.env.REACT_APP_SERVER;
 
 const RankingContainer = () => {
   const [ranks, setRanks] = useState([]);

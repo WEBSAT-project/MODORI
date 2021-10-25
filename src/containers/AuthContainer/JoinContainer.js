@@ -13,7 +13,7 @@ const JoinContainer = ({ history }) => {
     id: false,
     nickname: false,
   });
-  const SERVER = "http://10.80.163.169:8080";
+  const SERVER = process.env.REACT_APP_SERVER;
   const goHome = () => {
     history.push("/");
   };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import Axios from "axios";
@@ -62,7 +62,7 @@ const CommentDel = styled.button`
   cursor: pointer;
 `;
 
-const SERVER = "http://10.80.163.169:8080";
+const SERVER = process.env.REACT_APP_SERVER;
 
 const Comment = ({ postCode, history, ableDel, nickName }) => {
   const token = localStorage.getItem("token");
@@ -70,14 +70,14 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
   const [comment_Text, setComment_Text] = useState("");
   const [comments, setComments] = useState([]);
 
-  const getComments = async () => {
+  const getComments = useCallback(async () => {
     try {
-      const comments = await Axios.get(`${SERVER}/getComments/${postCode}`);
+      const comments = await Axios.get(`${SERVER}/get_comment/${postCode}`);
       return comments;
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [postCode]);
 
   const postComments = async () => {
     try {
@@ -162,13 +162,13 @@ const Comment = ({ postCode, history, ableDel, nickName }) => {
   });
   useEffect(() => {
     getComments().then((res) => {
-      // console.log(res.data.result.length);
+      console.log(res);
       setComments(res.data.result);
       // myPosts.filter(
       //     (post) => post.Post_Code !== postCode
       // )
     });
-  }, []);
+  }, [getComments, setComments]);
   return (
     <>
       <CommentInputDiv>

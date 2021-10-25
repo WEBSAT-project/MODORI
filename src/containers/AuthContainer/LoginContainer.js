@@ -4,9 +4,10 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const LoginContainer = ({ history }) => {
+  console.log(process.env.REACT_APP_SERVER);
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const SERVER = "http://10.80.163.169:8080";
+  const SERVER = process.env.REACT_APP_SERVER;
   const goHome = () => {
     history.push("/");
   };

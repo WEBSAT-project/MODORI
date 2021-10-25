@@ -5,7 +5,7 @@ import Post from "../components/Main/Post";
 import Swal from "sweetalert2";
 import Axios from "axios";
 
-const SERVER = "http://10.80.163.169:8080";
+const SERVER = process.env.REACT_APP_SERVER;
 
 const MainBodyContainer = ({ data }) => {
   const [posts, setPosts] = useState([]);
